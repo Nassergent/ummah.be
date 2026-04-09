@@ -1,0 +1,86 @@
+---
+const currentPath = Astro.url.pathname;
+const links = [
+  { href: '/', label: 'Home' },
+  { href: '/wat-is-een-waqf', label: 'Wat is een Waqf?' },
+  { href: '/governance', label: 'Governance' },
+  { href: '/transparantie', label: 'Transparantie' },
+  { href: '/moskeeen', label: 'Moskeeën' },
+  { href: '/contact', label: 'Contact' },
+];
+---
+
+<nav class="fixed top-0 left-0 right-0 z-50 bg-white/95 backdrop-blur-sm border-b border-border">
+  <div class="container flex justify-between items-center h-20">
+    <a href="/" class="flex items-center gap-3 no-underline">
+      <span class="font-heading text-2xl font-bold" style="color: var(--color-capital);">Ummah.be</span>
+      <span class="badge-sacred text-[10px]">WAQF</span>
+    </a>
+
+    <!-- Desktop Menu -->
+    <div class="hidden lg:flex items-center gap-1">
+      {links.map((link) => (
+        <a
+          href={link.href}
+          class:list={[
+            'px-4 py-2 text-sm font-medium no-underline transition-colors',
+            currentPath === link.href
+              ? 'font-bold'
+              : 'hover:opacity-70',
+          ]}
+          style={currentPath === link.href ? 'color: var(--color-capital);' : 'color: var(--color-text);'}
+        >
+          {link.label}
+        </a>
+      ))}
+      <a href="/steun-ons" class="btn btn-capital ml-4 text-xs">Draag Bij</a>
+    </div>
+
+    <!-- Mobile Menu Toggle -->
+    <button
+      id="mobile-menu-btn"
+      class="lg:hidden w-11 h-11 flex items-center justify-center"
+      aria-label="Menu openen"
+    >
+      <svg id="menu-icon" class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7" />
+      </svg>
+      <svg id="close-icon" class="w-6 h-6 hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+      </svg>
+    </button>
+  </div>
+
+  <!-- Mobile Menu -->
+  <div id="mobile-menu" class="hidden lg:hidden bg-white border-t border-border">
+    <div class="container py-6 flex flex-col gap-2">
+      {links.map((link) => (
+        <a
+          href={link.href}
+          class="py-3 text-lg font-heading font-bold no-underline"
+          style="color: var(--color-text);"
+        >
+          {link.label}
+        </a>
+      ))}
+      <a href="/steun-ons" class="btn btn-capital text-center mt-4">Draag Bij aan Kapitaal</a>
+    </div>
+  </div>
+</nav>
+
+<div class="h-20" />
+
+<script>
+  const btn = document.getElementById('mobile-menu-btn');
+  const menu = document.getElementById('mobile-menu');
+  const menuIcon = document.getElementById('menu-icon');
+  const closeIcon = document.getElementById('close-icon');
+  let open = false;
+
+  btn?.addEventListener('click', () => {
+    open = !open;
+    menu?.classList.toggle('hidden');
+    menuIcon?.classList.toggle('hidden');
+    closeIcon?.classList.toggle('hidden');
+  });
+</script>

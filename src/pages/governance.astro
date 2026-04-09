@@ -1,0 +1,130 @@
+---
+import Layout from '../layouts/Layout.astro';
+---
+
+<Layout title="Governance — Ummah.be Waqf" description="Wie wacht over dit Waqf? Trustee, Shariah Advisory Board, en jij.">
+
+  <!-- HERO -->
+  <section class="py-20" style="background: var(--color-capital);">
+    <div class="container text-center">
+      <h1 class="text-white mb-4 fade-up">Governance</h1>
+      <p class="text-white/70 text-lg max-w-[600px] mx-auto fade-up delay-1">
+        Dit is geen one-man-show. Dit waqf is geguard door vier sterke pilaren:
+        een Trustee, drie Islamic scholars, de oprichter (als dienaar), en de Ummah.
+      </p>
+    </div>
+  </section>
+
+  <!-- TRUSTEE -->
+  <section class="section">
+    <div class="container max-w-[900px]">
+      <div class="card card-capital fade-up">
+        <div class="badge-sacred mb-6">Waqf Trustee</div>
+        <h2 class="mb-2">De Waqf Trustee</h2>
+        <p class="text-lg mb-6" style="color: var(--color-clarity);">Beheerder Van Het Heilige Kapitaal</p>
+
+        <div class="flex flex-col md:flex-row gap-8 items-start">
+          <div class="w-32 h-32 rounded-full shrink-0 flex items-center justify-center" style="background: rgba(27,94,63,0.1);">
+            <span class="text-4xl">🛡️</span>
+          </div>
+          <div>
+            <h3 class="text-xl mb-4">[Naam Trustee]</h3>
+            <p class="mb-4" style="color: var(--color-text-light);">[Achtergrond — 2-3 zinnen over wie zij/hij is]</p>
+            <ul class="space-y-2 text-sm" style="color: var(--color-text);">
+              <li>• Bewaart dit kapitaal op naam van Allah</li>
+              <li>• Heeft VETO-kracht over grote beslissingen</li>
+              <li>• Is onafhankelijk van de oprichter</li>
+              <li>• Is wettelijk aansprakelijk voor dit geld</li>
+              <li>• Werkt voor God, niet voor geld</li>
+            </ul>
+            <blockquote class="mt-6 pl-4 italic text-lg" style="border-left: 3px solid var(--color-gold); color: var(--color-capital);">
+              "Ik bewaar dit kapitaal namens Allah en de Ummah. Dit is een vertrouwen dat ik serieus neem."
+            </blockquote>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SHARIAH BOARD -->
+  <section class="section" style="background: white;">
+    <div class="container">
+      <h2 class="text-center mb-4 fade-up">Shariah Advisory Board</h2>
+      <p class="text-center text-lg mb-12 fade-up delay-1" style="color: var(--color-text-light);">
+        Drie scholars, één missie: zorgen dat alles Islamic correct is.
+      </p>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-[900px] mx-auto">
+        {[1, 2, 3].map((i) => (
+          <div class="card text-center fade-up" style={`animation-delay: ${i * 0.1}s;`}>
+            <div class="w-20 h-20 mx-auto mb-4 rounded-full flex items-center justify-center" style="background: rgba(27,94,63,0.1);">
+              <span class="text-3xl">📖</span>
+            </div>
+            <h3 class="text-lg mb-1">[Scholar {i}]</h3>
+            <p class="text-sm mb-3" style="color: var(--color-clarity);">[Titel / Moskee]</p>
+            <p class="text-sm" style="color: var(--color-text-light);">
+              Review alle educatie, alle messaging, alle besluiten om zeker te zijn dat alles Islamic correct is.
+            </p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- EXECUTIVE DIRECTOR -->
+  <section class="section">
+    <div class="container max-w-[900px]">
+      <div class="card fade-up">
+        <div class="flex flex-col md:flex-row gap-8 items-start">
+          <div class="w-24 h-24 rounded-full shrink-0 flex items-center justify-center" style="background: rgba(46,92,138,0.1);">
+            <span class="text-3xl">👤</span>
+          </div>
+          <div>
+            <h2 class="mb-1">Nasser (Nas)</h2>
+            <p class="text-sm mb-4" style="color: var(--color-clarity);">Executive Director (Oprichter)</p>
+            <p class="mb-4" style="color: var(--color-text-light);">
+              Founder van Ummah.be Waqf. Entrepreneur, technologist, moslim. 20+ years in community work.
+            </p>
+            <p class="text-sm font-semibold" style="color: var(--color-capital);">
+              Ik voer het dagelijks werk uit. Ik ben NIET eigenaar van dit waqf. Ik ben bediende ervan.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FATWA -->
+  <section class="section" style="background: white;">
+    <div class="container max-w-[900px]">
+      <h2 class="text-center mb-12 fade-up">Waqf Verklaring (Fatwa)</h2>
+      <div class="p-8 fade-up delay-1" style="background: rgba(27,94,63,0.05); border-left: 4px solid var(--color-capital);">
+        <p class="font-semibold mb-4" style="color: var(--color-capital);">FATWA: UMMAH.BE WAQF VALIDITY</p>
+        <p class="text-sm mb-4" style="color: var(--color-text-light);">Issued by: [Scholar Name] — [Date]</p>
+        <div class="space-y-3 text-sm" style="color: var(--color-text);">
+          <p>Ummah.be Waqf conforms to Islamic principles:</p>
+          <ul class="space-y-2 ml-4">
+            <li>✓ NIYYAH (Intention): Clear Islamic intention</li>
+            <li>✓ CAPITAL: Designated as perpetual and inviolable</li>
+            <li>✓ PURPOSE: Serving Islamic education and community</li>
+            <li>✓ GOVERNANCE: Islamic oversight (Trustee + Scholars)</li>
+            <li>✓ PERPETUITY: Designed to last forever</li>
+          </ul>
+          <p class="mt-4 italic">
+            Contributions to this waqf are Islamic valid, eligible for zakat (if desired),
+            counted as sadaqah jariyah, and blessed by Islamic tradition.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="py-20" style="background: var(--color-capital);">
+    <div class="container text-center">
+      <h2 class="text-white mb-4 fade-up">Dit is onze belofte. Dit is wat we geloven.</h2>
+      <p class="text-white/70 mb-8 fade-up delay-1">Klaar om deel uit te maken van deze Waqf?</p>
+      <a href="/steun-ons" class="btn" style="background: var(--color-gold); color: var(--color-capital-dark);">Draag bij aan Kapitaal</a>
+    </div>
+  </section>
+
+</Layout>

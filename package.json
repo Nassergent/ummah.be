@@ -12,6 +12,21 @@
     "astro": "astro"
   },
   "dependencies": {
-    "astro": "^6.1.5"
+    "@astrojs/react": "^5.0.3",
+    "@astrojs/vercel": "^10.0.4",
+    "@fontsource/inter": "^5.2.8",
+    "@fontsource/playfair-display": "^5.2.8",
+    "@portabletext/react": "^6.0.3",
+    "@sanity/client": "^7.20.0",
+    "@sanity/image-url": "^2.1.1",
+    "@sanity/vision": "^5.20.0",
+    "@tailwindcss/vite": "^4.2.2",
+    "@types/react": "^19.2.14",
+    "@types/react-dom": "^19.2.3",
+    "astro": "^6.1.5",
+    "react": "^19.2.5",
+    "react-dom": "^19.2.5",
+    "sanity": "^5.20.0",
+    "tailwindcss": "^4.2.2"
   }
 }

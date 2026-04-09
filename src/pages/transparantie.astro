@@ -1,0 +1,110 @@
+---
+import Layout from '../layouts/Layout.astro';
+---
+
+<Layout title="Transparantie — Ummah.be Waqf" description="Onze maandelijkse hisab. Elke euro in, elke euro uit.">
+
+  <!-- HERO -->
+  <section class="py-20" style="background: var(--color-capital);">
+    <div class="container text-center">
+      <h1 class="text-white mb-4 fade-up">Transparantie</h1>
+      <p class="text-white/70 text-lg fade-up delay-1">Elke euro in, elke euro uit. Geen mysteries.</p>
+    </div>
+  </section>
+
+  <!-- KAPITAAL STATUS -->
+  <section class="section">
+    <div class="container max-w-[800px]">
+      <h2 class="text-center mb-10 fade-up">Waqf Kapitaal Status</h2>
+      <div class="card card-capital fade-up delay-1">
+        <div class="grid grid-cols-2 gap-6 mb-8">
+          <div>
+            <p class="text-sm uppercase tracking-wider mb-1" style="color: var(--color-text-light);">Huidig Kapitaal</p>
+            <p class="text-3xl font-heading font-bold" style="color: var(--color-capital);">€—</p>
+          </div>
+          <div>
+            <p class="text-sm uppercase tracking-wider mb-1" style="color: var(--color-text-light);">Doelkapitaal</p>
+            <p class="text-3xl font-heading font-bold" style="color: var(--color-clarity);">€100.000</p>
+          </div>
+        </div>
+        <!-- Progress bar -->
+        <div class="w-full h-4 rounded-full mb-4" style="background: var(--color-border);">
+          <div class="h-4 rounded-full transition-all duration-1000" style="background: var(--color-gold); width: 0%;"></div>
+        </div>
+        <p class="text-sm text-center" style="color: var(--color-text-light);">0% van doelkapitaal bereikt</p>
+        <div class="mt-6 p-4" style="background: rgba(201,169,97,0.1);">
+          <p class="text-sm" style="color: var(--color-text);">
+            <strong>Jaarlijkse opbrengsten (5%):</strong> €— beschikbaar voor programma's.
+            Voor duurzaamheid hebben we €100.000 kapitaal nodig.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- MAANDELIJKSE HISAB -->
+  <section class="section" style="background: white;">
+    <div class="container max-w-[800px]">
+      <h2 class="text-center mb-10 fade-up">Maandelijkse Hisab</h2>
+      <div class="card fade-up delay-1">
+        <div class="flex items-center justify-between mb-6">
+          <h3 class="text-xl">April 2026</h3>
+          <span class="badge-sacred">Gepubliceerd</span>
+        </div>
+
+        <div class="space-y-6">
+          <!-- Geld In -->
+          <div>
+            <p class="text-sm font-semibold uppercase tracking-wider mb-3" style="color: var(--color-capital);">Geld In</p>
+            <div class="space-y-2 text-sm">
+              <div class="flex justify-between"><span style="color: var(--color-text-light);">Waqf Kapitaal</span><span class="font-bold">€—</span></div>
+              <div class="flex justify-between"><span style="color: var(--color-text-light);">Program Support</span><span class="font-bold">€—</span></div>
+              <div class="flex justify-between"><span style="color: var(--color-text-light);">Zakat</span><span class="font-bold">€—</span></div>
+              <div class="flex justify-between border-t pt-2 mt-2" style="border-color: var(--color-border);"><span class="font-semibold">TOTAAL IN</span><span class="font-bold" style="color: var(--color-capital);">€—</span></div>
+            </div>
+          </div>
+
+          <!-- Geld Uit -->
+          <div>
+            <p class="text-sm font-semibold uppercase tracking-wider mb-3" style="color: var(--color-zakat);">Geld Uit</p>
+            <div class="space-y-2 text-sm">
+              <div class="flex justify-between"><span style="color: var(--color-text-light);">Mentorship</span><span class="font-bold">€—</span></div>
+              <div class="flex justify-between"><span style="color: var(--color-text-light);">E-book production</span><span class="font-bold">€—</span></div>
+              <div class="flex justify-between"><span style="color: var(--color-text-light);">Website hosting & ops</span><span class="font-bold">€—</span></div>
+              <div class="flex justify-between border-t pt-2 mt-2" style="border-color: var(--color-border);"><span class="font-semibold">TOTAAL UIT</span><span class="font-bold" style="color: var(--color-zakat);">€—</span></div>
+            </div>
+          </div>
+
+          <!-- Saldo -->
+          <div class="p-4" style="background: rgba(27,94,63,0.05);">
+            <div class="flex justify-between text-sm mb-2"><span>Saldo Program Fund</span><span class="font-bold">€—</span></div>
+            <div class="flex justify-between text-sm font-semibold" style="color: var(--color-capital);"><span>WAQF KAPITAAL</span><span>€— (ONGEWIJZIGD)</span></div>
+          </div>
+        </div>
+
+        <div class="flex gap-3 mt-8 justify-center">
+          <a href="#" class="btn btn-outline text-xs">Download PDF</a>
+          <a href="#" class="btn btn-capital text-xs">Lees Volledige Rapport</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- BELOFTE -->
+  <section class="section">
+    <div class="container max-w-[800px] text-center">
+      <h2 class="mb-8 fade-up">Onze Belofte: Jaarlijkse Transparantie</h2>
+      <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 text-left fade-up delay-1">
+        <div class="card"><span class="text-lg mr-2">☐</span> <strong>HISAB:</strong> Elke euro in, elke euro uit</div>
+        <div class="card"><span class="text-lg mr-2">☐</span> <strong>IMPACT:</strong> Hoeveel mentors? Hoeveel e-books?</div>
+        <div class="card"><span class="text-lg mr-2">☐</span> <strong>GOVERNANCE:</strong> Wie zit in welke rol?</div>
+        <div class="card"><span class="text-lg mr-2">☐</span> <strong>AUDIT:</strong> Third-party audit bij >€50k</div>
+        <div class="card sm:col-span-2"><span class="text-lg mr-2">☐</span> <strong>SHARIAH:</strong> Verklaring dat alles Islamic correct is</div>
+      </div>
+      <p class="mt-8 text-lg font-semibold fade-up delay-2" style="color: var(--color-capital);">
+        Je hebt het recht op 100% zichtbaarheid.
+      </p>
+    </div>
+  </section>
+
+</Layout>

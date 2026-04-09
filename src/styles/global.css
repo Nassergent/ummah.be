@@ -1,0 +1,113 @@
+@import "tailwindcss";
+
+/* ============================================
+   UMMAH.BE WAQF — Design System v2.0
+
+   Sacred. Trustworthy. Transparent.
+
+   Colors: Sacred Green / Sea Blue / Crème
+   Fonts: Playfair Display (headings) + Inter (body)
+   ============================================ */
+
+@theme {
+  /* Primaire Kleuren */
+  --color-capital: #1B5E3F;
+  --color-capital-light: #267A52;
+  --color-capital-dark: #0F3A24;
+  --color-clarity: #2E5C8A;
+  --color-clarity-light: #3A7AB8;
+  --color-peace: #F5F3F0;
+
+  /* Accent Kleuren */
+  --color-gold: #C9A961;
+  --color-growth: #4A7C59;
+  --color-growth-dark: #3A6247;
+  --color-zakat: #D9845B;
+  --color-zakat-dark: #C06E42;
+
+  /* Neutraal */
+  --color-text: #2D3436;
+  --color-text-light: #636E72;
+  --color-border: #E8E6E3;
+
+  /* Typografie */
+  --font-sans: 'Inter', ui-sans-serif, system-ui, sans-serif;
+  --font-heading: 'Playfair Display', Georgia, serif;
+
+  /* Animaties */
+  --animate-fade-in-up: fadeInUp 0.8s ease-out forwards;
+}
+
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(30px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@layer base {
+  html { scroll-behavior: smooth; }
+
+  body {
+    @apply bg-peace text-text font-sans antialiased;
+    font-size: 16px;
+    line-height: 1.8;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-heading font-bold;
+    color: var(--color-capital-dark);
+    line-height: 1.2;
+  }
+  h1 { font-size: clamp(32px, 5vw, 48px); }
+  h2 { font-size: clamp(24px, 4vw, 36px); }
+  h3 { font-size: clamp(20px, 3vw, 28px); }
+}
+
+@layer components {
+  /* Buttons */
+  .btn {
+    @apply inline-block font-sans font-semibold uppercase tracking-wider text-sm cursor-pointer border-none no-underline;
+    padding: 16px 32px;
+    border-radius: 4px;
+    letter-spacing: 1px;
+    transition: all 0.3s ease;
+  }
+  .btn-capital { background: var(--color-capital); color: var(--color-peace); }
+  .btn-capital:hover { background: var(--color-capital-dark); transform: translateY(-2px); box-shadow: 0 8px 16px rgba(27,94,63,0.3); }
+  .btn-growth { background: var(--color-growth); color: var(--color-peace); }
+  .btn-growth:hover { background: var(--color-growth-dark); transform: translateY(-2px); box-shadow: 0 8px 16px rgba(74,124,89,0.3); }
+  .btn-zakat { background: var(--color-zakat); color: var(--color-peace); }
+  .btn-zakat:hover { background: var(--color-zakat-dark); transform: translateY(-2px); box-shadow: 0 8px 16px rgba(217,132,91,0.3); }
+  .btn-outline { background: transparent; border: 2px solid var(--color-clarity); color: var(--color-clarity); padding: 14px 30px; }
+  .btn-outline:hover { background: var(--color-clarity); color: var(--color-peace); }
+
+  /* Cards */
+  .card {
+    background: white;
+    border-radius: 8px;
+    padding: 32px;
+    box-shadow: 0 2px 8px rgba(45,52,54,0.08);
+    border-left: 4px solid transparent;
+    transition: all 0.3s ease;
+  }
+  .card:hover { box-shadow: 0 8px 24px rgba(45,52,54,0.12); transform: translateY(-4px); }
+  .card-capital { border-left-color: var(--color-capital); }
+  .card-growth { border-left-color: var(--color-growth); }
+  .card-zakat { border-left-color: var(--color-zakat); }
+
+  /* Badges */
+  .badge { @apply inline-block text-xs font-semibold uppercase tracking-wider; padding: 6px 12px; border-radius: 20px; }
+  .badge-sacred { background: rgba(27,94,63,0.1); color: var(--color-capital); }
+  .badge-growth { background: rgba(74,124,89,0.1); color: var(--color-growth); }
+  .badge-zakat { background: rgba(217,132,91,0.1); color: var(--color-zakat); }
+
+  /* Layout */
+  .section { @apply py-16 md:py-24; }
+  .container { @apply max-w-[1200px] mx-auto px-5; }
+
+  /* Animations */
+  .fade-up { animation: fadeInUp 0.8s ease-out forwards; opacity: 0; }
+  .delay-1 { animation-delay: 0.1s; }
+  .delay-2 { animation-delay: 0.2s; }
+  .delay-3 { animation-delay: 0.3s; }
+  .delay-4 { animation-delay: 0.4s; }
+}

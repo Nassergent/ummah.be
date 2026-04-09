@@ -1,0 +1,73 @@
+---
+import Layout from '../layouts/Layout.astro';
+---
+
+<Layout title="Contact — Ummah.be Waqf" description="Neem contact op met Ummah.be Waqf.">
+
+  <!-- HERO -->
+  <section class="py-20" style="background: var(--color-capital);">
+    <div class="container text-center">
+      <h1 class="text-white mb-4 fade-up">Contact</h1>
+      <p class="text-white/70 text-lg fade-up delay-1">Heb je een vraag? Wij staan klaar.</p>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container max-w-[900px]">
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
+        <!-- Form -->
+        <div class="fade-up">
+          <h2 class="mb-8">Stuur ons een bericht</h2>
+          <form class="space-y-5">
+            <div>
+              <label class="block text-sm font-semibold uppercase mb-2" style="color: var(--color-capital); letter-spacing: 0.5px;">Naam *</label>
+              <input type="text" placeholder="Uw naam" class="w-full p-3 border-2 rounded text-base" style="border-color: var(--color-border);" required />
+            </div>
+            <div>
+              <label class="block text-sm font-semibold uppercase mb-2" style="color: var(--color-capital); letter-spacing: 0.5px;">Email *</label>
+              <input type="email" placeholder="uw@email.be" class="w-full p-3 border-2 rounded text-base" style="border-color: var(--color-border);" required />
+            </div>
+            <div>
+              <label class="block text-sm font-semibold uppercase mb-2" style="color: var(--color-capital); letter-spacing: 0.5px;">Onderwerp</label>
+              <select class="w-full p-3 border-2 rounded text-base" style="border-color: var(--color-border);">
+                <option>Algemene vraag</option>
+                <option>Waqf kapitaal</option>
+                <option>Programma's & donaties</option>
+                <option>Zakat</option>
+                <option>Governance & transparantie</option>
+                <option>Moskee website aanvragen</option>
+                <option>Anders</option>
+              </select>
+            </div>
+            <div>
+              <label class="block text-sm font-semibold uppercase mb-2" style="color: var(--color-capital); letter-spacing: 0.5px;">Bericht *</label>
+              <textarea rows="5" placeholder="Waar kunnen wij u mee helpen?" class="w-full p-3 border-2 rounded text-base" style="border-color: var(--color-border);" required></textarea>
+            </div>
+            <button type="submit" class="btn btn-capital w-full text-center">Versturen</button>
+          </form>
+        </div>
+
+        <!-- Info -->
+        <div class="fade-up delay-1">
+          <h2 class="mb-8">Contactgegevens</h2>
+          <div class="space-y-4">
+            <div class="card card-capital">
+              <p class="text-sm font-semibold uppercase tracking-wider mb-1" style="color: var(--color-capital);">Email</p>
+              <a href="mailto:salam@ummah.be" class="text-lg font-heading" style="color: var(--color-text);">salam@ummah.be</a>
+            </div>
+            <div class="card">
+              <p class="text-sm font-semibold uppercase tracking-wider mb-1" style="color: var(--color-capital);">Organisatie</p>
+              <p style="color: var(--color-text-light);">Ummah.be Waqf</p>
+              <p class="text-sm mt-1" style="color: var(--color-text-light);">Een Belgische waqf instelling</p>
+            </div>
+            <div class="card">
+              <p class="text-sm font-semibold uppercase tracking-wider mb-1" style="color: var(--color-capital);">Reactietijd</p>
+              <p style="color: var(--color-text-light);">Wij reageren binnen 48 uur, in shaa Allah.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</Layout>

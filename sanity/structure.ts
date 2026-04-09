@@ -1,0 +1,126 @@
+import type { StructureResolver } from 'sanity/structure';
+
+export const structure: StructureResolver = (S) =>
+  S.list()
+    .title('Ummah.be Waqf')
+    .items([
+      // ── Site Instellingen ──
+      S.listItem()
+        .title('⚙️ Site Instellingen')
+        .child(
+          S.list()
+            .title('Instellingen')
+            .items([
+              S.listItem()
+                .title('🏢 Organisatie & Juridisch')
+                .child(S.document().schemaType('siteSettings').documentId('siteSettings')),
+              S.listItem()
+                .title('🏠 Homepage Content')
+                .child(S.document().schemaType('homePage').documentId('homePage')),
+              S.listItem()
+                .title('💰 Waqf Configuratie')
+                .child(S.document().schemaType('waqfConfig').documentId('waqfConfig')),
+            ])
+        ),
+
+      S.divider(),
+
+      // ── Team & Governance ──
+      S.listItem()
+        .title('👥 Team & Governance')
+        .child(
+          S.list()
+            .title('Team & Governance')
+            .items([
+              S.listItem()
+                .title('👥 Alle Leden')
+                .child(
+                  S.documentList()
+                    .title('Alle Leden')
+                    .filter('_type == "teamMember"')
+                    .defaultOrdering([{ field: 'volgorde', direction: 'asc' }])
+                ),
+              S.listItem()
+                .title('🛡️ Trustee')
+                .child(
+                  S.documentList()
+                    .title('Trustee')
+                    .filter('_type == "teamMember" && rol == "trustee"')
+                ),
+              S.listItem()
+                .title('📖 Shariah Board')
+                .child(
+                  S.documentList()
+                    .title('Shariah Board')
+                    .filter('_type == "teamMember" && rol == "scholar"')
+                ),
+              S.divider(),
+              S.listItem()
+                .title('📜 Fatwa')
+                .child(S.document().schemaType('fatwa').documentId('fatwa')),
+            ])
+        ),
+
+      S.divider(),
+
+      // ── Donaties ──
+      S.listItem()
+        .title('💰 Donaties')
+        .child(
+          S.list()
+            .title('Donaties')
+            .items([
+              S.listItem()
+                .title('🎁 Projecten')
+                .child(
+                  S.documentList()
+                    .title('Donatie Projecten')
+                    .filter('_type == "donatieProject"')
+                    .defaultOrdering([{ field: 'volgorde', direction: 'asc' }])
+                ),
+              S.listItem()
+                .title('📊 Hisab Rapporten')
+                .child(
+                  S.documentList()
+                    .title('Hisab Rapporten')
+                    .filter('_type == "hisabRapport"')
+                    .defaultOrdering([{ field: 'maand', direction: 'desc' }])
+                ),
+            ])
+        ),
+
+      S.divider(),
+
+      // ── Content ──
+      S.listItem()
+        .title('📝 Content')
+        .child(
+          S.list()
+            .title('Content')
+            .items([
+              S.listItem()
+                .title('❓ FAQ')
+                .child(
+                  S.documentList()
+                    .title('Veelgestelde Vragen')
+                    .filter('_type == "faqItem"')
+                    .defaultOrdering([{ field: 'volgorde', direction: 'asc' }])
+                ),
+              S.listItem()
+                .title('⭐ Impact Stories')
+                .child(
+                  S.documentList()
+                    .title('Impact Stories')
+                    .filter('_type == "impactStory"')
+                ),
+              S.listItem()
+                .title('📰 Nieuws')
+                .child(
+                  S.documentList()
+                    .title('Nieuws')
+                    .filter('_type == "nieuwsPost"')
+                    .defaultOrdering([{ field: 'publicatieDatum', direction: 'desc' }])
+                ),
+            ])
+        ),
+    ]);

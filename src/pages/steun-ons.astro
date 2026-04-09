@@ -1,0 +1,147 @@
+---
+import Layout from '../layouts/Layout.astro';
+---
+
+<Layout title="Steun Ons — Ummah.be Waqf" description="Draag bij aan het waqf kapitaal, steun programma's, of geef zakat.">
+
+  <!-- HERO -->
+  <section class="py-20" style="background: var(--color-capital);">
+    <div class="container text-center">
+      <h1 class="text-white mb-4 fade-up">Kies Je Weg</h1>
+      <p class="text-white/70 text-lg fade-up delay-1">Drie manieren om de Ummah te dienen</p>
+    </div>
+  </section>
+
+  <!-- TAB NAVIGATION -->
+  <section class="section">
+    <div class="container max-w-[800px]">
+      <div class="flex gap-2 mb-10 justify-center flex-wrap fade-up">
+        <button class="tab-btn active btn text-xs" data-tab="waqf" style="background: var(--color-capital); color: var(--color-peace);">Waqf Kapitaal</button>
+        <button class="tab-btn btn text-xs" data-tab="program" style="background: var(--color-border); color: var(--color-text);">Steun Programma's</button>
+        <button class="tab-btn btn text-xs" data-tab="zakat" style="background: var(--color-border); color: var(--color-text);">Zakat</button>
+      </div>
+
+      <!-- TAB 1: WAQF KAPITAAL -->
+      <div id="tab-waqf" class="tab-content fade-up delay-1">
+        <div class="card card-capital">
+          <h2 class="mb-2">Richt een Waqf In</h2>
+          <p class="text-lg mb-6" style="color: var(--color-clarity);">Voor de Ummah</p>
+          <p class="mb-6" style="color: var(--color-text-light);">
+            Jouw gift wordt kapitaal. Het wordt NOOIT besteed. Alleen opbrengsten financieren programma's.
+          </p>
+          <div class="p-4 mb-8" style="background: rgba(201,169,97,0.1); border-left: 3px solid var(--color-gold);">
+            <p class="text-sm font-semibold" style="color: var(--color-gold);">
+              Voorbeeld: €1000 kapitaal → €50-70/jaar opbrengsten (5% return) → Mentorship, e-books
+            </p>
+          </div>
+
+          <form class="space-y-5">
+            <div>
+              <label class="block text-sm font-semibold uppercase mb-2" style="color: var(--color-capital); letter-spacing: 0.5px;">Volledige Naam *</label>
+              <input type="text" placeholder="Jan Jansen" class="w-full p-3 border-2 rounded text-base" style="border-color: var(--color-border);" required />
+            </div>
+            <div>
+              <label class="block text-sm font-semibold uppercase mb-2" style="color: var(--color-capital); letter-spacing: 0.5px;">Email *</label>
+              <input type="email" placeholder="jan@example.com" class="w-full p-3 border-2 rounded text-base" style="border-color: var(--color-border);" required />
+            </div>
+            <div>
+              <label class="block text-sm font-semibold uppercase mb-2" style="color: var(--color-capital); letter-spacing: 0.5px;">Bedrag (€) * — minimum €1.000</label>
+              <input type="number" min="1000" placeholder="1000" class="w-full p-3 border-2 rounded text-base" style="border-color: var(--color-border);" required />
+            </div>
+            <div>
+              <label class="block text-sm font-semibold uppercase mb-2" style="color: var(--color-capital); letter-spacing: 0.5px;">Opmerking (optioneel)</label>
+              <textarea rows="3" maxlength="500" placeholder="Bijv. 'Voor mijn ouders'" class="w-full p-3 border-2 rounded text-base" style="border-color: var(--color-border);"></textarea>
+            </div>
+            <label class="flex items-start gap-3 cursor-pointer">
+              <input type="checkbox" class="mt-1" required />
+              <span class="text-sm" style="color: var(--color-text-light);">
+                Ik begrijp dat dit kapitaal heilig is en nooit zal worden besteed
+              </span>
+            </label>
+            <button type="submit" class="btn btn-capital w-full text-center">Draag bij aan Kapitaal</button>
+          </form>
+        </div>
+      </div>
+
+      <!-- TAB 2: PROGRAM SUPPORT -->
+      <div id="tab-program" class="tab-content hidden">
+        <div class="card card-growth">
+          <h2 class="mb-2">Steun Programma's</h2>
+          <p class="text-lg mb-6" style="color: var(--color-growth);">Direct impact deze maand</p>
+          <p class="mb-8" style="color: var(--color-text-light);">
+            Jouw bijdrage financiert direct mentorschap, e-books en communitywerk. Eenmalig of maandelijks.
+          </p>
+          <form class="space-y-5">
+            <div>
+              <label class="block text-sm font-semibold uppercase mb-2" style="color: var(--color-growth); letter-spacing: 0.5px;">Volledige Naam *</label>
+              <input type="text" placeholder="Jan Jansen" class="w-full p-3 border-2 rounded text-base" style="border-color: var(--color-border);" required />
+            </div>
+            <div>
+              <label class="block text-sm font-semibold uppercase mb-2" style="color: var(--color-growth); letter-spacing: 0.5px;">Email *</label>
+              <input type="email" placeholder="jan@example.com" class="w-full p-3 border-2 rounded text-base" style="border-color: var(--color-border);" required />
+            </div>
+            <div>
+              <label class="block text-sm font-semibold uppercase mb-2" style="color: var(--color-growth); letter-spacing: 0.5px;">Bedrag (€) * — minimum €10</label>
+              <input type="number" min="10" placeholder="50" class="w-full p-3 border-2 rounded text-base" style="border-color: var(--color-border);" required />
+            </div>
+            <div>
+              <label class="block text-sm font-semibold uppercase mb-3" style="color: var(--color-growth); letter-spacing: 0.5px;">Frequentie</label>
+              <div class="flex gap-4">
+                <label class="flex items-center gap-2 cursor-pointer"><input type="radio" name="freq" value="once" checked /> Eenmalig</label>
+                <label class="flex items-center gap-2 cursor-pointer"><input type="radio" name="freq" value="monthly" /> Maandelijks</label>
+              </div>
+            </div>
+            <button type="submit" class="btn btn-growth w-full text-center">Steun Programma's</button>
+          </form>
+        </div>
+      </div>
+
+      <!-- TAB 3: ZAKAT -->
+      <div id="tab-zakat" class="tab-content hidden">
+        <div class="card card-zakat">
+          <h2 class="mb-2">Geef Zakat</h2>
+          <p class="text-lg mb-6" style="color: var(--color-zakat);">Jouw religieuze verplichting</p>
+          <p class="mb-8" style="color: var(--color-text-light);">
+            Zakat is 2,5% van je vermogen. Het gaat naar armen DIT JAAR. Wij zorgen dat het op de juiste plek terechtkomt.
+          </p>
+          <form class="space-y-5">
+            <div>
+              <label class="block text-sm font-semibold uppercase mb-2" style="color: var(--color-zakat); letter-spacing: 0.5px;">Volledige Naam *</label>
+              <input type="text" placeholder="Jan Jansen" class="w-full p-3 border-2 rounded text-base" style="border-color: var(--color-border);" required />
+            </div>
+            <div>
+              <label class="block text-sm font-semibold uppercase mb-2" style="color: var(--color-zakat); letter-spacing: 0.5px;">Email *</label>
+              <input type="email" placeholder="jan@example.com" class="w-full p-3 border-2 rounded text-base" style="border-color: var(--color-border);" required />
+            </div>
+            <div>
+              <label class="block text-sm font-semibold uppercase mb-2" style="color: var(--color-zakat); letter-spacing: 0.5px;">Bedrag (€) *</label>
+              <input type="number" min="1" placeholder="250" class="w-full p-3 border-2 rounded text-base" style="border-color: var(--color-border);" required />
+            </div>
+            <button type="submit" class="btn btn-zakat w-full text-center">Geef Zakat</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</Layout>
+
+<script>
+  const tabs = document.querySelectorAll('.tab-btn');
+  const contents = document.querySelectorAll('.tab-content');
+  const colors: Record<string, string> = { waqf: '#1B5E3F', program: '#4A7C59', zakat: '#D9845B' };
+
+  tabs.forEach(btn => {
+    btn.addEventListener('click', () => {
+      const tab = (btn as HTMLElement).dataset.tab!;
+      contents.forEach(c => c.classList.add('hidden'));
+      document.getElementById(`tab-${tab}`)?.classList.remove('hidden');
+      tabs.forEach(b => {
+        (b as HTMLElement).style.background = 'var(--color-border)';
+        (b as HTMLElement).style.color = 'var(--color-text)';
+      });
+      (btn as HTMLElement).style.background = colors[tab];
+      (btn as HTMLElement).style.color = 'var(--color-peace)';
+    });
+  });
+</script>
