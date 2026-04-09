@@ -1,0 +1,237 @@
+---
+import Layout from '../layouts/Layout.astro';
+import { fetchFaqItems } from '../lib/sanity';
+
+// Ophalen uit Sanity (als beheerder nieuwe vragen toevoegt)
+const sanityFaqs = await fetchFaqItems();
+
+// Fallback FAQ-content — uitgebreid, uit alle pagina's samengevoegd
+const fallbackFaqs = [
+  // ── WAT IS EEN WAQF ──
+  {
+    categorie: 'waqf',
+    vraag: 'Wat is een waqf precies?',
+    antwoord: 'Een waqf is een islamitische rechtsvorm waarbij je bezit (geld, vastgoed, boeken...) vastlegt zodat het zelf nooit verkocht of weggegeven kan worden. Alleen de opbrengsten ervan worden gebruikt voor een goed doel. Het is de klassieke vorm van sadaqah jariyah — doorlopende liefdadigheid.',
+  },
+  {
+    categorie: 'waqf',
+    vraag: 'Hoe oud is de waqf-traditie?',
+    antwoord: 'Meer dan 1400 jaar. De eerste gedocumenteerde waqf was die van Umar ibn al-Khattab (raḍiya Allāhu ʿanhu), die de Profeet ﷺ vroeg wat hij moest doen met een stuk land in Khaybar. De Profeet ﷺ zei: "Als je wilt, houd het kapitaal vast en geef de opbrengsten in liefdadigheid." (Sahih al-Bukhari 2737) — Dat moment markeerde het ontstaan van de waqf-traditie.',
+  },
+  {
+    categorie: 'waqf',
+    vraag: 'Wat is het verschil tussen een waqf en gewone liefdadigheid?',
+    antwoord: 'Gewone liefdadigheid (sadaqah) wordt onmiddellijk besteed — helpt vandaag. Een waqf legt het kapitaal vast zodat het nooit wordt uitgegeven, en alleen de opbrengsten (5 à 7% per jaar bij shariah-conforme beleggingen) worden aangewend. Zo helpt de waqf vandaag, volgende week, volgend jaar, én 100 jaar van nu.',
+  },
+  {
+    categorie: 'waqf',
+    vraag: 'Is een waqf-bijdrage hetzelfde als zakat?',
+    antwoord: 'Nee. Zakat is een verplichte jaarlijkse gift (2,5% van je vermogen boven de nisab-drempel) die volgens de Qur\'an (Surah 9:60) bestemd is voor acht specifieke categorieën begunstigden. Een waqf-bijdrage is een vrijwillige sadaqah jariyah — bovenop de zakat, niet in plaats daarvan. Ummah.be Waqf is géén zakat-instituut.',
+  },
+
+  // ── JOUW BIJDRAGE ──
+  {
+    categorie: 'bijdrage',
+    vraag: 'Kan ik mijn bijdrage later terugkrijgen?',
+    antwoord: 'Bij een definitieve waqf-bijdrage: nee, het is onomkeerbaar. Dat is precies wat een waqf definieert — het kapitaal blijft juridisch onschendbaar en mag nooit worden uitgegeven of teruggegeven. Alleen de opbrengsten worden gebruikt voor het doel. Dit is wat uw bijdrage zo waardevol maakt: ze blijft generaties lang werken.',
+  },
+  {
+    categorie: 'bijdrage',
+    vraag: 'Wat is het minimumbedrag?',
+    antwoord: 'Er is geen spirituele drempel — elke gift omwille van Allah telt. Praktisch beginnen we bij €10. Bij een waqf-bijdrage van €1.000 kan je als rekenvoorbeeld zien: bij een verwacht rendement van 5% worden jaarlijks circa €50 aan opbrengsten gegenereerd die naar programma\'s gaan. Maar ook kleinere bedragen worden gebundeld in het gemeenschappelijke kapitaal.',
+  },
+  {
+    categorie: 'bijdrage',
+    vraag: 'Is het rendement gegarandeerd?',
+    antwoord: 'Nee. Het verwachte rendement van circa 5% per jaar is een schatting op basis van shariah-conforme indexfondsen. Werkelijke rendementen kunnen hoger of lager uitvallen. Het kapitaal blijft onschendbaar, maar de jaarlijkse opbrengsten zijn geen garantie.',
+  },
+  {
+    categorie: 'bijdrage',
+    vraag: 'Wat gebeurt er met de opbrengsten?',
+    antwoord: 'De verwachte jaarlijkse opbrengsten gaan naar: mentorschap voor moslims, e-books en educatie, community-opbouw, en operationele kosten (maximaal 10% van de opbrengsten). Elke maand publiceren we een hisab (financieel rapport) met exact waar het naartoe ging.',
+  },
+  {
+    categorie: 'bijdrage',
+    vraag: 'Hoe weet ik dat mijn geld goed wordt besteed?',
+    antwoord: 'Vier lagen van toezicht: (1) een onafhankelijke Trustee (mutawalli) die juridisch aansprakelijk is; (2) een Shariah Advisory Board van drie islamitische geleerden die toetsen op shariah-conformiteit; (3) maandelijkse hisab die publiek is; en (4) Belgische wetgeving via onze VZW-structuur (jaarrekening, audit, toezicht).',
+  },
+
+  // ── NALATENSCHAP ──
+  {
+    categorie: 'nalatenschap',
+    vraag: 'Kan ik mijn huis schenken aan de waqf?',
+    antwoord: 'Ja, dat is één van de oudste vormen van waqf (waqf al-ʿaqār — vastgoed-waqf). Er zijn verschillende opties: schenking tijdens leven (definitief), via testament (max 1/3 als u erfgenamen heeft), of tijdelijk via vruchtgebruik. Elk scenario heeft eigen juridische en fiqh-implicaties. Bekijk onze nalatenschap-pagina of neem vertrouwelijk contact op.',
+  },
+  {
+    categorie: 'nalatenschap',
+    vraag: 'Ik heb geen erfgenamen — hoeveel mag ik nalaten aan de waqf?',
+    antwoord: 'Als u geen islamitische erfgenamen heeft, mag u tot 100% van uw nalatenschap aan de waqf geven via testament. Houd wel rekening met het Belgisch erfrecht, dat soms reservatair erfdeel kent voor andere familieleden. Raadpleeg altijd een notaris voor uw specifieke situatie.',
+  },
+  {
+    categorie: 'nalatenschap',
+    vraag: 'Kan ik mijn huis schenken maar er blijven wonen?',
+    antwoord: 'Ja, via een constructie waarbij u de naakte eigendom schenkt maar het vruchtgebruik behoudt. U blijft er wonen tot uw overlijden; daarna gaat het volledig naar de waqf. Dit vereist een specifieke notariële akte.',
+  },
+  {
+    categorie: 'nalatenschap',
+    vraag: 'Wat als mijn kinderen het er niet mee eens zijn?',
+    antwoord: 'Belangrijk punt. Belgisch erfrecht beschermt de reservatair portie van kinderen — u kunt hen dus niet volledig onterven. We raden ten zeerste aan om in alle openheid met uw familie te spreken voordat u een beslissing neemt. Wij willen nooit tussen familiebanden staan.',
+  },
+  {
+    categorie: 'nalatenschap',
+    vraag: 'Moet ik islamitisch recht volgen of Belgisch recht?',
+    antwoord: 'Beide. Belgisch recht is bindend in België. Wij faciliteren binnen de grenzen van het Belgisch recht, op een manier die zo goed mogelijk aansluit bij de islamitische waqf-traditie. Waar er conflict is, respecteren we de wet én informeren we u over de fiqh-implicaties.',
+  },
+
+  // ── VERTROUWEN & TOEZICHT ──
+  {
+    categorie: 'vertrouwen',
+    vraag: 'Wie zit er achter Ummah.be Waqf?',
+    antwoord: 'Het initiatief is opgestart door Nasser, een Belgisch-Marokkaanse ondernemer en moslim. Hij is geen eigenaar van de waqf — hij is één van de eerste bouwers. De waqf zelf hoort niemand toe; ze wordt beheerd door een onafhankelijke Trustee en getoetst door een Shariah Advisory Board. Lees meer op de "Over Ons" pagina.',
+  },
+  {
+    categorie: 'vertrouwen',
+    vraag: 'Wat als Ummah.be Waqf ooit zou stoppen?',
+    antwoord: 'Als Ummah.be Waqf ooit zou ontbinden, gaat het volledige waqf-kapitaal — conform de statuten — naar een andere islamitische charitatieve instelling met een vergelijkbare missie. Het kapitaal kan nooit privé of commercieel worden aangewend. Dit principe heet waqf-perpetuity en is islamitisch en juridisch vastgelegd.',
+  },
+  {
+    categorie: 'vertrouwen',
+    vraag: 'Zijn er fiscale voordelen?',
+    antwoord: 'Sinds 1 juli 2021 gelden in Vlaanderen verlaagde (tot 0%) schenkings- en successierechten voor schenkingen aan erkende filantropische instellingen. Ummah.be Waqf werkt aan deze erkenning. Vraag uw notaris om de exacte situatie op het moment van uw beslissing te toetsen.',
+  },
+  {
+    categorie: 'vertrouwen',
+    vraag: 'Waar kan ik de maandelijkse rapportage (hisab) lezen?',
+    antwoord: 'Op de transparantie-pagina. Daar verschijnt elke maand een volledig financieel rapport zodra we officieel van start gaan. Op dit moment staat er een voorbeeld-format en een roadmap zodat u weet wat u mag verwachten.',
+  },
+
+  // ── PRAKTISCH ──
+  {
+    categorie: 'praktisch',
+    vraag: 'Hoe neem ik contact op?',
+    antwoord: 'Via onze contactpagina kunt u een bericht sturen. Voor vertrouwelijke gesprekken (zoals over nalatenschap of grote bijdragen) bieden we ook telefonische en persoonlijke gesprekken aan. We reageren binnen 48 uur, in shaa Allah.',
+  },
+  {
+    categorie: 'praktisch',
+    vraag: 'Hoe kan ik op de hoogte blijven?',
+    antwoord: 'Laat het ons weten via de contactpagina. Geen nieuwsbrieven, geen spam — alleen wanneer er iets belangrijks te delen is, zoals de eerste hisab of de aankondiging van de Trustee en Shariah Board.',
+  },
+  {
+    categorie: 'praktisch',
+    vraag: 'Ik begrijp een Arabische term niet — waar vind ik uitleg?',
+    antwoord: 'Op onze woordenlijst-pagina staan alle Arabische en islamitische termen die we op de site gebruiken, met uitspraakgids en uitleg in duidelijk Nederlands.',
+  },
+];
+
+// Sanity heeft voorrang als er items zijn, anders fallback
+const useSanity = sanityFaqs && sanityFaqs.length > 0;
+const allFaqs = useSanity ? sanityFaqs : fallbackFaqs;
+
+// Categorieën met labels en icons
+const categorieInfo: Record<string, { label: string; icon: string; kleur: string }> = {
+  waqf: { label: 'Wat is een waqf?', icon: '🕌', kleur: 'var(--color-capital)' },
+  bijdrage: { label: 'Jouw bijdrage', icon: '💰', kleur: 'var(--color-growth)' },
+  nalatenschap: { label: 'Nalatenschap & vastgoed', icon: '🏛️', kleur: 'var(--color-clarity)' },
+  vertrouwen: { label: 'Vertrouwen & toezicht', icon: '🛡️', kleur: 'var(--color-capital)' },
+  praktisch: { label: 'Praktisch & contact', icon: '📞', kleur: 'var(--color-gold)' },
+  algemeen: { label: 'Algemeen', icon: '❓', kleur: 'var(--color-text-light)' },
+  governance: { label: 'Governance', icon: '🛡️', kleur: 'var(--color-capital)' },
+  donaties: { label: 'Donaties', icon: '💰', kleur: 'var(--color-growth)' },
+};
+
+// Groepeer per categorie (behoud volgorde)
+const groepVolgorde = ['waqf', 'bijdrage', 'nalatenschap', 'vertrouwen', 'praktisch', 'governance', 'donaties', 'algemeen'];
+const groepen: Record<string, typeof allFaqs> = {};
+for (const faq of allFaqs) {
+  const cat = (faq as any).categorie || 'algemeen';
+  if (!groepen[cat]) groepen[cat] = [];
+  groepen[cat].push(faq);
+}
+const gesorteerdeGroepen = groepVolgorde.filter(cat => groepen[cat]?.length > 0);
+---
+
+<Layout title="Veelgestelde vragen — Ummah.be Waqf" description="Alle antwoorden op één plek. Wat is een waqf? Hoe werkt een bijdrage? Wat met nalatenschap? Hier vind je de antwoorden.">
+
+  <!-- HERO -->
+  <section class="py-20" style="background: var(--color-capital);">
+    <div class="container text-center max-w-[800px]">
+      <h1 class="text-white mb-4 fade-up">Veelgestelde vragen</h1>
+      <p class="text-white/80 text-lg fade-up delay-1">
+        Alles wat je wilt weten op één plek. Klik op een categorie of scroll erdoor.
+      </p>
+    </div>
+  </section>
+
+  <!-- CATEGORIE NAVIGATIE -->
+  <section class="py-10" style="background: white; border-bottom: 1px solid var(--color-border);">
+    <div class="container max-w-[1000px]">
+      <div class="flex flex-wrap gap-3 justify-center">
+        {gesorteerdeGroepen.map((cat) => (
+          <a
+            href={`#${cat}`}
+            class="inline-flex items-center gap-2 px-4 py-2 rounded border text-sm font-semibold no-underline transition-all hover:-translate-y-0.5"
+            style={`border-color: ${categorieInfo[cat]?.kleur || 'var(--color-border)'}; color: ${categorieInfo[cat]?.kleur || 'var(--color-text)'};`}
+          >
+            <span>{categorieInfo[cat]?.icon || '❓'}</span>
+            <span>{categorieInfo[cat]?.label || cat}</span>
+            <span class="text-xs opacity-60">({groepen[cat].length})</span>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ SECTIES -->
+  {gesorteerdeGroepen.map((cat, idx) => {
+    const info = categorieInfo[cat] || { label: cat, icon: '❓', kleur: 'var(--color-text)' };
+    const items = groepen[cat];
+    const isEven = idx % 2 === 0;
+    return (
+      <section id={cat} class="section" style={isEven ? '' : 'background: white;'}>
+        <div class="container max-w-[850px]">
+          <div class="flex items-center gap-4 mb-10 fade-up">
+            <div class="w-14 h-14 rounded-full flex items-center justify-center text-2xl shrink-0" style={`background: ${info.kleur}15;`}>
+              {info.icon}
+            </div>
+            <div>
+              <h2 class="mb-1" style={`color: ${info.kleur};`}>{info.label}</h2>
+              <p class="text-sm" style="color: var(--color-text-light);">{items.length} {items.length === 1 ? 'vraag' : 'vragen'}</p>
+            </div>
+          </div>
+
+          <div class="space-y-3">
+            {items.map((item: any, i: number) => (
+              <details class="card cursor-pointer fade-up" style={`animation-delay: ${i * 0.05}s; border-left: 3px solid ${info.kleur};`}>
+                <summary class="font-heading font-bold text-base" style={`color: ${info.kleur};`}>
+                  {item.vraag}
+                </summary>
+                <div class="mt-4 text-sm leading-relaxed" style="color: var(--color-text);">
+                  {typeof item.antwoord === 'string' ? (
+                    <p>{item.antwoord}</p>
+                  ) : (
+                    <p>Zie onze relevante pagina voor meer informatie.</p>
+                  )}
+                </div>
+              </details>
+            ))}
+          </div>
+        </div>
+      </section>
+    );
+  })}
+
+  <!-- CONTACT CTA -->
+  <section class="py-20" style="background: var(--color-capital);">
+    <div class="container text-center max-w-[700px]">
+      <h2 class="text-white mb-4 fade-up">Staat jouw vraag er niet bij?</h2>
+      <p class="text-white/80 text-lg mb-8 fade-up delay-1">
+        Geen probleem. Stel je vraag via onze contactpagina — we reageren binnen 48 uur, in shaa Allah.
+      </p>
+      <div class="flex gap-4 justify-center flex-wrap fade-up delay-2">
+        <a href="/contact" class="btn" style="background: var(--color-gold); color: var(--color-capital-dark);">Stel een vraag</a>
+        <a href="/woordenlijst" class="btn btn-outline" style="border-color: white; color: white;">Woordenlijst</a>
+      </div>
+    </div>
+  </section>
+
+</Layout>
