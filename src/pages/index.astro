@@ -1,28 +1,42 @@
 ---
 import Layout from '../layouts/Layout.astro';
+import { fetchHomePage, fetchWaqfConfig } from '../lib/sanity';
+
+const home = await fetchHomePage();
+const waqf = await fetchWaqfConfig();
+
+const heroTitle = home?.heroTitle || 'Ummah.be Waqf';
+const heroSubtitle = home?.heroSubtitle || 'Kapitaal is heilig.\nOpbrengsten dienen moslims.\nVoor altijd.';
+const heroDescription = home?.heroDescription || 'Dit is geen organisatie. Dit is een waqf—een eeuwige instelling in dienst van Allah en de Ummah.';
+const btn1Label = home?.heroButtonPrimaryLabel || 'Draag bij aan Kapitaal';
+const btn1Link = home?.heroButtonPrimaryLink || '/steun-ons';
+const btn2Label = home?.heroButtonSecondaryLabel || "Steun Programma's Deze Maand";
+const btn2Link = home?.heroButtonSecondaryLink || '/steun-ons';
+const showBismillah = home?.bismillah !== false;
+const waqfUitlegTitle = home?.waqfUitlegTitle || 'Wat is een Waqf?';
+const waqfUitlegText = home?.waqfUitlegText || 'Een waqf is een eeuwige gift.';
+const minWaqf = waqf?.minimumWaqfBijdrage || 1000;
+const rendement = waqf?.verwachtRendement || 5;
+const jaarlijkseOpbrengst = Math.round(minWaqf * rendement / 100);
 ---
 
-<Layout title="Ummah.be Waqf — Kapitaal is heilig" description="Jouw bijdrage wordt heilig kapitaal dat nooit zal worden aangeraakt. Alleen de opbrengsten financieren mentorschap, educatie en gemeenschap.">
+<Layout title={`${heroTitle} — Kapitaal is heilig`} description={heroDescription}>
 
   <!-- HERO -->
   <section class="relative overflow-hidden" style="background: linear-gradient(135deg, #F5F3F0 0%, #E8E6E3 100%); min-height: 600px;">
     <div class="container flex items-center justify-center text-center" style="min-height: 600px;">
       <div class="max-w-[700px] fade-up">
-        <h1 class="mb-6" style="color: var(--color-capital);">Ummah.be Waqf</h1>
-        <p class="text-lg md:text-xl mb-6 leading-relaxed" style="color: var(--color-clarity);">
-          Kapitaal is heilig.<br />
-          Opbrengsten dienen moslims.<br />
-          Voor altijd.
-        </p>
-        <p class="text-base mb-10 max-w-[600px] mx-auto" style="color: var(--color-text-light);">
-          Dit is geen organisatie. Dit is een waqf—een eeuwige instelling
-          in dienst van Allah en de Ummah. Jouw bijdrage wordt heilig kapitaal
-          dat nooit zal worden aangeraakt. Alleen de opbrengsten financieren
-          mentorschap, educatie en gemeenschap.
-        </p>
+        {showBismillah && (
+          <p class="text-2xl md:text-3xl mb-6 font-arabic" style="color: var(--color-capital); font-family: serif;" lang="ar" dir="rtl">
+            بِسْمِ اللَّهِ الرَّحْمَٰنِ الرَّحِيمِ
+          </p>
+        )}
+        <h1 class="mb-6" style="color: var(--color-capital);">{heroTitle}</h1>
+        <p class="text-lg md:text-xl mb-6 leading-relaxed whitespace-pre-line" style="color: var(--color-clarity);">{heroSubtitle}</p>
+        <p class="text-base mb-10 max-w-[600px] mx-auto" style="color: var(--color-text-light);">{heroDescription}</p>
         <div class="flex gap-4 justify-center flex-wrap">
-          <a href="/steun-ons" class="btn btn-capital">Draag bij aan Kapitaal</a>
-          <a href="/steun-ons" class="btn btn-growth">Steun Programma's Deze Maand</a>
+          <a href={btn1Link} class="btn btn-capital">{btn1Label}</a>
+          <a href={btn2Link} class="btn btn-growth">{btn2Label}</a>
         </div>
       </div>
     </div>
@@ -31,13 +45,8 @@ import Layout from '../layouts/Layout.astro';
   <!-- WAT IS EEN WAQF -->
   <section class="section">
     <div class="container text-center">
-      <h2 class="mb-6 fade-up">Wat is een Waqf?</h2>
-      <p class="text-lg max-w-[700px] mx-auto mb-10 fade-up delay-1" style="color: var(--color-text-light);">
-        Een waqf is een eeuwige gift. In Islam is dit een van de nobleste
-        daden: je geeft kapitaal dat voor altijd dient, en de opbrengsten
-        helpen anderen voor generaties. Dit is "sadaqah jariyah"—liefdadigheid
-        die blijft stromen.
-      </p>
+      <h2 class="mb-6 fade-up">{waqfUitlegTitle}</h2>
+      <p class="text-lg max-w-[700px] mx-auto mb-10 fade-up delay-1" style="color: var(--color-text-light);">{waqfUitlegText}</p>
       <div class="max-w-[800px] mx-auto aspect-video bg-white rounded-lg border border-border flex items-center justify-center fade-up delay-2">
         <p style="color: var(--color-text-light);">▶ Video: Wat is een Waqf? In 2 minuten uitgelegd</p>
       </div>
@@ -51,7 +60,7 @@ import Layout from '../layouts/Layout.astro';
       <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
         <div class="card card-capital fade-up delay-1">
           <div class="badge-sacred mb-4">Stap 1</div>
-          <h3 class="text-xl mb-2">€1.000 Kapitaal</h3>
+          <h3 class="text-xl mb-2">€{minWaqf.toLocaleString('nl-BE')} Kapitaal</h3>
           <p class="text-sm" style="color: var(--color-text-light);">Jouw gift wordt heilig kapitaal</p>
         </div>
         <div class="card card-capital fade-up delay-2">
@@ -61,8 +70,8 @@ import Layout from '../layouts/Layout.astro';
         </div>
         <div class="card card-capital fade-up delay-3">
           <div class="badge-sacred mb-4">Stap 3</div>
-          <h3 class="text-xl mb-2">€50-70/Jaar</h3>
-          <p class="text-sm" style="color: var(--color-text-light);">Opbrengsten (5% return)</p>
+          <h3 class="text-xl mb-2">~€{jaarlijkseOpbrengst}/Jaar</h3>
+          <p class="text-sm" style="color: var(--color-text-light);">Verwacht rendement ({rendement}%)</p>
         </div>
         <div class="card card-growth fade-up delay-4">
           <div class="badge-growth mb-4">Impact</div>

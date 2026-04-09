@@ -1,5 +1,13 @@
 ---
+import { fetchSettings } from '../../lib/sanity';
+
+const settings = await fetchSettings();
 const year = new Date().getFullYear();
+const orgNaam = settings?.organisatieNaam || 'Ummah.be Waqf';
+const kbo = settings?.kboNummer;
+const adres = settings?.adres;
+const iban = settings?.iban;
+const email = settings?.email || 'salam@ummah.be';
 ---
 
 <footer class="border-t border-border" style="background: var(--color-capital-dark);">
@@ -7,7 +15,7 @@ const year = new Date().getFullYear();
     <div class="grid grid-cols-1 md:grid-cols-4 gap-10">
       <!-- Brand -->
       <div>
-        <h3 class="text-xl text-white mb-4">Ummah.be Waqf</h3>
+        <h3 class="text-xl text-white mb-4">{orgNaam}</h3>
         <p class="text-sm text-white/60 leading-relaxed">
           Kapitaal is heilig. Opbrengsten dienen moslims. Voor altijd.
         </p>
@@ -35,20 +43,21 @@ const year = new Date().getFullYear();
         </ul>
       </div>
 
-      <!-- Legal -->
+      <!-- Juridisch -->
       <div>
         <h4 class="text-sm font-semibold text-white/80 uppercase tracking-wider mb-4">Juridisch</h4>
-        <p class="text-sm text-white/60 leading-relaxed">
-          Ummah.be Waqf is een Belgische waqf — eeuwig kapitaal in dienst van de Ummah.
-        </p>
-        <p class="text-sm text-white/40 mt-4">
-          Alle rechten voorbehouden.
-        </p>
+        <div class="text-sm text-white/60 leading-relaxed space-y-1">
+          <p>{orgNaam}</p>
+          {adres && <p>{adres}</p>}
+          {kbo && <p>KBO: {kbo}</p>}
+          {iban && <p class="pt-2 font-mono text-xs">IBAN: {iban}</p>}
+          <p class="pt-2"><a href={`mailto:${email}`} class="text-white/60 hover:text-white no-underline">{email}</a></p>
+        </div>
       </div>
     </div>
 
     <div class="border-t border-white/10 mt-12 pt-6 text-center">
-      <p class="text-xs text-white/30">&copy; {year} Ummah.be Waqf — Ummah.be Waqf</p>
+      <p class="text-xs text-white/30">&copy; {year} {orgNaam} — Een Belgische waqf instelling</p>
     </div>
   </div>
 </footer>
