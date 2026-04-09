@@ -20,6 +20,9 @@ export const structure: StructureResolver = (S) =>
               S.listItem()
                 .title('💰 Waqf Configuratie')
                 .child(S.document().schemaType('waqfConfig').documentId('waqfConfig')),
+              S.listItem()
+                .title('🏛️ Nalatenschap Pagina')
+                .child(S.document().schemaType('nalatenschapPagina').documentId('nalatenschapPagina')),
             ])
         ),
 

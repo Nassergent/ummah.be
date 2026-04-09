@@ -35,6 +35,10 @@ export async function fetchFatwa() {
   return safe(freshClient.fetch(`*[_id == "fatwa"][0]`), 'fetchFatwa');
 }
 
+export async function fetchNalatenschapPagina() {
+  return safe(freshClient.fetch(`*[_id == "nalatenschapPagina"][0]`), 'fetchNalatenschapPagina');
+}
+
 // ── Collecties ──
 
 export async function fetchTeamMembers(rol?: string) {

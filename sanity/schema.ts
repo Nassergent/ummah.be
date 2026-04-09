@@ -2,6 +2,7 @@ import { siteSettings } from './schemas/siteSettings';
 import { homePage } from './schemas/homePage';
 import { waqfConfig } from './schemas/waqfConfig';
 import { fatwa } from './schemas/fatwa';
+import { nalatenschapPagina } from './schemas/nalatenschapPagina';
 import { teamMember } from './schemas/teamMember';
 import { donatieProject } from './schemas/donatieProject';
 import { hisabRapport } from './schemas/hisabRapport';
@@ -15,6 +16,7 @@ export const schemaTypes = [
   homePage,
   waqfConfig,
   fatwa,
+  nalatenschapPagina,
   // Collecties
   teamMember,
   donatieProject,

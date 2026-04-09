@@ -1,0 +1,255 @@
+---
+import Layout from '../layouts/Layout.astro';
+import { fetchNalatenschapPagina } from '../lib/sanity';
+
+const page = await fetchNalatenschapPagina();
+
+// Fallback content (toont altijd correcte content, ook zonder Sanity data)
+const heroTitle = page?.heroTitle || 'Een huis. Een stuk grond. Een stuk van je nalatenschap.';
+const heroSubtitle = page?.heroSubtitle || 'Sinds de tijd van Umar ibn al-Khattab (raḍiya Allāhu ʿanhu) hebben moslims hun meest waardevolle bezittingen omgezet in sadaqah jariyah. Als jouw hart Allah op die manier wil dienen, zijn wij er om te luisteren.';
+
+const traditieTitle = page?.traditieTitle || 'De oorsprong van de waqf';
+const hadithArabisch = page?.hadithArabisch || 'إِنْ شِئْتَ حَبَّسْتَ أَصْلَهَا وَتَصَدَّقْتَ بِهَا';
+const hadithVertaling = page?.hadithVertaling || '"Als je wilt, houd het kapitaal vast en geef de opbrengsten in liefdadigheid." — Dit zei de Profeet ﷺ tegen Umar ibn al-Khattab (raḍiya Allāhu ʿanhu) toen hij hem vroeg wat hij moest doen met een stuk land in Khaybar. Dit moment markeerde het ontstaan van de waqf-traditie. (Sahih al-Bukhari 2737)';
+const traditieText = page?.traditieText || 'Umar schonk zijn land. Het bleef zijn eigendom niet — het werd eigendom van de waqf, beheerd voor de Ummah. De opbrengsten voedden de armen, de reizigers en de leerlingen van kennis. Dit eerste waqf werd een model voor alles wat volgde: Al-Azhar Universiteit, de Süleymaniye moskee, de waterput (Biʾr Rumah) van Uthman ibn Affan. Vandaag mag jij dezelfde traditie voortzetten.';
+
+const scenariosTitle = page?.scenariosTitle || 'Vier manieren om je vastgoed aan de waqf te geven';
+const scenariosIntro = page?.scenariosIntro || 'Elke situatie is uniek. Hier zijn de vier meest voorkomende vormen — met hun fiqh-grondslag en juridische implicaties in België.';
+
+const scenarios = page?.scenarios?.length ? page.scenarios : [
+  {
+    titel: 'Schenking tijdens leven',
+    fiqhNaam: 'Hibah wāqifah / Waqf muʾabbad',
+    kort: 'U schenkt het vastgoed nu direct aan de waqf. Definitief en onschendbaar.',
+    voorbeeld: 'U bent 65, u heeft een appartement dat u niet meer gebruikt. U schenkt het volledig aan Ummah.be Waqf. Vanaf dat moment is het waqf-eigendom.',
+    belgischRecht: 'Notariële akte verplicht. In Vlaanderen: 0% schenkingsrechten aan erkende filantropische VZW (sinds 1 juli 2021). Let op het reservatair erfdeel van kinderen.',
+    fiqhNoot: 'Alle vier madhabs (Hanafi, Maliki, Shafi\'i, Hanbali) aanvaarden deze vorm als volledig geldig.',
+  },
+  {
+    titel: 'Via testament (wasiyyah)',
+    fiqhNaam: 'Waṣiyyah',
+    kort: 'U legt in uw testament vast dat (een deel van) uw nalatenschap naar de waqf gaat.',
+    voorbeeld: 'U heeft kinderen. Via uw notaris bepaalt u dat maximaal 1/3 van uw nalatenschap naar Ummah.be Waqf gaat. Uw kinderen behouden hun reservatair deel.',
+    belgischRecht: 'Notarieel testament verplicht voor vastgoed. Reservatair erfrecht (kinderen, echtgenoot) moet gerespecteerd. Verlaagde successierechten voor erkende VZW.',
+    fiqhNoot: 'Sahih al-Bukhari 2744: "Een derde, en een derde is veel." Waṣiyyah boven 1/3 vereist uitdrukkelijke toestemming van alle erfgenamen na uw overlijden.',
+  },
+  {
+    titel: 'Tijdelijk gebruik (bruikleen)',
+    fiqhNaam: 'Waqf muʾaqqat / Waqf al-manfaʿah',
+    kort: 'U geeft het vruchtgebruik van uw vastgoed voor een bepaalde periode. Daarna keert het terug naar u of uw erfgenamen.',
+    voorbeeld: 'U bezit een huis dat 20 jaar verhuurd kan worden. U geeft het vruchtgebruik voor 20 jaar aan de waqf — de huurinkomsten gaan naar de programma\'s. Na 20 jaar krijgen u of uw erfgenamen het volle eigendom terug.',
+    belgischRecht: 'Vruchtgebruik-schenking via notariële akte. U behoudt de naakte eigendom. Fiscaal gunstiger dan volledige overdracht.',
+    fiqhNoot: 'Tijdelijke waqf is alleen toegestaan in de Hanafi madhab. De andere madhabs vereisen eeuwigheid (taʾbid). Raadpleeg uw geleerde voor advies.',
+  },
+  {
+    titel: 'Geen erfgenamen',
+    fiqhNaam: 'Waṣiyyah kāmilah',
+    kort: 'Als u geen islamitische erfgenamen heeft, mag u tot 100% van uw nalatenschap aan de waqf geven.',
+    voorbeeld: 'U heeft geen kinderen, geen echtgeno(o)t(e), en geen naaste familie die onder het islamitisch erfrecht valt. U mag uw volledige nalatenschap — inclusief vastgoed — als waqf schenken via testament.',
+    belgischRecht: 'Belgisch erfrecht kent ook reservatair erfdeel voor sommige familieleden. De beperking van 1/3 uit de fiqh is mogelijk ruimer dan wat het Belgisch recht toelaat. Notaris-advies essentieel.',
+    fiqhNoot: 'De klassieke fiqh-regel "max 1/3" beschermt erfgenamen. Zonder erfgenamen vervalt die bescherming en mag alles naar een charitatief doel.',
+  },
+];
+
+const procesTitle = page?.procesTitle || 'Hoe het praktisch werkt';
+const procesIntro = page?.procesIntro || 'Van eerste gesprek tot de notariële akte — in vijf stappen, op uw tempo.';
+const processtappen = page?.processtappen?.length ? page.processtappen : [
+  { nummer: 1, titel: 'Vertrouwelijk gesprek', beschrijving: 'U neemt contact met ons op. We plannen een rustig gesprek — fysiek, telefonisch of online. Geen druk, enkel luisteren.' },
+  { nummer: 2, titel: 'Juridische & fiqh-toets', beschrijving: 'Samen met uw notaris en onze Shariah Advisory Board bekijken we wat mogelijk en wenselijk is. We verwijzen u door naar onafhankelijk advies indien nodig.' },
+  { nummer: 3, titel: 'Due diligence', beschrijving: 'Voor vastgoed voeren wij een technische en juridische controle uit. Niet elk vastgoed is geschikt — we zijn transparant over wat we wel en niet accepteren.' },
+  { nummer: 4, titel: 'Notariële akte', beschrijving: 'Uw notaris stelt de akte op. Onze Trustee tekent namens de waqf. Alles legaal, definitief en transparant vastgelegd.' },
+  { nummer: 5, titel: 'Beheer & rapportage', beschrijving: 'Het vastgoed wordt beheerd volgens de statuten. De opbrengsten verschijnen in de maandelijkse hisab. U (of uw nabestaanden) blijven welkom om mee te volgen.' },
+];
+
+const criteriaTitle = page?.criteriaTitle || 'Wat we wel en niet accepteren';
+const criteriaIntro = page?.criteriaIntro || 'Transparantie is belangrijk. Niet elk vastgoed of elke nalatenschap past binnen de waqf-missie.';
+const welCriteria = page?.welCriteria?.length ? page.welCriteria : [
+  'Vastgoed met heldere eigendomstitel en geen juridische geschillen',
+  'Onroerend goed met stabiel rendementspotentieel (verhuur, gebruik)',
+  'Goederen waarvan de herkomst halal en legaal is',
+  'Schenkingen die het reservatair erfrecht van familie respecteren',
+  'Nalatenschappen met duidelijk schriftelijk testament',
+];
+const nietCriteria = page?.nietCriteria?.length ? page.nietCriteria : [
+  'Vastgoed met structurele problemen zonder budget voor renovatie',
+  'Goederen met onduidelijke eigendomsgeschiedenis',
+  'Bronnen die niet shariah-conform zijn (rente, haram handel)',
+  'Schenkingen die het erfrecht van familieleden schenden',
+  'Vastgoed waarover onenigheid bestaat binnen de familie',
+];
+
+const faqTitle = page?.faqTitle || 'Veelgestelde vragen';
+const faqItems = page?.faqItems?.length ? page.faqItems : [
+  { vraag: 'Kan ik mijn schenking later herroepen?', antwoord: 'Bij een definitieve waqf (muʾabbad): nee, het is onomkeerbaar. Bij een tijdelijke waqf (muʾaqqat) of vruchtgebruik: het vastgoed komt na de afgesproken periode automatisch terug bij u of uw erfgenamen.' },
+  { vraag: 'Wat gebeurt er met het vastgoed na de schenking?', antwoord: 'Het wordt beheerd door de Trustee (mutawalli) volgens de statuten. Indien het voor verhuur geschikt is, komen de huurinkomsten ten goede aan de programma\'s. Maandelijks publiceren we de hisab zodat u alles kunt volgen.' },
+  { vraag: 'Wat als mijn kinderen het er niet mee eens zijn?', antwoord: 'Dit is een belangrijk punt. Belgisch erfrecht beschermt de reservatair portie van kinderen. We raden ten zeerste aan om in alle openheid met uw familie te spreken voordat u een beslissing neemt. Wij willen nooit tussen familiebanden staan.' },
+  { vraag: 'Moet ik islamitisch recht volgen of Belgisch recht?', antwoord: 'Beide. Belgisch recht is bindend in België. Wij faciliteren binnen de grenzen van het Belgisch recht, op een manier die zo goed mogelijk aansluit bij de islamitische waqf-traditie. Waar er conflict is, respecteren we de wet én informeren we u over de fiqh-implicaties.' },
+  { vraag: 'Kan ik mijn huis schenken maar er blijven wonen?', antwoord: 'Ja, via een constructie waarbij u de naakte eigendom schenkt maar het vruchtgebruik behoudt. U blijft er wonen tot uw overlijden; daarna gaat het volledig naar de waqf. Dit vereist een specifieke notariële akte.' },
+  { vraag: 'Zijn er fiscale voordelen?', antwoord: 'Sinds 1 juli 2021 gelden in Vlaanderen verlaagde (tot 0%) schenkings- en successierechten voor schenkingen aan erkende filantropische instellingen. Ummah.be Waqf werkt aan deze erkenning. Vraag uw notaris om de exacte situatie op het moment van uw beslissing te toetsen.' },
+];
+
+const contactTitle = page?.contactTitle || 'Plan een vertrouwelijk gesprek';
+const contactText = page?.contactText || 'Dit is geen beslissing die u overhaast neemt — en die mogen we ook niet van u vragen. Als u erover wilt praten, zonder enige verplichting, zijn wij er. Wij luisteren, wij informeren, en wij verwijzen u door waar nodig. U beslist.';
+const contactKnopLabel = page?.contactKnopLabel || 'Neem vertrouwelijk contact op';
+---
+
+<Layout title="Nalatenschap & Vastgoed — Ummah.be Waqf" description="Een huis, een stuk grond of een deel van uw nalatenschap schenken aan de waqf. Uitleg over de islamitische traditie, Belgische wetgeving en vier praktische scenarios.">
+
+  <!-- HERO -->
+  <section class="py-20" style="background: var(--color-capital);">
+    <div class="container text-center max-w-[800px]">
+      <h1 class="text-white mb-6 fade-up">{heroTitle}</h1>
+      <p class="text-white/80 text-lg leading-relaxed fade-up delay-1">{heroSubtitle}</p>
+    </div>
+  </section>
+
+  <!-- DISCLAIMER -->
+  <section class="py-6" style="background: rgba(217,132,91,0.08); border-bottom: 1px solid var(--color-border);">
+    <div class="container max-w-[800px] text-center">
+      <p class="text-sm" style="color: var(--color-text);">
+        ⚠️ <strong>Belangrijk:</strong> Deze pagina is informatief, niet juridisch of religieus advies. Raadpleeg altijd een <strong>notaris</strong> voor het Belgisch erfrecht en een <strong>islamitische geleerde</strong> voor de shariah-kant voordat u beslist.
+      </p>
+    </div>
+  </section>
+
+  <!-- TRADITIE -->
+  <section class="section">
+    <div class="container max-w-[900px]">
+      <h2 class="text-center mb-10 fade-up">{traditieTitle}</h2>
+      <div class="card card-capital fade-up delay-1">
+        <p class="font-arabic text-2xl text-right mb-4" lang="ar" dir="rtl" style="color: var(--color-capital);">
+          {hadithArabisch}
+        </p>
+        <p class="italic text-lg mb-6" style="color: var(--color-capital);">{hadithVertaling}</p>
+        <p class="text-base leading-relaxed" style="color: var(--color-text);">{traditieText}</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- SCENARIOS -->
+  <section class="section" style="background: white;">
+    <div class="container">
+      <h2 class="text-center mb-4 fade-up">{scenariosTitle}</h2>
+      <p class="text-center text-lg mb-12 max-w-[700px] mx-auto fade-up delay-1" style="color: var(--color-text-light);">
+        {scenariosIntro}
+      </p>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-[1000px] mx-auto">
+        {scenarios.map((scenario: any, i: number) => (
+          <div class="card card-capital fade-up" style={`animation-delay: ${i * 0.1}s;`}>
+            <div class="badge-sacred mb-3">{scenario.fiqhNaam}</div>
+            <h3 class="text-xl mb-3">{scenario.titel}</h3>
+            <p class="text-sm mb-4" style="color: var(--color-text);">{scenario.kort}</p>
+
+            {scenario.voorbeeld && (
+              <div class="p-3 mb-3" style="background: rgba(201,169,97,0.08); border-left: 2px solid var(--color-gold);">
+                <p class="text-xs font-semibold mb-1" style="color: var(--color-gold);">VOORBEELD</p>
+                <p class="text-xs" style="color: var(--color-text-light);">{scenario.voorbeeld}</p>
+              </div>
+            )}
+
+            {scenario.belgischRecht && (
+              <div class="p-3 mb-3" style="background: rgba(46,92,138,0.08); border-left: 2px solid var(--color-clarity);">
+                <p class="text-xs font-semibold mb-1" style="color: var(--color-clarity);">⚖️ BELGISCH RECHT</p>
+                <p class="text-xs" style="color: var(--color-text-light);">{scenario.belgischRecht}</p>
+              </div>
+            )}
+
+            {scenario.fiqhNoot && (
+              <div class="p-3" style="background: rgba(27,94,63,0.08); border-left: 2px solid var(--color-capital);">
+                <p class="text-xs font-semibold mb-1" style="color: var(--color-capital);">🕌 FIQH NOOT</p>
+                <p class="text-xs" style="color: var(--color-text-light);">{scenario.fiqhNoot}</p>
+              </div>
+            )}
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- PROCES -->
+  <section class="section">
+    <div class="container max-w-[900px]">
+      <h2 class="text-center mb-4 fade-up">{procesTitle}</h2>
+      <p class="text-center text-lg mb-12 fade-up delay-1" style="color: var(--color-text-light);">{procesIntro}</p>
+
+      <div class="space-y-4">
+        {processtappen.map((stap: any, i: number) => (
+          <div class="flex gap-6 items-start fade-up" style={`animation-delay: ${i * 0.1}s;`}>
+            <div class="w-12 h-12 shrink-0 rounded-full flex items-center justify-center font-heading font-bold text-lg" style="background: var(--color-capital); color: var(--color-peace);">
+              {stap.nummer}
+            </div>
+            <div class="flex-1 card">
+              <h3 class="text-lg mb-2">{stap.titel}</h3>
+              <p class="text-sm" style="color: var(--color-text-light);">{stap.beschrijving}</p>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- CRITERIA -->
+  <section class="section" style="background: white;">
+    <div class="container max-w-[1000px]">
+      <h2 class="text-center mb-4 fade-up">{criteriaTitle}</h2>
+      <p class="text-center text-lg mb-12 fade-up delay-1" style="color: var(--color-text-light);">{criteriaIntro}</p>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+        <div class="card fade-up" style="border-left: 4px solid var(--color-growth);">
+          <h3 class="text-xl mb-4" style="color: var(--color-growth);">✅ Wel</h3>
+          <ul class="space-y-3 text-sm" style="color: var(--color-text);">
+            {welCriteria.map((c: string) => (
+              <li class="flex gap-2">
+                <span style="color: var(--color-growth);">✓</span>
+                <span>{c}</span>
+              </li>
+            ))}
+          </ul>
+        </div>
+
+        <div class="card fade-up delay-1" style="border-left: 4px solid var(--color-zakat);">
+          <h3 class="text-xl mb-4" style="color: var(--color-zakat);">✗ Niet</h3>
+          <ul class="space-y-3 text-sm" style="color: var(--color-text);">
+            {nietCriteria.map((c: string) => (
+              <li class="flex gap-2">
+                <span style="color: var(--color-zakat);">✗</span>
+                <span>{c}</span>
+              </li>
+            ))}
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="section">
+    <div class="container max-w-[800px]">
+      <h2 class="text-center mb-12 fade-up">{faqTitle}</h2>
+      <div class="space-y-4">
+        {faqItems.map((item: any, i: number) => (
+          <details class="card fade-up cursor-pointer" style={`animation-delay: ${i * 0.05}s;`}>
+            <summary class="font-heading font-bold text-lg" style="color: var(--color-capital);">{item.vraag}</summary>
+            <p class="mt-4 text-sm leading-relaxed" style="color: var(--color-text-light);">{item.antwoord}</p>
+          </details>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT CTA (warm, niet wervend) -->
+  <section class="py-20" style="background: var(--color-capital);">
+    <div class="container text-center max-w-[700px]">
+      <h2 class="text-white mb-6 fade-up">{contactTitle}</h2>
+      <p class="text-white/80 text-lg leading-relaxed mb-8 fade-up delay-1">{contactText}</p>
+      <a href="/contact?onderwerp=nalatenschap" class="btn fade-up delay-2" style="background: var(--color-gold); color: var(--color-capital-dark);">
+        {contactKnopLabel}
+      </a>
+      <p class="text-white/50 text-xs mt-6 fade-up delay-3">
+        Uw gegevens worden vertrouwelijk behandeld. Geen nieuwsbrieven, geen herinneringen. Alleen op uw verzoek.
+      </p>
+    </div>
+  </section>
+
+</Layout>
