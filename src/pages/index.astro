@@ -6,8 +6,8 @@ const home = await fetchHomePage();
 const waqf = await fetchWaqfConfig();
 
 const heroTitle = home?.heroTitle || 'Ummah.be Waqf';
-const heroSubtitle = home?.heroSubtitle || 'Kapitaal is heilig.\nOpbrengsten dienen moslims.\nVoor altijd.';
-const heroDescription = home?.heroDescription || 'Ummah.be is een waqf — een eeuwige instelling in dienst van Allah en de Ummah. Jouw bijdrage wordt onschendbaar kapitaal dat nooit wordt uitgegeven. Alleen de opbrengsten financieren mentorschap, educatie en gemeenschap.';
+const heroSubtitle = home?.heroSubtitle || 'Een gift die nooit verloren gaat.\nVoor Allah. Voor de gemeenschap.\nVoor altijd.';
+const heroDescription = home?.heroDescription || 'Een waqf is een oude islamitische traditie: je schenkt iets — geld, een huis, een stuk grond — en het blijft voor altijd bestaan. Elke maand geven de vruchten ervan iets terug aan onze gemeenschap. Dit noemen we sadaqah jariyah: doorlopende liefdadigheid die 1400 jaar teruggaat tot de Profeet ﷺ en zijn metgezellen.';
 const btn1Label = home?.heroButtonPrimaryLabel || 'Draag bij aan Kapitaal';
 const btn1Link = home?.heroButtonPrimaryLink || '/steun-ons';
 const btn2Label = home?.heroButtonSecondaryLabel || "Steun Programma's Deze Maand";
@@ -56,7 +56,10 @@ const jaarlijkseOpbrengst = Math.round(minWaqf * rendement / 100);
   <!-- HOE JE GIFT WERKT -->
   <section class="section" style="background: white;">
     <div class="container">
-      <h2 class="text-center mb-12 fade-up">Hoe Jouw Gift Werkt</h2>
+      <h2 class="text-center mb-4 fade-up">Hoe werkt jouw gift?</h2>
+      <p class="text-center text-lg mb-12 max-w-[600px] mx-auto fade-up delay-1" style="color: var(--color-text-light);">
+        Een eenvoudig voorbeeld — van jouw bijdrage naar blijvende impact.
+      </p>
       <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
         <div class="card card-capital fade-up delay-1">
           <div class="badge-sacred mb-4">Stap 1</div>
@@ -82,47 +85,53 @@ const jaarlijkseOpbrengst = Math.round(minWaqf * rendement / 100);
     </div>
   </section>
 
-  <!-- WIE WACHT OVER DIT -->
+  <!-- WIE HOUDT TOEZICHT -->
   <section class="section">
     <div class="container">
-      <h2 class="text-center mb-4 fade-up">Wie Wacht Over Dit?</h2>
-      <p class="text-center text-lg mb-12 fade-up delay-1" style="color: var(--color-text-light);">
-        Drie groepen bewaken dit waqf:
+      <h2 class="text-center mb-4 fade-up">Wie houdt toezicht?</h2>
+      <p class="text-center text-lg mb-12 max-w-[700px] mx-auto fade-up delay-1" style="color: var(--color-text-light);">
+        Vertrouwen verdien je niet met mooie woorden, maar met duidelijke structuren. Vier lagen van toezicht houden dit waqf eerlijk en islamitisch correct.
       </p>
-      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
         <div class="card card-capital text-center fade-up delay-1">
           <div class="w-16 h-16 mx-auto mb-4 rounded-full flex items-center justify-center" style="background: rgba(27,94,63,0.1);">
             <span class="text-2xl">🛡️</span>
           </div>
           <h3 class="text-xl mb-3">De Trustee</h3>
           <p class="text-sm" style="color: var(--color-text-light);">
-            Een onafhankelijke, respectabele persoon bewaart dit kapitaal op naam van Allah.
-            Dit is niet onze organisatie—het is Gods eigendom, beheerd voor de Ummah.
+            Een onafhankelijke beheerder (<em>mutawalli</em>) die het kapitaal bewaart en juridisch aansprakelijk is onder Belgisch recht.
           </p>
         </div>
         <div class="card card-capital text-center fade-up delay-2">
           <div class="w-16 h-16 mx-auto mb-4 rounded-full flex items-center justify-center" style="background: rgba(27,94,63,0.1);">
             <span class="text-2xl">📖</span>
           </div>
-          <h3 class="text-xl mb-3">Shariah Advisory Board</h3>
+          <h3 class="text-xl mb-3">Shariah Raad</h3>
           <p class="text-sm" style="color: var(--color-text-light);">
-            Drie respectabele Islamic scholars toetsen alle beslissingen.
-            Zij zorgen dat alles Islamic correct blijft.
+            Drie islamitische geleerden toetsen of alles — investeringen, uitgaven, beslissingen — shariah-conform blijft.
           </p>
         </div>
         <div class="card card-capital text-center fade-up delay-3">
           <div class="w-16 h-16 mx-auto mb-4 rounded-full flex items-center justify-center" style="background: rgba(27,94,63,0.1);">
-            <span class="text-2xl">👤</span>
+            <span class="text-2xl">🧭</span>
           </div>
-          <h3 class="text-xl mb-3">Jij (Als Donor)</h3>
+          <h3 class="text-xl mb-3">Belgisch Recht</h3>
           <p class="text-sm" style="color: var(--color-text-light);">
-            Als je dit initiatief ondersteunt, ben je co-custodian van deze waqf.
-            Je hoort en ziet alles.
+            Als erkende VZW vallen wij onder Belgische wetgeving. Boekhouding, jaarrekening, audit — alles volgens de regels.
+          </p>
+        </div>
+        <div class="card card-capital text-center fade-up delay-4">
+          <div class="w-16 h-16 mx-auto mb-4 rounded-full flex items-center justify-center" style="background: rgba(27,94,63,0.1);">
+            <span class="text-2xl">👁️</span>
+          </div>
+          <h3 class="text-xl mb-3">Jij</h3>
+          <p class="text-sm" style="color: var(--color-text-light);">
+            Maandelijkse <em>hisab</em> (financieel rapport) zodat je elke euro kunt volgen. Transparantie is geen luxe, het is onze belofte.
           </p>
         </div>
       </div>
-      <div class="text-center mt-10 fade-up delay-4">
-        <a href="/governance" class="btn btn-outline">Lees volledige governance pagina →</a>
+      <div class="text-center mt-10 fade-up">
+        <a href="/governance" class="btn btn-outline">Meer over toezicht &amp; bestuur →</a>
       </div>
     </div>
   </section>

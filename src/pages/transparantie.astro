@@ -2,108 +2,186 @@
 import Layout from '../layouts/Layout.astro';
 ---
 
-<Layout title="Transparantie — Ummah.be Waqf" description="Onze maandelijkse hisab. Elke euro in, elke euro uit.">
+<Layout title="Transparantie — Ummah.be Waqf" description="Onze belofte: elke euro zichtbaar. Hier leggen we uit hoe onze maandelijkse hisab (financieel rapport) eruit zal zien zodra we officieel van start gaan.">
 
   <!-- HERO -->
   <section class="py-20" style="background: var(--color-capital);">
-    <div class="container text-center">
+    <div class="container text-center max-w-[800px]">
       <h1 class="text-white mb-4 fade-up">Transparantie</h1>
-      <p class="text-white/70 text-lg fade-up delay-1">Elke euro in, elke euro uit. Geen mysteries.</p>
+      <p class="text-white/80 text-lg fade-up delay-1">
+        Elke euro in, elke euro uit — zichtbaar voor iedereen.
+      </p>
     </div>
   </section>
 
-  <!-- KAPITAAL STATUS -->
+  <!-- BELANGRIJKE STATUS -->
+  <section class="py-10" style="background: rgba(201,169,97,0.1); border-bottom: 1px solid var(--color-border);">
+    <div class="container max-w-[800px] text-center">
+      <div class="badge-sacred mb-4 inline-block">Status: In opbouw</div>
+      <h2 class="text-2xl mb-4">We starten binnenkort</h2>
+      <p class="text-base" style="color: var(--color-text);">
+        Ummah.be Waqf staat momenteel in de <strong>oprichtingsfase</strong>. Zodra de VZW-erkenning is toegekend en de eerste bijdragen binnenkomen, verschijnt hier elke maand een <em>hisab</em> — een volledig financieel rapport. Deze pagina laat nu zien <strong>hoe die transparantie eruit zal zien</strong>.
+      </p>
+    </div>
+  </section>
+
+  <!-- ONZE BELOFTE -->
   <section class="section">
-    <div class="container max-w-[800px]">
-      <h2 class="text-center mb-10 fade-up">Waqf Kapitaal Status</h2>
-      <div class="card card-capital fade-up delay-1">
-        <div class="grid grid-cols-2 gap-6 mb-8">
-          <div>
-            <p class="text-sm uppercase tracking-wider mb-1" style="color: var(--color-text-light);">Huidig Kapitaal</p>
-            <p class="text-3xl font-heading font-bold" style="color: var(--color-capital);">€—</p>
-          </div>
-          <div>
-            <p class="text-sm uppercase tracking-wider mb-1" style="color: var(--color-text-light);">Doelkapitaal</p>
-            <p class="text-3xl font-heading font-bold" style="color: var(--color-clarity);">€100.000</p>
-          </div>
+    <div class="container max-w-[900px]">
+      <h2 class="text-center mb-12 fade-up">Onze 5 transparantie-beloftes</h2>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <div class="card card-capital fade-up delay-1">
+          <div class="w-12 h-12 rounded-full mb-4 flex items-center justify-center font-bold text-lg" style="background: var(--color-capital); color: var(--color-peace);">1</div>
+          <h3 class="text-lg mb-2">Maandelijkse Hisab</h3>
+          <p class="text-sm" style="color: var(--color-text-light);">
+            Elke maand publiceren wij een volledig overzicht: alle inkomende bijdragen, alle uitgaven per categorie, en het kapitaalsaldo. Geen uitzonderingen.
+          </p>
         </div>
-        <!-- Progress bar -->
-        <div class="w-full h-4 rounded-full mb-4" style="background: var(--color-border);">
-          <div class="h-4 rounded-full transition-all duration-1000" style="background: var(--color-gold); width: 0%;"></div>
+        <div class="card card-capital fade-up delay-2">
+          <div class="w-12 h-12 rounded-full mb-4 flex items-center justify-center font-bold text-lg" style="background: var(--color-capital); color: var(--color-peace);">2</div>
+          <h3 class="text-lg mb-2">Impact rapport</h3>
+          <p class="text-sm" style="color: var(--color-text-light);">
+            Niet alleen cijfers, ook mensen. Hoeveel mentoren, hoeveel mentees, hoeveel e-books — en welke concrete verandering hebben we gebracht.
+          </p>
         </div>
-        <p class="text-sm text-center" style="color: var(--color-text-light);">0% van doelkapitaal bereikt</p>
-        <div class="mt-6 p-4" style="background: rgba(201,169,97,0.1);">
-          <p class="text-sm" style="color: var(--color-text);">
-            <strong>Jaarlijkse opbrengsten (5%):</strong> €— beschikbaar voor programma's.
-            Voor duurzaamheid hebben we €100.000 kapitaal nodig.
+        <div class="card card-capital fade-up delay-3">
+          <div class="w-12 h-12 rounded-full mb-4 flex items-center justify-center font-bold text-lg" style="background: var(--color-capital); color: var(--color-peace);">3</div>
+          <h3 class="text-lg mb-2">Bestuursverslag</h3>
+          <p class="text-sm" style="color: var(--color-text-light);">
+            Wie zit in welke rol? Welke beslissingen zijn genomen? Wat zijn de komende plannen? Jaarlijks volledig openbaar.
+          </p>
+        </div>
+        <div class="card card-capital fade-up delay-4">
+          <div class="w-12 h-12 rounded-full mb-4 flex items-center justify-center font-bold text-lg" style="background: var(--color-capital); color: var(--color-peace);">4</div>
+          <h3 class="text-lg mb-2">Externe audit</h3>
+          <p class="text-sm" style="color: var(--color-text-light);">
+            Zodra het kapitaal €50.000 overschrijdt, laten wij een externe onafhankelijke auditor onze boeken controleren. Elk jaar opnieuw.
+          </p>
+        </div>
+        <div class="card card-capital fade-up sm:col-span-2">
+          <div class="w-12 h-12 rounded-full mb-4 flex items-center justify-center font-bold text-lg" style="background: var(--color-capital); color: var(--color-peace);">5</div>
+          <h3 class="text-lg mb-2">Shariah-verklaring</h3>
+          <p class="text-sm" style="color: var(--color-text-light);">
+            De Shariah Advisory Board bevestigt jaarlijks schriftelijk dat alle investeringen, uitgaven en beslissingen conform de islamitische rechtsleer (fiqh) zijn gebeurd.
           </p>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- MAANDELIJKSE HISAB -->
+  <!-- HISAB VOORBEELD -->
   <section class="section" style="background: white;">
     <div class="container max-w-[800px]">
-      <h2 class="text-center mb-10 fade-up">Maandelijkse Hisab</h2>
-      <div class="card fade-up delay-1">
+      <h2 class="text-center mb-4 fade-up">Zo zal onze hisab eruitzien</h2>
+      <p class="text-center text-sm mb-10 fade-up delay-1" style="color: var(--color-text-light);">
+        <em>Voorbeeld-format — nog geen echte cijfers</em>
+      </p>
+
+      <div class="card card-capital fade-up delay-2">
         <div class="flex items-center justify-between mb-6">
-          <h3 class="text-xl">April 2026</h3>
-          <span class="badge-sacred">Gepubliceerd</span>
+          <h3 class="text-xl">Hisab — Voorbeeld Maand</h3>
+          <span class="badge-sacred">Voorbeeld</span>
         </div>
 
         <div class="space-y-6">
           <!-- Geld In -->
           <div>
-            <p class="text-sm font-semibold uppercase tracking-wider mb-3" style="color: var(--color-capital);">Geld In</p>
+            <p class="text-sm font-semibold uppercase tracking-wider mb-3" style="color: var(--color-capital);">Inkomsten deze maand</p>
             <div class="space-y-2 text-sm">
-              <div class="flex justify-between"><span style="color: var(--color-text-light);">Waqf Kapitaal</span><span class="font-bold">€—</span></div>
-              <div class="flex justify-between"><span style="color: var(--color-text-light);">Program Support</span><span class="font-bold">€—</span></div>
-              <div class="flex justify-between"><span style="color: var(--color-text-light);">Zakat</span><span class="font-bold">€—</span></div>
-              <div class="flex justify-between border-t pt-2 mt-2" style="border-color: var(--color-border);"><span class="font-semibold">TOTAAL IN</span><span class="font-bold" style="color: var(--color-capital);">€—</span></div>
+              <div class="flex justify-between"><span style="color: var(--color-text-light);">Waqf kapitaal (nieuwe bijdragen)</span><span class="font-mono text-neutral-400">€ —</span></div>
+              <div class="flex justify-between"><span style="color: var(--color-text-light);">Programma steun</span><span class="font-mono text-neutral-400">€ —</span></div>
+              <div class="flex justify-between"><span style="color: var(--color-text-light);">Rendement op kapitaal</span><span class="font-mono text-neutral-400">€ —</span></div>
+              <div class="flex justify-between border-t pt-2 mt-2 font-semibold" style="border-color: var(--color-border);"><span>Totaal ingekomen</span><span class="font-mono">€ —</span></div>
             </div>
           </div>
 
           <!-- Geld Uit -->
           <div>
-            <p class="text-sm font-semibold uppercase tracking-wider mb-3" style="color: var(--color-zakat);">Geld Uit</p>
+            <p class="text-sm font-semibold uppercase tracking-wider mb-3" style="color: var(--color-zakat);">Uitgaven deze maand</p>
             <div class="space-y-2 text-sm">
-              <div class="flex justify-between"><span style="color: var(--color-text-light);">Mentorship</span><span class="font-bold">€—</span></div>
-              <div class="flex justify-between"><span style="color: var(--color-text-light);">E-book production</span><span class="font-bold">€—</span></div>
-              <div class="flex justify-between"><span style="color: var(--color-text-light);">Website hosting & ops</span><span class="font-bold">€—</span></div>
-              <div class="flex justify-between border-t pt-2 mt-2" style="border-color: var(--color-border);"><span class="font-semibold">TOTAAL UIT</span><span class="font-bold" style="color: var(--color-zakat);">€—</span></div>
+              <div class="flex justify-between"><span style="color: var(--color-text-light);">Mentorschap (begeleiders &amp; materiaal)</span><span class="font-mono text-neutral-400">€ —</span></div>
+              <div class="flex justify-between"><span style="color: var(--color-text-light);">E-books &amp; educatie</span><span class="font-mono text-neutral-400">€ —</span></div>
+              <div class="flex justify-between"><span style="color: var(--color-text-light);">Communityactiviteiten</span><span class="font-mono text-neutral-400">€ —</span></div>
+              <div class="flex justify-between"><span style="color: var(--color-text-light);">Operationele kosten (max 10%)</span><span class="font-mono text-neutral-400">€ —</span></div>
+              <div class="flex justify-between border-t pt-2 mt-2 font-semibold" style="border-color: var(--color-border);"><span>Totaal besteed</span><span class="font-mono">€ —</span></div>
             </div>
           </div>
 
-          <!-- Saldo -->
+          <!-- Kapitaal -->
           <div class="p-4" style="background: rgba(27,94,63,0.05);">
-            <div class="flex justify-between text-sm mb-2"><span>Saldo Program Fund</span><span class="font-bold">€—</span></div>
-            <div class="flex justify-between text-sm font-semibold" style="color: var(--color-capital);"><span>WAQF KAPITAAL</span><span>€— (ONGEWIJZIGD)</span></div>
+            <p class="text-sm font-semibold mb-3" style="color: var(--color-capital);">Waqf kapitaal</p>
+            <div class="space-y-2 text-sm">
+              <div class="flex justify-between"><span style="color: var(--color-text-light);">Beginsaldo</span><span class="font-mono">€ —</span></div>
+              <div class="flex justify-between"><span style="color: var(--color-text-light);">Nieuwe bijdragen</span><span class="font-mono text-green-700">+ € —</span></div>
+              <div class="flex justify-between border-t pt-2 mt-2 font-bold text-base" style="border-color: var(--color-border); color: var(--color-capital);"><span>Eindsaldo (ONSCHENDBAAR)</span><span class="font-mono">€ —</span></div>
+            </div>
           </div>
-        </div>
-
-        <div class="flex gap-3 mt-8 justify-center">
-          <a href="#" class="btn btn-outline text-xs">Download PDF</a>
-          <a href="#" class="btn btn-capital text-xs">Lees Volledige Rapport</a>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- BELOFTE -->
+  <!-- ROADMAP -->
   <section class="section">
-    <div class="container max-w-[800px] text-center">
-      <h2 class="mb-8 fade-up">Onze Belofte: Jaarlijkse Transparantie</h2>
-      <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 text-left fade-up delay-1">
-        <div class="card"><span class="text-lg mr-2">☐</span> <strong>HISAB:</strong> Elke euro in, elke euro uit</div>
-        <div class="card"><span class="text-lg mr-2">☐</span> <strong>IMPACT:</strong> Hoeveel mentors? Hoeveel e-books?</div>
-        <div class="card"><span class="text-lg mr-2">☐</span> <strong>GOVERNANCE:</strong> Wie zit in welke rol?</div>
-        <div class="card"><span class="text-lg mr-2">☐</span> <strong>AUDIT:</strong> Third-party audit bij >€50k</div>
-        <div class="card sm:col-span-2"><span class="text-lg mr-2">☐</span> <strong>SHARIAH:</strong> Verklaring dat alles Islamic correct is</div>
-      </div>
-      <p class="mt-8 text-lg font-semibold fade-up delay-2" style="color: var(--color-capital);">
-        Je hebt het recht op 100% zichtbaarheid.
+    <div class="container max-w-[800px]">
+      <h2 class="text-center mb-4 fade-up">Onze roadmap</h2>
+      <p class="text-center text-sm mb-10 fade-up delay-1" style="color: var(--color-text-light);">
+        De route van oprichting tot eerste hisab-rapport.
       </p>
+
+      <div class="space-y-4">
+        <div class="flex gap-6 items-start fade-up delay-1">
+          <div class="w-12 h-12 shrink-0 rounded-full flex items-center justify-center font-heading font-bold text-lg" style="background: var(--color-growth); color: var(--color-peace);">✓</div>
+          <div class="flex-1 card">
+            <h3 class="text-lg mb-1">Visie &amp; ontwerp</h3>
+            <p class="text-sm" style="color: var(--color-text-light);">De missie, de waqf-structuur en het digitale platform zijn opgezet.</p>
+          </div>
+        </div>
+        <div class="flex gap-6 items-start fade-up delay-2">
+          <div class="w-12 h-12 shrink-0 rounded-full flex items-center justify-center font-heading font-bold text-lg" style="background: var(--color-gold); color: var(--color-capital-dark);">→</div>
+          <div class="flex-1 card">
+            <h3 class="text-lg mb-1">VZW-oprichting &amp; erkenning (nu)</h3>
+            <p class="text-sm" style="color: var(--color-text-light);">De juridische structuur wordt opgezet: VZW-oprichting, statuten, aanvraag filantropische erkenning bij FOD Financiën.</p>
+          </div>
+        </div>
+        <div class="flex gap-6 items-start fade-up delay-3">
+          <div class="w-12 h-12 shrink-0 rounded-full flex items-center justify-center font-heading font-bold text-lg" style="background: var(--color-border); color: var(--color-text-light);">3</div>
+          <div class="flex-1 card">
+            <h3 class="text-lg mb-1">Aanstelling Trustee &amp; Shariah Raad</h3>
+            <p class="text-sm" style="color: var(--color-text-light);">Een onafhankelijke Trustee wordt aangesteld en drie geleerden vervoegen de Shariah Advisory Board.</p>
+          </div>
+        </div>
+        <div class="flex gap-6 items-start fade-up delay-4">
+          <div class="w-12 h-12 shrink-0 rounded-full flex items-center justify-center font-heading font-bold text-lg" style="background: var(--color-border); color: var(--color-text-light);">4</div>
+          <div class="flex-1 card">
+            <h3 class="text-lg mb-1">Eerste bijdragen &amp; beleggingsplan</h3>
+            <p class="text-sm" style="color: var(--color-text-light);">De eerste bijdragen worden aanvaard en het shariah-conforme beleggingsplan wordt geactiveerd.</p>
+          </div>
+        </div>
+        <div class="flex gap-6 items-start fade-up">
+          <div class="w-12 h-12 shrink-0 rounded-full flex items-center justify-center font-heading font-bold text-lg" style="background: var(--color-border); color: var(--color-text-light);">5</div>
+          <div class="flex-1 card">
+            <h3 class="text-lg mb-1">Eerste publieke hisab</h3>
+            <p class="text-sm" style="color: var(--color-text-light);">De eerste maandelijkse hisab verschijnt op deze pagina — compleet met alle cijfers, impact en shariah-bevestiging.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- EERLIJK BLOK -->
+  <section class="section" style="background: white;">
+    <div class="container max-w-[700px] text-center">
+      <h2 class="mb-6 fade-up">Eerlijk blijven</h2>
+      <p class="text-base leading-relaxed mb-6 fade-up delay-1" style="color: var(--color-text);">
+        We zouden nu deze pagina kunnen vullen met verzonnen cijfers. Dat doen we niet. Een waqf staat of valt met vertrouwen, en vertrouwen begint met eerlijkheid — ook wanneer dat betekent dat we moeten zeggen: <em>we zijn er nog niet, maar we komen eraan</em>.
+      </p>
+      <p class="text-base leading-relaxed fade-up delay-2" style="color: var(--color-text-light);">
+        Wil je op de hoogte blijven wanneer onze eerste hisab verschijnt? Laat het ons weten via onze contactpagina. Geen nieuwsbrieven, geen spam — alleen wanneer er iets belangrijks te delen is.
+      </p>
+      <div class="mt-8 fade-up delay-3">
+        <a href="/contact?onderwerp=updates" class="btn btn-outline">Houd mij op de hoogte</a>
+      </div>
     </div>
   </section>
 

@@ -1,0 +1,209 @@
+---
+import Layout from '../layouts/Layout.astro';
+
+const termen = [
+  {
+    term: 'Waqf',
+    arabisch: 'وقف',
+    uitspraak: "wakf",
+    categorie: 'Kern',
+    uitleg: 'Een islamitische rechtsvorm waarbij een persoon bezit (geld, vastgoed, boeken...) vastlegt zodat het zelf nooit kan worden verkocht of weggegeven. Alleen de opbrengsten ervan worden gebruikt voor een goed doel. De meest bekende waqfs zijn scholen, moskeeën en ziekenhuizen die al eeuwen oud zijn.',
+  },
+  {
+    term: 'Sadaqah jariyah',
+    arabisch: 'صدقة جارية',
+    uitspraak: "sadaqa dzjarrieja",
+    categorie: 'Kern',
+    uitleg: 'Doorlopende liefdadigheid. Een gift waarvan de beloning bij Allah blijft doorlopen, zelfs na het overlijden van de gever. Een waqf is de klassieke vorm van sadaqah jariyah.',
+  },
+  {
+    term: 'Hisab',
+    arabisch: 'حساب',
+    uitspraak: "hisaab",
+    categorie: 'Kern',
+    uitleg: "Letterlijk: 'rekening' of 'rekenschap'. In onze context: het maandelijkse financieel rapport waarin we elke euro verantwoorden.",
+  },
+  {
+    term: 'Ummah',
+    arabisch: 'أمة',
+    uitspraak: "oemma",
+    categorie: 'Kern',
+    uitleg: 'De wereldwijde moslimgemeenschap. Alle moslimen, overal, verbonden door geloof.',
+  },
+  {
+    term: 'Mutawalli',
+    arabisch: 'متولي',
+    uitspraak: "moetawalli",
+    categorie: 'Governance',
+    uitleg: 'De beheerder of Trustee van een waqf. Hij of zij is verantwoordelijk voor het bewaren en beheren van het kapitaal volgens de statuten, en is juridisch aansprakelijk.',
+  },
+  {
+    term: 'Niyyah',
+    arabisch: 'نية',
+    uitspraak: "nijja",
+    categorie: 'Fiqh',
+    uitleg: "De intentie waarmee een handeling wordt verricht. In een waqf is de niyyah essentieel: het moet gegeven worden omwille van Allah.",
+  },
+  {
+    term: 'Mawquf',
+    arabisch: 'موقوف',
+    uitspraak: "mawkoef",
+    categorie: 'Fiqh',
+    uitleg: 'Het bezit dat als waqf is vastgelegd — bijvoorbeeld een gebouw, een stuk grond of kapitaal. Mawquf is onschendbaar: het mag niet verkocht of besteed worden.',
+  },
+  {
+    term: "Mawquf 'alayh",
+    arabisch: 'موقوف عليه',
+    uitspraak: "mawkoef alaih",
+    categorie: 'Fiqh',
+    uitleg: "De begunstigde van een waqf — het doel waarvoor de opbrengsten worden gebruikt. Bijvoorbeeld: arme studenten, mentoren, of Qur'an-onderwijs.",
+  },
+  {
+    term: "Ta'bid",
+    arabisch: 'تأبيد',
+    uitspraak: "taabied",
+    categorie: 'Fiqh',
+    uitleg: 'Eeuwigheid. Een klassiek kenmerk van een waqf volgens de meerderheid van de geleerden: het moet voor altijd zijn, niet tijdelijk.',
+  },
+  {
+    term: "Waqf muʾabbad",
+    arabisch: 'وقف مؤبد',
+    uitspraak: "wakf moe-abbad",
+    categorie: 'Types',
+    uitleg: "Een eeuwigdurende waqf — voor altijd vastgelegd. Dit is de standaardvorm en wordt door alle vier de madhabs aanvaard.",
+  },
+  {
+    term: "Waqf muʾaqqat",
+    arabisch: 'وقف مؤقت',
+    uitspraak: "wakf moe-akkat",
+    categorie: 'Types',
+    uitleg: "Een tijdelijke waqf — alleen toegestaan in de Hanafi madhab. Na de afgesproken periode keert het bezit terug naar de schenker of zijn erfgenamen.",
+  },
+  {
+    term: "Waqf al-manfaʿah",
+    arabisch: 'وقف المنفعة',
+    uitspraak: "wakf al-manfa'a",
+    categorie: 'Types',
+    uitleg: "Waqf van het gebruik — bijvoorbeeld het vruchtgebruik van een huis schenken terwijl je de naakte eigendom behoudt.",
+  },
+  {
+    term: 'Waṣiyyah',
+    arabisch: 'وصية',
+    uitspraak: "wasijja",
+    categorie: 'Nalatenschap',
+    uitleg: 'Testament. Een islamitische wilsbeschikking waarin je bepaalt wat er met (een deel van) je nalatenschap moet gebeuren. Maximum 1/3 als er islamitische erfgenamen zijn.',
+  },
+  {
+    term: 'Hibah',
+    arabisch: 'هبة',
+    uitspraak: "hiba",
+    categorie: 'Nalatenschap',
+    uitleg: 'Een schenking tijdens het leven. Anders dan een testament wordt een hibah meteen uitgevoerd en is ze onmiddellijk eigendom van de ontvanger.',
+  },
+  {
+    term: 'Zakat',
+    arabisch: 'زكاة',
+    uitspraak: "zakaat",
+    categorie: 'Liefdadigheid',
+    uitleg: 'De derde pijler van de Islam. Een verplichte jaarlijkse gift van 2,5% van het vermogen boven de nisab-drempel, te verdelen onder acht specifieke categorieën mensen. Zakat is NIET hetzelfde als een waqf-bijdrage.',
+  },
+  {
+    term: 'Nisab',
+    arabisch: 'نصاب',
+    uitspraak: "nisaab",
+    categorie: 'Liefdadigheid',
+    uitleg: 'Het minimumvermogen waarboven zakat verplicht wordt. Ongeveer de waarde van 85 gram goud.',
+  },
+  {
+    term: 'Asnaf',
+    arabisch: 'أصناف',
+    uitspraak: "asnaaf",
+    categorie: 'Liefdadigheid',
+    uitleg: 'De acht categorieën van mensen aan wie zakat gegeven moet worden, zoals beschreven in de Qur\'an (Surah 9:60): de armen, de behoeftigen, de zakat-beheerders, nieuwe moslims, slaven die zich willen vrijkopen, schuldenaren, op Gods weg, en reizigers in nood.',
+  },
+  {
+    term: "Sahih al-Bukhari",
+    arabisch: 'صحيح البخاري',
+    uitspraak: "sahieh al-boegaarie",
+    categorie: 'Bronnen',
+    uitleg: "Een van de meest gezaghebbende verzamelingen van hadith (uitspraken en handelingen van de Profeet ﷺ), samengesteld door Imam al-Bukhari in de 9e eeuw.",
+  },
+  {
+    term: 'Sahih Muslim',
+    arabisch: 'صحيح مسلم',
+    uitspraak: "sahieh moeslim",
+    categorie: 'Bronnen',
+    uitleg: "Een andere zeer belangrijke hadith-verzameling, samengesteld door Imam Muslim in de 9e eeuw.",
+  },
+  {
+    term: 'Shariah',
+    arabisch: 'شريعة',
+    uitspraak: "sjarie'a",
+    categorie: 'Fiqh',
+    uitleg: 'De islamitische wetgeving, gebaseerd op Qur\'an en Sunnah. In onze context: we garanderen dat al onze activiteiten shariah-conform zijn, via toezicht van islamitische geleerden.',
+  },
+];
+
+const categorieen = ['Kern', 'Governance', 'Fiqh', 'Types', 'Nalatenschap', 'Liefdadigheid', 'Bronnen'];
+---
+
+<Layout title="Woordenlijst — Ummah.be Waqf" description="Arabische en islamitische termen die op onze site voorkomen, uitgelegd in duidelijk Nederlands.">
+
+  <!-- HERO -->
+  <section class="py-20" style="background: var(--color-capital);">
+    <div class="container text-center max-w-[800px]">
+      <h1 class="text-white mb-4 fade-up">Woordenlijst</h1>
+      <p class="text-white/80 text-lg fade-up delay-1">
+        Alle Arabische en islamitische termen op één plek — in duidelijk Nederlands uitgelegd.
+      </p>
+    </div>
+  </section>
+
+  <!-- INTRO -->
+  <section class="section">
+    <div class="container max-w-[800px] text-center">
+      <p class="text-base fade-up" style="color: var(--color-text-light);">
+        Op deze site gebruiken we af en toe Arabische termen — omdat ze vaak precies het concept beschrijven dat geen Nederlands equivalent heeft. Hier vind je ze allemaal terug, met uitspraak, uitleg en context.
+      </p>
+    </div>
+  </section>
+
+  <!-- WOORDEN PER CATEGORIE -->
+  {categorieen.map((cat) => {
+    const items = termen.filter(t => t.categorie === cat);
+    if (items.length === 0) return null;
+    return (
+      <section class="section" style={cat === 'Governance' || cat === 'Types' || cat === 'Liefdadigheid' ? 'background: white;' : ''}>
+        <div class="container max-w-[900px]">
+          <h2 class="mb-8 fade-up">{cat}</h2>
+          <div class="space-y-4">
+            {items.map((t, i) => (
+              <div class="card fade-up" style={`animation-delay: ${i * 0.05}s; border-left: 3px solid var(--color-capital);`}>
+                <div class="flex flex-wrap items-baseline gap-3 mb-3">
+                  <h3 class="text-xl font-heading font-bold" style="color: var(--color-capital);">{t.term}</h3>
+                  <span class="font-arabic text-lg" lang="ar" dir="rtl" style="color: var(--color-capital);">{t.arabisch}</span>
+                  <span class="text-sm italic" style="color: var(--color-text-light);">({t.uitspraak})</span>
+                </div>
+                <p class="text-sm leading-relaxed" style="color: var(--color-text);">{t.uitleg}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+    );
+  })}
+
+  <!-- CTA -->
+  <section class="py-16" style="background: var(--color-capital);">
+    <div class="container text-center max-w-[700px]">
+      <h2 class="text-white mb-4 fade-up">Mis je een term?</h2>
+      <p class="text-white/80 mb-6 fade-up delay-1">
+        Als er een woord op onze site staat dat je niet begrijpt, laat het ons weten. We voegen het toe aan deze lijst.
+      </p>
+      <a href="/contact?onderwerp=woordenlijst" class="btn fade-up delay-2" style="background: var(--color-gold); color: var(--color-capital-dark);">
+        Laat het ons weten
+      </a>
+    </div>
+  </section>
+
+</Layout>
