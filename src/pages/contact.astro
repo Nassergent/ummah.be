@@ -43,6 +43,12 @@ import Layout from '../layouts/Layout.astro';
               <label class="block text-sm font-semibold uppercase mb-2" style="color: var(--color-capital); letter-spacing: 0.5px;">Bericht *</label>
               <textarea rows="5" placeholder="Waar kunnen wij u mee helpen?" class="w-full p-3 border-2 rounded text-base" style="border-color: var(--color-border);" required></textarea>
             </div>
+            <label class="flex items-start gap-3 cursor-pointer">
+              <input type="checkbox" class="mt-1 shrink-0" required />
+              <span class="text-sm" style="color: var(--color-text-light);">
+                Ik ga akkoord met het <a href="/privacy" style="color: var(--color-clarity);">privacybeleid</a> en verwerking van mijn gegevens conform de GDPR.
+              </span>
+            </label>
             <button type="submit" class="btn btn-capital w-full text-center">Versturen</button>
           </form>
         </div>

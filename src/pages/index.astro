@@ -7,7 +7,7 @@ const waqf = await fetchWaqfConfig();
 
 const heroTitle = home?.heroTitle || 'Ummah.be Waqf';
 const heroSubtitle = home?.heroSubtitle || 'Kapitaal is heilig.\nOpbrengsten dienen moslims.\nVoor altijd.';
-const heroDescription = home?.heroDescription || 'Dit is geen organisatie. Dit is een waqf—een eeuwige instelling in dienst van Allah en de Ummah.';
+const heroDescription = home?.heroDescription || 'Ummah.be is een waqf — een eeuwige instelling in dienst van Allah en de Ummah. Jouw bijdrage wordt onschendbaar kapitaal dat nooit wordt uitgegeven. Alleen de opbrengsten financieren mentorschap, educatie en gemeenschap.';
 const btn1Label = home?.heroButtonPrimaryLabel || 'Draag bij aan Kapitaal';
 const btn1Link = home?.heroButtonPrimaryLink || '/steun-ons';
 const btn2Label = home?.heroButtonSecondaryLabel || "Steun Programma's Deze Maand";
@@ -60,18 +60,18 @@ const jaarlijkseOpbrengst = Math.round(minWaqf * rendement / 100);
       <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
         <div class="card card-capital fade-up delay-1">
           <div class="badge-sacred mb-4">Stap 1</div>
-          <h3 class="text-xl mb-2">€{minWaqf.toLocaleString('nl-BE')} Kapitaal</h3>
-          <p class="text-sm" style="color: var(--color-text-light);">Jouw gift wordt heilig kapitaal</p>
+          <h3 class="text-xl mb-2">€{minWaqf.toLocaleString('nl-BE')} Bijdrage</h3>
+          <p class="text-sm" style="color: var(--color-text-light);">Jouw gift wordt toegevoegd aan het waqf-kapitaal</p>
         </div>
         <div class="card card-capital fade-up delay-2">
           <div class="badge-sacred mb-4">Stap 2</div>
-          <h3 class="text-xl mb-2">Geïnvesteerd</h3>
-          <p class="text-sm" style="color: var(--color-text-light);">Voor altijd (nooit aangeraakt)</p>
+          <h3 class="text-xl mb-2">Onschendbaar</h3>
+          <p class="text-sm" style="color: var(--color-text-light);">Het kapitaal blijft juridisch vastgelegd en wordt nooit uitgegeven</p>
         </div>
         <div class="card card-capital fade-up delay-3">
           <div class="badge-sacred mb-4">Stap 3</div>
-          <h3 class="text-xl mb-2">~€{jaarlijkseOpbrengst}/Jaar</h3>
-          <p class="text-sm" style="color: var(--color-text-light);">Verwacht rendement ({rendement}%)</p>
+          <h3 class="text-xl mb-2">~€{jaarlijkseOpbrengst}/jaar*</h3>
+          <p class="text-sm" style="color: var(--color-text-light);">Verwacht rendement ({rendement}%, niet gegarandeerd)</p>
         </div>
         <div class="card card-growth fade-up delay-4">
           <div class="badge-growth mb-4">Impact</div>
