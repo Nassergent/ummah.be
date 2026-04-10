@@ -96,8 +96,8 @@ const contactKnopLabel = page?.contactKnopLabel || 'Neem vertrouwelijk contact o
 <Layout title="Nalatenschap & Vastgoed — Ummah.be Waqf" description="Een huis, een stuk grond of een deel van uw nalatenschap schenken aan de waqf. Uitleg over de islamitische traditie, Belgische wetgeving en vier praktische scenarios.">
 
   <!-- HERO -->
-  <section class="py-20" style="background: var(--color-capital);">
-    <div class="container text-center max-w-[800px]">
+  <section class="section" style="background: var(--color-capital);">
+    <div class="container text-center max-w-[900px]">
       <h1 class="text-white mb-6 fade-up">{heroTitle}</h1>
       <p class="text-white/80 text-lg leading-relaxed fade-up delay-1">{heroSubtitle}</p>
     </div>
@@ -105,7 +105,7 @@ const contactKnopLabel = page?.contactKnopLabel || 'Neem vertrouwelijk contact o
 
   <!-- DISCLAIMER -->
   <section class="py-6" style="background: rgba(217,132,91,0.08); border-bottom: 1px solid var(--color-border);">
-    <div class="container max-w-[800px] text-center">
+    <div class="container max-w-[900px] text-center">
       <p class="text-sm" style="color: var(--color-text);">
         ⚠️ <strong>Belangrijk:</strong> Deze pagina is informatief, niet juridisch of religieus advies. Raadpleeg altijd een <strong>notaris</strong> voor het Belgisch erfrecht en een <strong>islamitische geleerde</strong> voor de shariah-kant voordat u beslist.
       </p>
@@ -134,31 +134,31 @@ const contactKnopLabel = page?.contactKnopLabel || 'Neem vertrouwelijk contact o
         {scenariosIntro}
       </p>
 
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-[1000px] mx-auto">
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-[900px] mx-auto">
         {scenarios.map((scenario: any, i: number) => (
           <div class="card card-capital fade-up" style={`animation-delay: ${i * 0.1}s;`}>
             <div class="badge-sacred mb-3">{scenario.fiqhNaam}</div>
-            <h3 class="text-xl mb-3">{scenario.titel}</h3>
+            <h3 class="text-lg mb-3">{scenario.titel}</h3>
             <p class="text-sm mb-4" style="color: var(--color-text);">{scenario.kort}</p>
 
             {scenario.voorbeeld && (
               <div class="p-3 mb-3" style="background: rgba(201,169,97,0.08); border-left: 2px solid var(--color-gold);">
                 <p class="text-xs font-semibold mb-1" style="color: var(--color-gold);">VOORBEELD</p>
-                <p class="text-xs" style="color: var(--color-text-light);">{scenario.voorbeeld}</p>
+                <p class="text-sm" style="color: var(--color-text-light);">{scenario.voorbeeld}</p>
               </div>
             )}
 
             {scenario.belgischRecht && (
               <div class="p-3 mb-3" style="background: rgba(46,92,138,0.08); border-left: 2px solid var(--color-clarity);">
                 <p class="text-xs font-semibold mb-1" style="color: var(--color-clarity);">⚖️ BELGISCH RECHT</p>
-                <p class="text-xs" style="color: var(--color-text-light);">{scenario.belgischRecht}</p>
+                <p class="text-sm" style="color: var(--color-text-light);">{scenario.belgischRecht}</p>
               </div>
             )}
 
             {scenario.fiqhNoot && (
               <div class="p-3" style="background: rgba(27,94,63,0.08); border-left: 2px solid var(--color-capital);">
                 <p class="text-xs font-semibold mb-1" style="color: var(--color-capital);">🕌 FIQH NOOT</p>
-                <p class="text-xs" style="color: var(--color-text-light);">{scenario.fiqhNoot}</p>
+                <p class="text-sm" style="color: var(--color-text-light);">{scenario.fiqhNoot}</p>
               </div>
             )}
           </div>
@@ -191,7 +191,7 @@ const contactKnopLabel = page?.contactKnopLabel || 'Neem vertrouwelijk contact o
 
   <!-- CRITERIA -->
   <section class="section" style="background: white;">
-    <div class="container max-w-[1000px]">
+    <div class="container max-w-[900px]">
       <h2 class="text-center mb-4 fade-up">{criteriaTitle}</h2>
       <p class="text-center text-lg mb-12 fade-up delay-1" style="color: var(--color-text-light);">{criteriaIntro}</p>
 
@@ -225,12 +225,12 @@ const contactKnopLabel = page?.contactKnopLabel || 'Neem vertrouwelijk contact o
 
   <!-- FAQ -->
   <section class="section">
-    <div class="container max-w-[800px]">
-      <h2 class="text-center mb-12 fade-up">{faqTitle}</h2>
+    <div class="container max-w-[900px]">
+      <h2 class="text-center mb-10 fade-up">{faqTitle}</h2>
       <div class="space-y-4">
         {faqItems.map((item: any, i: number) => (
           <details class="card fade-up cursor-pointer" style={`animation-delay: ${i * 0.05}s;`}>
-            <summary class="font-heading font-bold text-lg" style="color: var(--color-capital);">{item.vraag}</summary>
+            <summary class="faq-summary">{item.vraag}</summary>
             <p class="mt-4 text-sm leading-relaxed" style="color: var(--color-text-light);">{item.antwoord}</p>
           </details>
         ))}
@@ -239,14 +239,14 @@ const contactKnopLabel = page?.contactKnopLabel || 'Neem vertrouwelijk contact o
   </section>
 
   <!-- CONTACT CTA (warm, niet wervend) -->
-  <section class="py-20" style="background: var(--color-capital);">
+  <section class="section" style="background: var(--color-capital);">
     <div class="container text-center max-w-[700px]">
       <h2 class="text-white mb-6 fade-up">{contactTitle}</h2>
       <p class="text-white/80 text-lg leading-relaxed mb-8 fade-up delay-1">{contactText}</p>
       <a href="/contact?onderwerp=nalatenschap" class="btn fade-up delay-2" style="background: var(--color-gold); color: var(--color-capital-dark);">
         {contactKnopLabel}
       </a>
-      <p class="text-white/50 text-xs mt-6 fade-up delay-3">
+      <p class="text-white/70 text-xs mt-6 fade-up delay-3">
         Uw gegevens worden vertrouwelijk behandeld. Geen nieuwsbrieven, geen herinneringen. Alleen op uw verzoek.
       </p>
     </div>

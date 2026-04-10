@@ -5,24 +5,24 @@ import Layout from '../layouts/Layout.astro';
 <Layout title="Steun Ons — Ummah.be Waqf" description="Draag bij aan het waqf kapitaal, steun programma's, of geef zakat.">
 
   <!-- HERO -->
-  <section class="py-20" style="background: var(--color-capital);">
+  <section class="section" style="background: var(--color-capital);">
     <div class="container text-center">
-      <h1 class="text-white mb-4 fade-up">Kies Je Weg</h1>
-      <p class="text-white/70 text-lg fade-up delay-1">Drie manieren om de Ummah te dienen</p>
+      <h1 class="text-white mb-4 fade-up">Steun de Ummah</h1>
+      <p class="text-white/80 text-lg fade-up delay-1">Drie manieren om de Ummah te dienen</p>
     </div>
   </section>
 
   <!-- TAB NAVIGATION -->
   <section class="section">
-    <div class="container max-w-[800px]">
-      <div class="flex gap-2 mb-10 justify-center flex-wrap fade-up">
-        <button class="tab-btn active btn text-xs" data-tab="waqf" style="background: var(--color-capital); color: var(--color-peace);">Waqf Kapitaal</button>
-        <button class="tab-btn btn text-xs" data-tab="program" style="background: var(--color-border); color: var(--color-text);">Steun Programma's</button>
-        <button class="tab-btn btn text-xs" data-tab="zakat" style="background: var(--color-border); color: var(--color-text);">Zakat</button>
+    <div class="container max-w-[900px]">
+      <div class="flex gap-2 mb-12 justify-center flex-wrap fade-up" role="tablist" aria-label="Donatie opties">
+        <button class="tab-btn btn text-xs" data-tab="waqf" role="tab" aria-selected="true" aria-controls="tab-waqf" id="tab-btn-waqf" style="background: var(--color-capital); color: var(--color-peace);">Waqf Kapitaal</button>
+        <button class="tab-btn btn text-xs" data-tab="program" role="tab" aria-selected="false" aria-controls="tab-program" id="tab-btn-program" style="background: var(--color-border); color: var(--color-text);">Steun Programma's</button>
+        <button class="tab-btn btn text-xs" data-tab="zakat" role="tab" aria-selected="false" aria-controls="tab-zakat" id="tab-btn-zakat" style="background: var(--color-border); color: var(--color-text);">Zakat</button>
       </div>
 
       <!-- TAB 1: WAQF KAPITAAL -->
-      <div id="tab-waqf" class="tab-content fade-up delay-1">
+      <div id="tab-waqf" class="tab-content fade-up delay-1" role="tabpanel" aria-labelledby="tab-btn-waqf">
         <div class="card card-capital">
           <h2 class="mb-2">Bijdragen aan het Waqf-Kapitaal</h2>
           <p class="text-lg mb-6" style="color: var(--color-clarity);">Sadaqah jariyah voor de Ummah</p>
@@ -38,35 +38,36 @@ import Layout from '../layouts/Layout.astro';
 
           <form class="space-y-5">
             <div>
-              <label class="block text-sm font-semibold uppercase mb-2" style="color: var(--color-capital); letter-spacing: 0.5px;">Volledige Naam *</label>
-              <input type="text" placeholder="Uw volledige naam" class="w-full p-3 border-2 rounded text-base" style="border-color: var(--color-border);" required />
+              <label for="waqf-name" class="block text-sm font-semibold uppercase mb-2" style="color: var(--color-capital); letter-spacing: 0.5px;">Volledige Naam *</label>
+              <input id="waqf-name" type="text" placeholder="Uw volledige naam" class="input" required maxlength="100" />
             </div>
             <div>
-              <label class="block text-sm font-semibold uppercase mb-2" style="color: var(--color-capital); letter-spacing: 0.5px;">E-mail *</label>
-              <input type="email" placeholder="uw@email.be" class="w-full p-3 border-2 rounded text-base" style="border-color: var(--color-border);" required />
+              <label for="waqf-email" class="block text-sm font-semibold uppercase mb-2" style="color: var(--color-capital); letter-spacing: 0.5px;">E-mail *</label>
+              <input id="waqf-email" type="email" placeholder="uw@email.be" class="input" required maxlength="254" pattern="[a-zA-Z0-9._%+\-]+@[a-zA-Z0-9.\-]+\.[a-zA-Z]{2,}" />
             </div>
             <div>
-              <label class="block text-sm font-semibold uppercase mb-2" style="color: var(--color-capital); letter-spacing: 0.5px;">Bedrag (€) *</label>
-              <input type="number" min="10" placeholder="1000" class="w-full p-3 border-2 rounded text-base" style="border-color: var(--color-border);" required />
+              <label for="waqf-amount" class="block text-sm font-semibold uppercase mb-2" style="color: var(--color-capital); letter-spacing: 0.5px;">Bedrag (€) *</label>
+              <input id="waqf-amount" type="number" min="10" step="1" max="1000000" placeholder="1000" class="input" required />
               <p class="text-xs mt-1" style="color: var(--color-text-light);">Minimum €10. Geen maximumbedrag.</p>
             </div>
             <div>
-              <label class="block text-sm font-semibold uppercase mb-2" style="color: var(--color-capital); letter-spacing: 0.5px;">Opmerking (optioneel)</label>
-              <textarea rows="3" maxlength="500" placeholder="Bijv. 'Voor mijn overleden ouders'" class="w-full p-3 border-2 rounded text-base" style="border-color: var(--color-border);"></textarea>
+              <label for="waqf-note" class="block text-sm font-semibold uppercase mb-2" style="color: var(--color-capital); letter-spacing: 0.5px;">Opmerking (optioneel)</label>
+              <textarea id="waqf-note" rows="3" maxlength="500" placeholder="Bijv. 'Voor mijn overleden ouders'" class="input"></textarea>
             </div>
             <label class="flex items-start gap-3 cursor-pointer">
-              <input type="checkbox" class="mt-1 shrink-0" required />
+              <input type="checkbox" class="checkbox-touch mt-1 shrink-0" required />
               <span class="text-sm" style="color: var(--color-text-light);">
                 Ik begrijp dat deze bijdrage onschendbaar waqf-kapitaal wordt en niet kan worden teruggevorderd.
               </span>
             </label>
             <label class="flex items-start gap-3 cursor-pointer">
-              <input type="checkbox" class="mt-1 shrink-0" required />
+              <input type="checkbox" class="checkbox-touch mt-1 shrink-0" required />
               <span class="text-sm" style="color: var(--color-text-light);">
                 Ik ga akkoord met het <a href="/privacy" style="color: var(--color-clarity);">privacybeleid</a> en verwerking van mijn gegevens conform de GDPR.
               </span>
             </label>
-            <button type="submit" class="btn btn-capital w-full text-center">Draag bij aan het Kapitaal</button>
+            <div class="form-message" role="alert" aria-live="polite" data-form-msg="waqf"></div>
+            <button type="submit" class="btn btn-capital w-full text-center" data-form-btn="waqf">Draag bij aan het Kapitaal</button>
             <p class="text-xs text-center" style="color: var(--color-text-light);">
               Betaalverwerking volgt binnenkort via Mollie (Bancontact, iDEAL, kaart). Contact ons voor een rechtstreekse overschrijving.
             </p>
@@ -75,7 +76,7 @@ import Layout from '../layouts/Layout.astro';
       </div>
 
       <!-- TAB 2: PROGRAM SUPPORT -->
-      <div id="tab-program" class="tab-content hidden">
+      <div id="tab-program" class="tab-content hidden" role="tabpanel" aria-labelledby="tab-btn-program">
         <div class="card card-growth">
           <h2 class="mb-2">Steun de Programma's</h2>
           <p class="text-lg mb-6" style="color: var(--color-growth);">Directe impact, deze maand</p>
@@ -84,37 +85,38 @@ import Layout from '../layouts/Layout.astro';
           </p>
           <form class="space-y-5">
             <div>
-              <label class="block text-sm font-semibold uppercase mb-2" style="color: var(--color-growth); letter-spacing: 0.5px;">Volledige Naam *</label>
-              <input type="text" placeholder="Uw volledige naam" class="w-full p-3 border-2 rounded text-base" style="border-color: var(--color-border);" required />
+              <label for="prog-name" class="block text-sm font-semibold uppercase mb-2" style="color: var(--color-growth); letter-spacing: 0.5px;">Volledige Naam *</label>
+              <input id="prog-name" type="text" placeholder="Uw volledige naam" class="input" required maxlength="100" />
             </div>
             <div>
-              <label class="block text-sm font-semibold uppercase mb-2" style="color: var(--color-growth); letter-spacing: 0.5px;">E-mail *</label>
-              <input type="email" placeholder="uw@email.be" class="w-full p-3 border-2 rounded text-base" style="border-color: var(--color-border);" required />
+              <label for="prog-email" class="block text-sm font-semibold uppercase mb-2" style="color: var(--color-growth); letter-spacing: 0.5px;">E-mail *</label>
+              <input id="prog-email" type="email" placeholder="uw@email.be" class="input" required maxlength="254" pattern="[a-zA-Z0-9._%+\-]+@[a-zA-Z0-9.\-]+\.[a-zA-Z]{2,}" />
             </div>
             <div>
-              <label class="block text-sm font-semibold uppercase mb-2" style="color: var(--color-growth); letter-spacing: 0.5px;">Bedrag (€) * — minimum €10</label>
-              <input type="number" min="10" placeholder="50" class="w-full p-3 border-2 rounded text-base" style="border-color: var(--color-border);" required />
+              <label for="prog-amount" class="block text-sm font-semibold uppercase mb-2" style="color: var(--color-growth); letter-spacing: 0.5px;">Bedrag (€) * — minimum €10</label>
+              <input id="prog-amount" type="number" min="10" step="1" max="1000000" placeholder="50" class="input" required />
             </div>
-            <div>
-              <label class="block text-sm font-semibold uppercase mb-3" style="color: var(--color-growth); letter-spacing: 0.5px;">Frequentie</label>
+            <fieldset>
+              <legend class="block text-sm font-semibold uppercase mb-3" style="color: var(--color-growth); letter-spacing: 0.5px;">Frequentie</legend>
               <div class="flex gap-4">
                 <label class="flex items-center gap-2 cursor-pointer"><input type="radio" name="freq" value="once" checked /> Eenmalig</label>
                 <label class="flex items-center gap-2 cursor-pointer"><input type="radio" name="freq" value="monthly" /> Maandelijks</label>
               </div>
-            </div>
+            </fieldset>
             <label class="flex items-start gap-3 cursor-pointer">
-              <input type="checkbox" class="mt-1 shrink-0" required />
+              <input type="checkbox" class="checkbox-touch mt-1 shrink-0" required />
               <span class="text-sm" style="color: var(--color-text-light);">
                 Ik ga akkoord met het <a href="/privacy" style="color: var(--color-clarity);">privacybeleid</a> en verwerking van mijn gegevens conform de GDPR.
               </span>
             </label>
-            <button type="submit" class="btn btn-growth w-full text-center">Steun de Programma's</button>
+            <div class="form-message" role="alert" aria-live="polite" data-form-msg="program"></div>
+            <button type="submit" class="btn btn-growth w-full text-center" data-form-btn="program">Steun de Programma's</button>
           </form>
         </div>
       </div>
 
       <!-- TAB 3: ZAKAT -->
-      <div id="tab-zakat" class="tab-content hidden">
+      <div id="tab-zakat" class="tab-content hidden" role="tabpanel" aria-labelledby="tab-btn-zakat">
         <div class="card card-zakat">
           <h2 class="mb-2">Over Zakat</h2>
           <p class="text-lg mb-6" style="color: var(--color-zakat);">Belangrijk om te weten</p>
@@ -138,7 +140,7 @@ import Layout from '../layouts/Layout.astro';
           </p>
 
           <div class="mt-6 text-center">
-            <button type="button" onclick="document.querySelector('[data-tab=waqf]').click()" class="btn btn-capital text-xs">Bekijk Waqf Bijdrage</button>
+            <button type="button" class="btn btn-capital text-xs" data-switch-tab="waqf">Bekijk Waqf Bijdrage</button>
           </div>
         </div>
       </div>
@@ -148,21 +150,80 @@ import Layout from '../layouts/Layout.astro';
 </Layout>
 
 <script>
-  const tabs = document.querySelectorAll('.tab-btn');
+  const tabs = document.querySelectorAll<HTMLButtonElement>('.tab-btn');
   const contents = document.querySelectorAll('.tab-content');
   const colors: Record<string, string> = { waqf: '#1B5E3F', program: '#4A7C59', zakat: '#D9845B' };
 
+  function activateTab(tab: string) {
+    contents.forEach(c => c.classList.add('hidden'));
+    document.getElementById(`tab-${tab}`)?.classList.remove('hidden');
+    tabs.forEach(b => {
+      const isActive = b.dataset.tab === tab;
+      b.style.background = isActive ? colors[b.dataset.tab!] : 'var(--color-border)';
+      b.style.color = isActive ? 'var(--color-peace)' : 'var(--color-text)';
+      b.setAttribute('aria-selected', String(isActive));
+      b.setAttribute('tabindex', isActive ? '0' : '-1');
+    });
+  }
+
   tabs.forEach(btn => {
-    btn.addEventListener('click', () => {
-      const tab = (btn as HTMLElement).dataset.tab!;
-      contents.forEach(c => c.classList.add('hidden'));
-      document.getElementById(`tab-${tab}`)?.classList.remove('hidden');
-      tabs.forEach(b => {
-        (b as HTMLElement).style.background = 'var(--color-border)';
-        (b as HTMLElement).style.color = 'var(--color-text)';
-      });
-      (btn as HTMLElement).style.background = colors[tab];
-      (btn as HTMLElement).style.color = 'var(--color-peace)';
+    btn.addEventListener('click', () => activateTab(btn.dataset.tab!));
+    btn.addEventListener('keydown', (e: KeyboardEvent) => {
+      const tabList = Array.from(tabs);
+      const idx = tabList.indexOf(btn);
+      let next = -1;
+      if (e.key === 'ArrowRight') next = (idx + 1) % tabList.length;
+      if (e.key === 'ArrowLeft') next = (idx - 1 + tabList.length) % tabList.length;
+      if (e.key === 'Home') next = 0;
+      if (e.key === 'End') next = tabList.length - 1;
+      if (next >= 0) {
+        e.preventDefault();
+        tabList[next].focus();
+        activateTab(tabList[next].dataset.tab!);
+      }
+    });
+  });
+
+  // Zakat tab -> waqf switch button
+  document.querySelector('[data-switch-tab="waqf"]')?.addEventListener('click', () => activateTab('waqf'));
+
+  // Initialize tabindex
+  activateTab('waqf');
+
+  // Form feedback handlers
+  document.querySelectorAll<HTMLFormElement>('.tab-content form').forEach(form => {
+    form.addEventListener('submit', (e) => {
+      e.preventDefault();
+      const tabPanel = form.closest('.tab-content');
+      if (!tabPanel) return;
+      const id = tabPanel.id.replace('tab-', '');
+      const btn = document.querySelector<HTMLButtonElement>(`[data-form-btn="${id}"]`);
+      const msg = document.querySelector<HTMLDivElement>(`[data-form-msg="${id}"]`);
+      if (!btn || !msg) return;
+
+      const origText = btn.textContent;
+      btn.classList.add('loading');
+      btn.textContent = 'Verzenden...';
+      msg.className = 'form-message';
+
+      setTimeout(() => {
+        btn.classList.remove('loading');
+        btn.textContent = origText;
+        msg.className = 'form-message visible success';
+        msg.innerHTML = '<strong>Bedankt voor uw bijdrage-intentie, jazakAllahu khayran!</strong>' +
+          '<span style="font-size: 0.85em; display: block; margin-top: 8px; line-height: 1.7;">' +
+          'Online betaling via Mollie wordt binnenkort geactiveerd. In de tussentijd kunt u uw bijdrage overmaken via bankoverschrijving:' +
+          '</span>' +
+          '<span style="font-size: 0.85em; display: block; margin-top: 8px; padding: 10px 12px; background: rgba(27,94,63,0.06); border-radius: 6px; line-height: 1.7;">' +
+          '<strong>Ummah.be Waqf VZW</strong><br>' +
+          'IBAN: wordt binnenkort gepubliceerd<br>' +
+          'Mededeling: uw naam + "waqf" of "programma"' +
+          '</span>' +
+          '<span style="font-size: 0.85em; display: block; margin-top: 8px; line-height: 1.7;">' +
+          'Wij bevestigen uw bijdrage per e-mail binnen 48 uur. Vragen? <a href="mailto:salam@ummah.be" style="color: var(--color-clarity); text-decoration: underline;">salam@ummah.be</a>' +
+          '</span>';
+        form.reset();
+      }, 1500);
     });
   });
 </script>

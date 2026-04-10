@@ -1,0 +1,114 @@
+---
+import Layout from '../layouts/Layout.astro';
+import { fetchSettings } from '../lib/sanity';
+
+const settings = await fetchSettings();
+const orgNaam = settings?.organisatieNaam || 'Ummah.be Waqf';
+const email = settings?.email || 'salam@ummah.be';
+---
+
+<Layout title="Privacybeleid — Ummah.be Waqf" description="Hoe Ummah.be Waqf omgaat met uw persoonsgegevens, conform de GDPR.">
+
+  <!-- HERO -->
+  <section class="section" style="background: var(--color-capital);">
+    <div class="container text-center">
+      <h1 class="text-white mb-4 fade-up">Privacybeleid</h1>
+      <p class="text-white/80 text-lg fade-up delay-1">Hoe wij omgaan met uw gegevens</p>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container max-w-[700px]">
+      <div class="space-y-10 fade-up">
+
+        <div>
+          <h2 class="mb-4">1. Wie zijn wij?</h2>
+          <p class="text-text">
+            {orgNaam} is een Belgische organisatie in oprichtingsfase. Voor vragen over dit privacybeleid kunt u ons bereiken via <a href={`mailto:${email}`} class="text-clarity">{email}</a>.
+          </p>
+        </div>
+
+        <div>
+          <h2 class="mb-4">2. Welke gegevens verzamelen wij?</h2>
+          <p class="mb-4 text-text">Wij verzamelen uitsluitend gegevens die u zelf aan ons verstrekt via onze formulieren:</p>
+          <ul class="space-y-2 text-sm text-text">
+            <li>• <strong>Naam</strong> — om u persoonlijk aan te spreken</li>
+            <li>• <strong>E-mailadres</strong> — om te reageren op uw bericht of bijdrage</li>
+            <li>• <strong>Bedrag en opmerkingen</strong> — bij een bijdrage aan het waqf-kapitaal of programma's</li>
+            <li>• <strong>Onderwerp en bericht</strong> — bij een contactverzoek</li>
+          </ul>
+        </div>
+
+        <div>
+          <h2 class="mb-4">3. Waarvoor gebruiken wij uw gegevens?</h2>
+          <ul class="space-y-2 text-sm text-text">
+            <li>• Uw vraag of bericht beantwoorden</li>
+            <li>• Uw bijdrage verwerken en administratief vastleggen</li>
+            <li>• U informeren over de voortgang van de waqf (alleen op uw verzoek)</li>
+          </ul>
+          <p class="mt-4 text-sm text-text-light">
+            Wij sturen <strong>geen nieuwsbrieven</strong> en <strong>geen marketing</strong>. Wij delen uw gegevens <strong>niet met derden</strong>, tenzij wettelijk verplicht.
+          </p>
+        </div>
+
+        <div>
+          <h2 class="mb-4">4. Rechtsgrond</h2>
+          <p class="text-text">
+            Wij verwerken uw gegevens op basis van uw <strong>toestemming</strong> (artikel 6, lid 1, punt a van de GDPR), die u geeft door het aanvinken van de privacyverklaring bij onze formulieren. U kunt deze toestemming op elk moment intrekken door contact met ons op te nemen.
+          </p>
+        </div>
+
+        <div>
+          <h2 class="mb-4">5. Bewaartermijn</h2>
+          <p class="text-text">
+            Contactberichten worden maximaal <strong>12 maanden</strong> bewaard. Financiële administratie (bijdragen) wordt bewaard conform de Belgische wettelijke vereisten voor VZW's (<strong>7 jaar</strong>).
+          </p>
+        </div>
+
+        <div>
+          <h2 class="mb-4">6. Uw rechten</h2>
+          <p class="mb-4 text-text">Conform de GDPR heeft u het recht op:</p>
+          <ul class="space-y-2 text-sm text-text">
+            <li>• <strong>Inzage</strong> — welke gegevens wij van u bewaren</li>
+            <li>• <strong>Rectificatie</strong> — correctie van onjuiste gegevens</li>
+            <li>• <strong>Verwijdering</strong> — wissen van uw gegevens (tenzij wettelijke bewaarplicht)</li>
+            <li>• <strong>Bezwaar</strong> — bezwaar maken tegen verwerking</li>
+            <li>• <strong>Overdraagbaarheid</strong> — uw gegevens ontvangen in een leesbaar formaat</li>
+          </ul>
+          <p class="mt-4 text-sm text-text">
+            Neem contact op via <a href={`mailto:${email}`} class="text-clarity">{email}</a> om een van deze rechten uit te oefenen. Wij reageren binnen 30 dagen.
+          </p>
+        </div>
+
+        <div>
+          <h2 class="mb-4">7. Cookies</h2>
+          <p class="text-text">
+            Deze website gebruikt <strong>geen tracking cookies</strong> en <strong>geen analytics</strong>. Wij volgen uw gedrag niet. Er worden alleen technisch noodzakelijke cookies gebruikt indien vereist door onze hosting.
+          </p>
+        </div>
+
+        <div>
+          <h2 class="mb-4">8. Beveiliging</h2>
+          <p class="text-text">
+            Wij nemen passende technische en organisatorische maatregelen om uw gegevens te beschermen tegen ongeoorloofde toegang, verlies of misbruik. De website wordt beveiligd via HTTPS-encryptie.
+          </p>
+        </div>
+
+        <div>
+          <h2 class="mb-4">9. Klacht indienen</h2>
+          <p class="text-text">
+            Als u van mening bent dat wij niet correct omgaan met uw gegevens, kunt u een klacht indienen bij de <strong>Gegevensbeschermingsautoriteit</strong> (GBA): <a href="https://www.gegevensbeschermingsautoriteit.be" target="_blank" rel="noopener noreferrer" class="text-clarity">www.gegevensbeschermingsautoriteit.be</a>
+          </p>
+        </div>
+
+        <div class="pt-6 border-t" style="border-color: var(--color-border);">
+          <p class="text-sm text-text-light">
+            Dit privacybeleid is voor het laatst bijgewerkt op <strong>april 2026</strong>. Wijzigingen worden op deze pagina gepubliceerd.
+          </p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+</Layout>

@@ -53,7 +53,7 @@ const fallbackFaqs = [
   {
     categorie: 'bijdrage',
     vraag: 'Hoe weet ik dat mijn geld goed wordt besteed?',
-    antwoord: 'Vier lagen van toezicht: (1) een onafhankelijke Trustee (mutawalli) die juridisch aansprakelijk is; (2) een Shariah Advisory Board van drie islamitische geleerden die toetsen op shariah-conformiteit; (3) maandelijkse hisab die publiek is; en (4) Belgische wetgeving via onze VZW-structuur (jaarrekening, audit, toezicht).',
+    antwoord: 'Vier lagen van toezicht: (1) een onafhankelijke Trustee (mutawalli) die juridisch aansprakelijk is; (2) een Shariah Raad van drie islamitische geleerden die toetsen op shariah-conformiteit; (3) maandelijkse hisab die publiek is; en (4) Belgische wetgeving via onze VZW-structuur (jaarrekening, audit, toezicht).',
   },
 
   // ── NALATENSCHAP ──
@@ -87,7 +87,7 @@ const fallbackFaqs = [
   {
     categorie: 'vertrouwen',
     vraag: 'Wie zit er achter Ummah.be Waqf?',
-    antwoord: 'Het initiatief is opgestart door Nasser, een Belgisch-Marokkaanse ondernemer en moslim. Hij is geen eigenaar van de waqf — hij is één van de eerste bouwers. De waqf zelf hoort niemand toe; ze wordt beheerd door een onafhankelijke Trustee en getoetst door een Shariah Advisory Board. Lees meer op de "Over Ons" pagina.',
+    antwoord: 'Het initiatief is opgestart door Nasser, een Belgisch-Marokkaanse ondernemer en moslim. Hij is geen eigenaar van de waqf — hij is één van de eerste bouwers. De waqf zelf hoort niemand toe; ze wordt beheerd door een onafhankelijke Trustee en getoetst door een Shariah Raad. Lees meer op de "Over Ons" pagina.',
   },
   {
     categorie: 'vertrouwen',
@@ -114,7 +114,7 @@ const fallbackFaqs = [
   {
     categorie: 'praktisch',
     vraag: 'Hoe kan ik op de hoogte blijven?',
-    antwoord: 'Laat het ons weten via de contactpagina. Geen nieuwsbrieven, geen spam — alleen wanneer er iets belangrijks te delen is, zoals de eerste hisab of de aankondiging van de Trustee en Shariah Board.',
+    antwoord: 'Laat het ons weten via de contactpagina. Geen nieuwsbrieven, geen spam — alleen wanneer er iets belangrijks te delen is, zoals de eerste hisab of de aankondiging van de Trustee en Shariah Raad.',
   },
   {
     categorie: 'praktisch',
@@ -153,8 +153,8 @@ const gesorteerdeGroepen = groepVolgorde.filter(cat => groepen[cat]?.length > 0)
 <Layout title="Veelgestelde vragen — Ummah.be Waqf" description="Alle antwoorden op één plek. Wat is een waqf? Hoe werkt een bijdrage? Wat met nalatenschap? Hier vind je de antwoorden.">
 
   <!-- HERO -->
-  <section class="py-20" style="background: var(--color-capital);">
-    <div class="container text-center max-w-[800px]">
+  <section class="section" style="background: var(--color-capital);">
+    <div class="container text-center max-w-[900px]">
       <h1 class="text-white mb-4 fade-up">Veelgestelde vragen</h1>
       <p class="text-white/80 text-lg fade-up delay-1">
         Alles wat je wilt weten op één plek. Klik op een categorie of scroll erdoor.
@@ -164,7 +164,7 @@ const gesorteerdeGroepen = groepVolgorde.filter(cat => groepen[cat]?.length > 0)
 
   <!-- CATEGORIE NAVIGATIE -->
   <section class="py-10" style="background: white; border-bottom: 1px solid var(--color-border);">
-    <div class="container max-w-[1000px]">
+    <div class="container max-w-[900px]">
       <div class="flex flex-wrap gap-3 justify-center">
         {gesorteerdeGroepen.map((cat) => (
           <a
@@ -188,7 +188,7 @@ const gesorteerdeGroepen = groepVolgorde.filter(cat => groepen[cat]?.length > 0)
     const isEven = idx % 2 === 0;
     return (
       <section id={cat} class="section" style={isEven ? '' : 'background: white;'}>
-        <div class="container max-w-[850px]">
+        <div class="container max-w-[900px]">
           <div class="flex items-center gap-4 mb-10 fade-up">
             <div class="w-14 h-14 rounded-full flex items-center justify-center text-2xl shrink-0" style={`background: ${info.kleur}15;`}>
               {info.icon}
@@ -221,7 +221,7 @@ const gesorteerdeGroepen = groepVolgorde.filter(cat => groepen[cat]?.length > 0)
   })}
 
   <!-- CONTACT CTA -->
-  <section class="py-20" style="background: var(--color-capital);">
+  <section class="section" style="background: var(--color-capital);">
     <div class="container text-center max-w-[700px]">
       <h2 class="text-white mb-4 fade-up">Staat jouw vraag er niet bij?</h2>
       <p class="text-white/80 text-lg mb-8 fade-up delay-1">

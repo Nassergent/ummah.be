@@ -1,12 +1,12 @@
 ---
 import '../styles/global.css';
 import '@fontsource/inter/400.css';
-import '@fontsource/inter/500.css';
 import '@fontsource/inter/600.css';
 import '@fontsource/inter/700.css';
 import '@fontsource/playfair-display/400.css';
 import '@fontsource/playfair-display/700.css';
-import '@fontsource/playfair-display/900.css';
+import '@fontsource/amiri/400.css';
+import '@fontsource/amiri/700.css';
 
 import Navbar from '../components/layout/Navbar.astro';
 import Footer from '../components/layout/Footer.astro';
@@ -17,6 +17,7 @@ interface Props {
 }
 
 const { title = 'Ummah.be Waqf', description = 'Kapitaal is heilig. Opbrengsten dienen moslims. Voor altijd.' } = Astro.props;
+const canonicalURL = new URL(Astro.url.pathname, 'https://ummah.be');
 ---
 
 <!doctype html>
@@ -24,19 +25,102 @@ const { title = 'Ummah.be Waqf', description = 'Kapitaal is heilig. Opbrengsten 
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="color-scheme" content="light" />
     <meta name="generator" content={Astro.generator} />
+
+    <!-- Resource hints: early connection to Sanity CDN for images -->
+    <link rel="preconnect" href="https://cdn.sanity.io" crossorigin />
+    <link rel="dns-prefetch" href="https://cdn.sanity.io" />
     <title>{title}</title>
     <meta name="description" content={description} />
+    <link rel="canonical" href={canonicalURL} />
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+
+    <!-- Open Graph -->
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
     <meta property="og:type" content="website" />
-    <meta property="og:url" content="https://ummah.be" />
+    <meta property="og:url" content={canonicalURL} />
+    <meta property="og:image" content="https://ummah.be/og-image.png" />
+    <meta property="og:locale" content="nl_BE" />
+    <meta property="og:site_name" content="Ummah.be Waqf" />
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content="https://ummah.be/og-image.png" />
+
+    <!-- Theme Color -->
+    <meta name="theme-color" content="#1B5E3F" />
   </head>
   <body>
+    <a href="#main-content" class="skip-link">Naar hoofdinhoud</a>
     <Navbar />
-    <main>
+    <main id="main-content">
       <slot />
     </main>
     <Footer />
+
+    <script>
+      // Intersection Observer for .fade-up scroll-triggered animations
+      (() => {
+        const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+        const els = document.querySelectorAll('.fade-up');
+
+        if (prefersReducedMotion) {
+          // Skip animation — show everything immediately
+          els.forEach(el => {
+            el.style.opacity = '1';
+            el.style.transform = 'none';
+          });
+          return;
+        }
+
+        const observer = new IntersectionObserver(
+          (entries) => {
+            entries.forEach(entry => {
+              if (entry.isIntersecting) {
+                entry.target.classList.add('fade-up-visible');
+                observer.unobserve(entry.target);
+              }
+            });
+          },
+          { threshold: 0.1 }
+        );
+
+        els.forEach(el => observer.observe(el));
+      })();
+
+      // Intersection Observer for .counter-animate count-up
+      (() => {
+        const counters = document.querySelectorAll('.counter-animate');
+        if (!counters.length) return;
+
+        if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+          counters.forEach(el => el.classList.add('in-view'));
+          return;
+        }
+
+        const counterObserver = new IntersectionObserver(
+          (entries) => {
+            entries.forEach(entry => {
+              if (entry.isIntersecting) {
+                entry.target.classList.add('in-view');
+                counterObserver.unobserve(entry.target);
+              }
+            });
+          },
+          { threshold: 0.3 }
+        );
+
+        counters.forEach(el => counterObserver.observe(el));
+      })();
+    </script>
   </body>
 </html>

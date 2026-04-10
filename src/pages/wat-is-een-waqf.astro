@@ -2,19 +2,19 @@
 import Layout from '../layouts/Layout.astro';
 ---
 
-<Layout title="Wat is een Waqf? — Ummah.be" description="Een Islamic tradition van eeuwige gave. Sadaqah jariyah—liefdadigheid die blijft stromen.">
+<Layout title="Wat is een Waqf? — Ummah.be" description="Een islamitische traditie van eeuwige gave. Sadaqah jariyah — liefdadigheid die blijft stromen.">
 
   <!-- HERO -->
-  <section class="py-20" style="background: var(--color-capital);">
+  <section class="section" style="background: var(--color-capital);">
     <div class="container text-center">
       <h1 class="text-white mb-4 fade-up">Wat is een Waqf?</h1>
-      <p class="text-white/70 text-lg fade-up delay-1">Een Islamic tradition van eeuwige gave</p>
+      <p class="text-white/80 text-lg fade-up delay-1">Een islamitische traditie van eeuwige gave</p>
     </div>
   </section>
 
   <!-- DEFINITIE -->
   <section class="section">
-    <div class="container max-w-[800px]">
+    <div class="container max-w-[700px]">
       <div class="fade-up">
         <h2 class="mb-6">De definitie</h2>
         <p class="text-lg leading-relaxed mb-4" style="color: var(--color-text);">
@@ -27,8 +27,8 @@ import Layout from '../layouts/Layout.astro';
           <p class="text-sm" style="color: var(--color-text);">
             💡 <strong>Zie het werken door de geschiedenis.</strong> Van Uthman's waterput in Medina (7e eeuw) tot Al-Azhar Universiteit (10e eeuw) tot het Süleymaniye complex in Istanbul (16e eeuw) — duizend jaar waqf-verhalen bewijzen dat deze traditie werkt.
           </p>
-          <a href="/verhalen" class="inline-block mt-3 text-sm font-semibold no-underline" style="color: var(--color-capital);">
-            Lees de verhalen →
+          <a href="/verhalen" class="inline-block mt-3 text-sm font-semibold no-underline link-arrow" style="color: var(--color-capital);">
+            Lees de verhalen
           </a>
         </div>
       </div>
@@ -38,7 +38,7 @@ import Layout from '../layouts/Layout.astro';
   <!-- ISLAMIC GRONDSLAG -->
   <section class="section" style="background: white;">
     <div class="container">
-      <h2 class="text-center mb-12 fade-up">Islamic Grondslag</h2>
+      <h2 class="text-center mb-10 fade-up">Islamitische Grondslag</h2>
       <div class="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-[900px] mx-auto">
         <div class="card card-capital fade-up delay-1">
           <div class="badge-sacred mb-4">Quran — Surah Al-Imran 3:92</div>
@@ -86,9 +86,9 @@ import Layout from '../layouts/Layout.astro';
   <!-- WAQF vs LIEFDADIGHEID -->
   <section class="section">
     <div class="container">
-      <h2 class="text-center mb-12 fade-up">Waqf vs. Gewone Liefdadigheid</h2>
-      <div class="max-w-[800px] mx-auto overflow-x-auto fade-up delay-1">
-        <table class="w-full text-left border-collapse">
+      <h2 class="text-center mb-10 fade-up">Waqf vs. Gewone Liefdadigheid</h2>
+      <div class="max-w-[900px] mx-auto fade-up delay-1">
+        <table class="responsive-table">
           <thead>
             <tr style="background: var(--color-capital); color: var(--color-peace);">
               <th class="p-4 font-semibold">Aspect</th>
@@ -98,29 +98,29 @@ import Layout from '../layouts/Layout.astro';
           </thead>
           <tbody class="text-sm">
             <tr class="border-b border-border">
-              <td class="p-4 font-medium">Doel</td>
-              <td class="p-4" style="color: var(--color-text-light);">Helpen nu</td>
-              <td class="p-4 font-semibold" style="color: var(--color-capital);">Helpen voor altijd</td>
+              <td class="p-4 font-medium" data-label="Aspect">Doel</td>
+              <td class="p-4" style="color: var(--color-text-light);" data-label="Liefdadigheid">Helpen nu</td>
+              <td class="p-4 font-semibold" style="color: var(--color-capital);" data-label="Waqf">Helpen voor altijd</td>
             </tr>
             <tr class="border-b border-border" style="background: white;">
-              <td class="p-4 font-medium">Kapitaal</td>
-              <td class="p-4" style="color: var(--color-text-light);">Besteed onmiddellijk</td>
-              <td class="p-4 font-semibold" style="color: var(--color-capital);">Heilig (nooit aangeraakt)</td>
+              <td class="p-4 font-medium" data-label="Aspect">Kapitaal</td>
+              <td class="p-4" style="color: var(--color-text-light);" data-label="Liefdadigheid">Besteed onmiddellijk</td>
+              <td class="p-4 font-semibold" style="color: var(--color-capital);" data-label="Waqf">Heilig (nooit aangeraakt)</td>
             </tr>
             <tr class="border-b border-border">
-              <td class="p-4 font-medium">Opbrengsten</td>
-              <td class="p-4" style="color: var(--color-text-light);">N.v.t.</td>
-              <td class="p-4 font-semibold" style="color: var(--color-capital);">Verwacht rendement*</td>
+              <td class="p-4 font-medium" data-label="Aspect">Opbrengsten</td>
+              <td class="p-4" style="color: var(--color-text-light);" data-label="Liefdadigheid">N.v.t.</td>
+              <td class="p-4 font-semibold" style="color: var(--color-capital);" data-label="Waqf">Verwacht rendement*</td>
             </tr>
             <tr class="border-b border-border" style="background: white;">
-              <td class="p-4 font-medium">Duur</td>
-              <td class="p-4" style="color: var(--color-text-light);">Eenmalig</td>
-              <td class="p-4 font-semibold" style="color: var(--color-capital);">Eeuwig</td>
+              <td class="p-4 font-medium" data-label="Aspect">Duur</td>
+              <td class="p-4" style="color: var(--color-text-light);" data-label="Liefdadigheid">Eenmalig</td>
+              <td class="p-4 font-semibold" style="color: var(--color-capital);" data-label="Waqf">Eeuwig</td>
             </tr>
             <tr>
-              <td class="p-4 font-medium">Islamic Rating</td>
-              <td class="p-4" style="color: var(--color-text-light);">Mooi, maar voorbijgaand</td>
-              <td class="p-4 font-semibold" style="color: var(--color-capital);">Noblest: sadaqah jariyah</td>
+              <td class="p-4 font-medium" data-label="Aspect">Islamitische Waardering</td>
+              <td class="p-4" style="color: var(--color-text-light);" data-label="Liefdadigheid">Mooi, maar voorbijgaand</td>
+              <td class="p-4 font-semibold" style="color: var(--color-capital);" data-label="Waqf">Noblest: sadaqah jariyah</td>
             </tr>
           </tbody>
         </table>
@@ -133,35 +133,35 @@ import Layout from '../layouts/Layout.astro';
 
   <!-- FAQ -->
   <section class="section" style="background: white;">
-    <div class="container max-w-[800px]">
-      <h2 class="text-center mb-12 fade-up">Veelgestelde Vragen</h2>
+    <div class="container max-w-[900px]">
+      <h2 class="text-center mb-10 fade-up">Veelgestelde Vragen</h2>
       <div class="space-y-4">
         <details class="card fade-up delay-1 cursor-pointer">
-          <summary class="font-heading font-bold text-lg" style="color: var(--color-capital);">Kan ik mijn bijdrage terugkrijgen?</summary>
+          <summary class="faq-summary">Kan ik mijn bijdrage terugkrijgen?</summary>
           <p class="mt-4 text-sm leading-relaxed" style="color: var(--color-text-light);">
             Nee. Zodra je bijdraagt aan het waqf-kapitaal, is die gift onschendbaar (inviolable). Dat is wat een waqf definieert: het kapitaal blijft juridisch vastgelegd en mag nooit worden uitgegeven of teruggegeven. Alleen de opbrengsten worden gebruikt voor het doel. Dit is precies waarom een waqf zo waardevol is — jouw bijdrage blijft generaties lang werken.
           </p>
         </details>
         <details class="card fade-up delay-2 cursor-pointer">
-          <summary class="font-heading font-bold text-lg" style="color: var(--color-capital);">Wat gebeurt er met de opbrengsten?</summary>
+          <summary class="faq-summary">Wat gebeurt er met de opbrengsten?</summary>
           <p class="mt-4 text-sm leading-relaxed" style="color: var(--color-text-light);">
             De verwachte jaarlijkse opbrengsten (circa 5%, niet gegarandeerd) gaan naar: mentorschap voor moslims, e-books en educatie, community-opbouw, en operationele kosten (maximaal 10% van de opbrengsten). Elke maand publiceren we een hisab (financieel rapport) met exact waar het naartoe ging.
           </p>
         </details>
         <details class="card fade-up delay-3 cursor-pointer">
-          <summary class="font-heading font-bold text-lg" style="color: var(--color-capital);">Wie houdt toezicht?</summary>
+          <summary class="faq-summary">Wie houdt toezicht?</summary>
           <p class="mt-4 text-sm leading-relaxed" style="color: var(--color-text-light);">
             Vier lagen van toezicht: (1) een onafhankelijke Trustee (mutawalli) die juridisch aansprakelijk is; (2) een Shariah Advisory Board van drie islamitische geleerden die toetsen op shariah-conformiteit; (3) jij als donor, via de maandelijkse hisab; en (4) de Belgische wetgeving die VZW-structuren reguleert.
           </p>
         </details>
         <details class="card fade-up delay-4 cursor-pointer">
-          <summary class="font-heading font-bold text-lg" style="color: var(--color-capital);">Wat als Ummah.be Waqf zou stoppen?</summary>
+          <summary class="faq-summary">Wat als Ummah.be Waqf zou stoppen?</summary>
           <p class="mt-4 text-sm leading-relaxed" style="color: var(--color-text-light);">
             Als Ummah.be Waqf ooit zou ontbonden worden, gaat het volledige waqf-kapitaal — conform de statuten — naar een andere islamitische charitatieve instelling met een vergelijkbare missie. Het kapitaal kan nooit privé of commercieel worden aangewend.
           </p>
         </details>
         <details class="card fade-up cursor-pointer">
-          <summary class="font-heading font-bold text-lg" style="color: var(--color-capital);">Is een bijdrage aan de waqf hetzelfde als zakat?</summary>
+          <summary class="faq-summary">Is een bijdrage aan de waqf hetzelfde als zakat?</summary>
           <p class="mt-4 text-sm leading-relaxed" style="color: var(--color-text-light);">
             Nee. Zakat is een verplichte jaarlijkse bijdrage (2,5% van het bezittingen boven de nisab-drempel) die aan specifieke categorieën begunstigden moet worden gegeven (de acht asnaf). Een waqf-bijdrage is een vrijwillige sadaqah jariyah — bovenop de zakat, niet in plaats daarvan. Voor zakat kan je beter een erkend zakat-kanaal gebruiken.
           </p>
@@ -171,7 +171,7 @@ import Layout from '../layouts/Layout.astro';
   </section>
 
   <!-- CTA -->
-  <section class="py-20" style="background: var(--color-capital);">
+  <section class="section" style="background: var(--color-capital);">
     <div class="container text-center">
       <h2 class="text-white mb-6 fade-up">Klaar om sadaqah jariyah te geven?</h2>
       <a href="/steun-ons" class="btn" style="background: var(--color-gold); color: var(--color-capital-dark);">Draag bij aan Kapitaal</a>

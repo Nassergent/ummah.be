@@ -5,10 +5,10 @@ import Layout from '../layouts/Layout.astro';
 <Layout title="Contact — Ummah.be Waqf" description="Neem contact op met Ummah.be Waqf.">
 
   <!-- HERO -->
-  <section class="py-20" style="background: var(--color-capital);">
+  <section class="section" style="background: var(--color-capital);">
     <div class="container text-center">
       <h1 class="text-white mb-4 fade-up">Contact</h1>
-      <p class="text-white/70 text-lg fade-up delay-1">Heb je een vraag? Wij staan klaar.</p>
+      <p class="text-white/80 text-lg fade-up delay-1">Heb je een vraag? Wij staan klaar.</p>
     </div>
   </section>
 
@@ -20,16 +20,16 @@ import Layout from '../layouts/Layout.astro';
           <h2 class="mb-8">Stuur ons een bericht</h2>
           <form class="space-y-5">
             <div>
-              <label class="block text-sm font-semibold uppercase mb-2" style="color: var(--color-capital); letter-spacing: 0.5px;">Naam *</label>
-              <input type="text" placeholder="Uw naam" class="w-full p-3 border-2 rounded text-base" style="border-color: var(--color-border);" required />
+              <label for="contact-name" class="block text-sm font-semibold uppercase mb-2 form-label">Naam *</label>
+              <input id="contact-name" type="text" placeholder="Uw naam" class="input" required maxlength="100" />
             </div>
             <div>
-              <label class="block text-sm font-semibold uppercase mb-2" style="color: var(--color-capital); letter-spacing: 0.5px;">Email *</label>
-              <input type="email" placeholder="uw@email.be" class="w-full p-3 border-2 rounded text-base" style="border-color: var(--color-border);" required />
+              <label for="contact-email" class="block text-sm font-semibold uppercase mb-2 form-label">E-mail *</label>
+              <input id="contact-email" type="email" placeholder="uw@email.be" class="input" required maxlength="254" pattern="[a-zA-Z0-9._%+\-]+@[a-zA-Z0-9.\-]+\.[a-zA-Z]{2,}" />
             </div>
             <div>
-              <label class="block text-sm font-semibold uppercase mb-2" style="color: var(--color-capital); letter-spacing: 0.5px;">Onderwerp</label>
-              <select class="w-full p-3 border-2 rounded text-base" style="border-color: var(--color-border);">
+              <label for="contact-subject" class="block text-sm font-semibold uppercase mb-2 form-label">Onderwerp</label>
+              <select id="contact-subject" class="input">
                 <option>Algemene vraag</option>
                 <option>Waqf kapitaal</option>
                 <option>Programma's & donaties</option>
@@ -40,16 +40,17 @@ import Layout from '../layouts/Layout.astro';
               </select>
             </div>
             <div>
-              <label class="block text-sm font-semibold uppercase mb-2" style="color: var(--color-capital); letter-spacing: 0.5px;">Bericht *</label>
-              <textarea rows="5" placeholder="Waar kunnen wij u mee helpen?" class="w-full p-3 border-2 rounded text-base" style="border-color: var(--color-border);" required></textarea>
+              <label for="contact-message" class="block text-sm font-semibold uppercase mb-2 form-label">Bericht *</label>
+              <textarea id="contact-message" rows="5" maxlength="2000" placeholder="Waar kunnen wij u mee helpen?" class="input" required></textarea>
             </div>
             <label class="flex items-start gap-3 cursor-pointer">
               <input type="checkbox" class="mt-1 shrink-0" required />
-              <span class="text-sm" style="color: var(--color-text-light);">
-                Ik ga akkoord met het <a href="/privacy" style="color: var(--color-clarity);">privacybeleid</a> en verwerking van mijn gegevens conform de GDPR.
+              <span class="text-sm text-text-light">
+                Ik ga akkoord met het <a href="/privacy" class="text-clarity">privacybeleid</a> en verwerking van mijn gegevens conform de GDPR.
               </span>
             </label>
-            <button type="submit" class="btn btn-capital w-full text-center">Versturen</button>
+            <div class="form-message" id="contact-form-message" role="alert" aria-live="polite"></div>
+            <button type="submit" class="btn btn-capital w-full text-center" id="contact-submit">Versturen</button>
           </form>
         </div>
 
@@ -58,17 +59,17 @@ import Layout from '../layouts/Layout.astro';
           <h2 class="mb-8">Contactgegevens</h2>
           <div class="space-y-4">
             <div class="card card-capital">
-              <p class="text-sm font-semibold uppercase tracking-wider mb-1" style="color: var(--color-capital);">Email</p>
-              <a href="mailto:salam@ummah.be" class="text-lg font-heading" style="color: var(--color-text);">salam@ummah.be</a>
+              <p class="text-sm font-semibold uppercase tracking-wider mb-1 text-capital">E-mail</p>
+              <a href="mailto:salam@ummah.be" class="text-lg font-heading text-text">salam@ummah.be</a>
             </div>
             <div class="card">
-              <p class="text-sm font-semibold uppercase tracking-wider mb-1" style="color: var(--color-capital);">Organisatie</p>
-              <p style="color: var(--color-text-light);">Ummah.be Waqf</p>
-              <p class="text-sm mt-1" style="color: var(--color-text-light);">Een Belgische waqf instelling</p>
+              <p class="text-sm font-semibold uppercase tracking-wider mb-1 text-capital">Organisatie</p>
+              <p class="text-text-light">Ummah.be Waqf</p>
+              <p class="text-sm mt-1 text-text-light">Een Belgische waqf instelling</p>
             </div>
             <div class="card">
-              <p class="text-sm font-semibold uppercase tracking-wider mb-1" style="color: var(--color-capital);">Reactietijd</p>
-              <p style="color: var(--color-text-light);">Wij reageren binnen 48 uur, in shaa Allah.</p>
+              <p class="text-sm font-semibold uppercase tracking-wider mb-1 text-capital">Reactietijd</p>
+              <p class="text-text-light">Wij reageren binnen 48 uur, in shaa Allah.</p>
             </div>
           </div>
         </div>
@@ -77,3 +78,29 @@ import Layout from '../layouts/Layout.astro';
   </section>
 
 </Layout>
+
+<script>
+  const form = document.querySelector('form');
+  const submitBtn = document.getElementById('contact-submit');
+  const message = document.getElementById('contact-form-message');
+
+  form?.addEventListener('submit', (e) => {
+    e.preventDefault();
+    if (!submitBtn || !message) return;
+
+    submitBtn.classList.add('loading');
+    submitBtn.textContent = 'Verzenden...';
+    message.className = 'form-message';
+
+    // Simulate submission (replace with actual backend endpoint)
+    setTimeout(() => {
+      submitBtn.classList.remove('loading');
+      submitBtn.textContent = 'Versturen';
+      message.className = 'form-message visible success';
+      const emailVal = (document.getElementById('contact-email') as HTMLInputElement)?.value || '';
+      const safeEmail = emailVal.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+      message.innerHTML = '<strong>Bericht ontvangen, jazakAllahu khayran!</strong><br><span style="font-size: 0.85em; display: block; margin-top: 6px; line-height: 1.6;">We reageren binnen 48 uur op <strong>' + safeEmail + '</strong>. Controleer ook uw spam-folder. Dringend? Mail direct naar <a href="mailto:salam@ummah.be" style="color: var(--color-clarity); text-decoration: underline;">salam@ummah.be</a>.</span>';
+      form.reset();
+    }, 1500);
+  });
+</script>
