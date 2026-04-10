@@ -19,6 +19,7 @@ import Layout from '../layouts/Layout.astro';
         <button class="tab-btn btn text-xs" data-tab="waqf" role="tab" aria-selected="true" aria-controls="tab-waqf" id="tab-btn-waqf" style="background: var(--color-capital); color: var(--color-peace);">Waqf Kapitaal</button>
         <button class="tab-btn btn text-xs" data-tab="program" role="tab" aria-selected="false" aria-controls="tab-program" id="tab-btn-program" style="background: var(--color-border); color: var(--color-text);">Steun Programma's</button>
         <button class="tab-btn btn text-xs" data-tab="zakat" role="tab" aria-selected="false" aria-controls="tab-zakat" id="tab-btn-zakat" style="background: var(--color-border); color: var(--color-text);">Zakat</button>
+        <button class="tab-btn btn text-xs" data-tab="bouwers" role="tab" aria-selected="false" aria-controls="tab-bouwers" id="tab-btn-bouwers" style="background: var(--color-border); color: var(--color-text);">De Bouwers</button>
       </div>
 
       <!-- TAB 1: WAQF KAPITAAL -->
@@ -144,6 +145,28 @@ import Layout from '../layouts/Layout.astro';
           </div>
         </div>
       </div>
+      <!-- TAB 4: DE BOUWERS -->
+      <div id="tab-bouwers" class="tab-content hidden" role="tabpanel" aria-labelledby="tab-btn-bouwers">
+        <div class="card text-center">
+          <div class="w-16 h-16 mx-auto mb-6 rounded-full flex items-center justify-center" style="background: linear-gradient(135deg, rgba(27,94,63,0.15), rgba(201,169,97,0.15));">
+            <svg class="w-8 h-8 text-capital" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M18 18.72a9.094 9.094 0 003.741-.479 3 3 0 00-4.682-2.72m.94 3.198l.001.031c0 .225-.012.447-.037.666A11.944 11.944 0 0112 21c-2.17 0-4.207-.576-5.963-1.584A6.062 6.062 0 016 18.719m12 0a5.971 5.971 0 00-.941-3.197m0 0A5.995 5.995 0 0012 12.75a5.995 5.995 0 00-5.058 2.772m0 0a3 3 0 00-4.681 2.72 8.986 8.986 0 003.74.477m.94-3.197a5.971 5.971 0 00-.94 3.197M15 6.75a3 3 0 11-6 0 3 3 0 016 0zm6 3a2.25 2.25 0 11-4.5 0 2.25 2.25 0 014.5 0zm-13.5 0a2.25 2.25 0 11-4.5 0 2.25 2.25 0 014.5 0z" />
+            </svg>
+          </div>
+          <h2 class="mb-4">De Bouwers</h2>
+          <p class="text-lg mb-6 text-clarity">Bouw mee aan een waqf die eeuwig de Ummah dient</p>
+          <p class="mb-8 text-text-light max-w-[600px] mx-auto">
+            Word Bouwer en draag maandelijks bij aan het waqf-kapitaal. Vanaf €5 per maand. De eerste 50 Bouwers worden Founding Bouwers met exclusieve erkenning.
+          </p>
+          <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full text-xs font-semibold mb-8" style="background: rgba(201,169,97,0.12); color: var(--color-capital); border: 1px solid rgba(201,169,97,0.25);">
+            <span class="w-2 h-2 rounded-full animate-pulse" style="background: var(--color-gold);"></span>
+            Pre-launch — wachtlijst open
+          </div>
+          <div>
+            <a href="/de-bouwers" class="btn btn-capital">Word Bouwer</a>
+          </div>
+        </div>
+      </div>
     </div>
   </section>
 
@@ -152,7 +175,7 @@ import Layout from '../layouts/Layout.astro';
 <script>
   const tabs = document.querySelectorAll<HTMLButtonElement>('.tab-btn');
   const contents = document.querySelectorAll('.tab-content');
-  const colors: Record<string, string> = { waqf: '#1B5E3F', program: '#4A7C59', zakat: '#D9845B' };
+  const colors: Record<string, string> = { waqf: '#1B5E3F', program: '#4A7C59', zakat: '#D9845B', bouwers: '#1B5E3F' };
 
   function activateTab(tab: string) {
     contents.forEach(c => c.classList.add('hidden'));

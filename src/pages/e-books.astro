@@ -1,0 +1,175 @@
+---
+import Layout from '../layouts/Layout.astro';
+
+const ebooks = [
+  {
+    title: "Wat is Islam?",
+    category: "Nieuw bij Islam",
+    description: "Een heldere introductie voor iedereen die meer wilt weten over de islam. Geschreven in begrijpelijk Nederlands.",
+    pages: "32 pagina's",
+    color: "bg-clarity"
+  },
+  {
+    title: "De Eerste Stappen",
+    category: "Nieuwe Moslims",
+    description: "Een praktische gids voor wie de shahada heeft uitgesproken. Van gebed tot gemeenschap.",
+    pages: "48 pagina's",
+    color: "bg-capital"
+  },
+  {
+    title: "Waqf: Een Eeuwige Gift",
+    category: "Islamitische Financiën",
+    description: "Alles over de waqf-traditie — van de Profeet ﷺ tot vandaag. Hoe werkt het en waarom doet het ertoe?",
+    pages: "24 pagina's",
+    color: "bg-gold"
+  },
+  {
+    title: "Ramadan Handboek",
+    category: "Voor het Gezin",
+    description: "Praktische tips, dua's en uitleg over de vastenmaand. Voor het hele gezin.",
+    pages: "40 pagina's",
+    color: "bg-growth"
+  }
+];
+
+const categories = ["Alle", "Nieuw bij Islam", "Nieuwe Moslims", "Islamitische Financiën", "Voor het Gezin"];
+---
+
+<Layout title="E-books — Ummah.be Waqf" description="Gratis islamitische e-books als sadaqah jariyah. Download zonder voorwaarden.">
+
+  <!-- HERO -->
+  <section class="section" style="background: var(--color-peace);">
+    <div class="container text-center max-w-[700px]">
+      <h1 class="mb-4 fade-up text-capital">E-books</h1>
+      <p class="text-lg md:text-xl text-clarity font-semibold fade-up delay-1">Gratis kennis als sadaqah jariyah — voor iedereen</p>
+    </div>
+  </section>
+
+  <!-- INTRO -->
+  <section class="section-sm">
+    <div class="container-narrow">
+      <div class="card card-static fade-up">
+        <blockquote class="blockquote-gold pl-4 mb-4 font-heading italic text-lg">
+          "Wanneer een mens sterft, stoppen al zijn daden behalve drie: doorlopende liefdadigheid, kennis waar anderen profijt van hebben, en een vroom kind dat voor hem bidt."
+        </blockquote>
+        <p class="text-sm text-text-light mb-4">— Sahih Muslim 1631</p>
+        <p class="text-base text-text">
+          Deze e-books zijn gratis. Geen email vereist. Geen voorwaarden. Kennis delen is onze eerste daad van sadaqah jariyah.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- E-BOOKS SECTION -->
+  <section class="section" style="background: white;">
+    <div class="container">
+
+      <!-- Download counter -->
+      <div class="text-center mb-8 fade-up">
+        <p class="text-sm font-semibold text-text-light">
+          <span class="text-capital font-bold text-lg">0</span> e-books gedownload
+        </p>
+      </div>
+
+      <!-- Category filter -->
+      <div class="flex gap-2 mb-12 justify-center flex-wrap fade-up delay-1" role="tablist" aria-label="E-book categorieën">
+        {categories.map((cat, i) => (
+          <button
+            class="filter-btn btn text-xs"
+            data-category={cat}
+            role="tab"
+            aria-selected={i === 0 ? "true" : "false"}
+            style={i === 0 ? "background: var(--color-capital); color: var(--color-peace);" : "background: var(--color-border); color: var(--color-text);"}
+          >
+            {cat}
+          </button>
+        ))}
+      </div>
+
+      <!-- E-books grid -->
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6" id="ebooks-grid">
+        {ebooks.map((book, i) => (
+          <div class={`card fade-up delay-${i + 1} ebook-card`} data-category={book.category}>
+            <!-- Book cover placeholder -->
+            <div class={`${book.color} rounded-lg mb-4 flex items-center justify-center p-6`} style="min-height: 180px;">
+              <p class="font-heading font-bold text-lg text-center text-white leading-tight">{book.title}</p>
+            </div>
+
+            <!-- Category badge -->
+            <span class="badge badge-sacred mb-3">{book.category}</span>
+
+            <!-- Title -->
+            <h3 class="text-lg mb-2">{book.title}</h3>
+
+            <!-- Description -->
+            <p class="text-sm text-text-light mb-3 text-clamp-3">{book.description}</p>
+
+            <!-- Page count -->
+            <p class="text-xs text-text-light mb-4">{book.pages}</p>
+
+            <!-- Download button -->
+            <a href="#" class="btn btn-capital text-center w-full block">Download PDF</a>
+          </div>
+        ))}
+      </div>
+
+    </div>
+  </section>
+
+  <!-- CALL FOR SUGGESTIONS -->
+  <section class="section-sm">
+    <div class="container text-center max-w-[600px] fade-up">
+      <h2 class="mb-4">Mis je een onderwerp?</h2>
+      <p class="text-lg text-text-light mb-6">Laat het ons weten. We schrijven graag nieuwe e-books op basis van jullie vragen.</p>
+      <a href="/contact" class="btn btn-outline">Stel een onderwerp voor</a>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="section-lg" style="background: var(--color-capital-dark);">
+    <div class="container text-center max-w-[700px]">
+      <p class="display-quote text-white/90 mb-8 fade-up" style="font-style: italic;">
+        Kennis delen is sadaqah jariyah
+      </p>
+      <p class="text-white/70 text-lg mb-10 fade-up delay-1">Steun ons werk en help ons meer kennis te verspreiden.</p>
+      <div class="flex gap-4 justify-center flex-wrap fade-up delay-2">
+        <a href="/de-bouwers" class="btn btn-gold">Word Bouwer</a>
+        <a href="/wat-we-doen" class="btn btn-outline-white">Bekijk al onze projecten</a>
+      </div>
+    </div>
+  </section>
+
+</Layout>
+
+<script>
+  // Category filter functionality
+  (() => {
+    const filterBtns = document.querySelectorAll<HTMLButtonElement>('.filter-btn');
+    const cards = document.querySelectorAll<HTMLElement>('.ebook-card');
+
+    filterBtns.forEach(btn => {
+      btn.addEventListener('click', () => {
+        const category = btn.dataset.category;
+
+        // Update button states
+        filterBtns.forEach(b => {
+          b.setAttribute('aria-selected', 'false');
+          b.style.background = 'var(--color-border)';
+          b.style.color = 'var(--color-text)';
+        });
+        btn.setAttribute('aria-selected', 'true');
+        btn.style.background = 'var(--color-capital)';
+        btn.style.color = 'var(--color-peace)';
+
+        // Filter cards
+        cards.forEach(card => {
+          if (category === 'Alle' || card.dataset.category === category) {
+            card.style.display = '';
+          } else {
+            card.style.display = 'none';
+          }
+        });
+      });
+    });
+  })();
+</script>

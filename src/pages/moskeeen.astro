@@ -73,10 +73,112 @@ import Layout from '../layouts/Layout.astro';
             Wij bieden moskeeën een compleet digitaal platform: website, gebedstijden,
             donaties, evenementen en meer. Alles beheerd via een eenvoudig CMS.
           </p>
-          <a href="/contact" class="btn btn-capital text-xs">Neem Contact Op</a>
+          <a href="#aanvraag" class="btn btn-capital text-xs">Vraag nu aan</a>
         </div>
       </div>
     </div>
   </section>
+
+  <!-- AANVRAAG FORMULIER -->
+  <section id="aanvraag" class="section" style="background: var(--color-surface);">
+    <div class="container max-w-[640px]">
+      <div class="text-center mb-12 fade-up">
+        <h2 class="mb-4">Website aanvragen voor uw moskee</h2>
+        <p style="color: var(--color-text-light);">Vul het formulier in en wij nemen binnen 48 uur contact op.</p>
+      </div>
+
+      <form id="moskee-aanvraag-form" class="space-y-6 fade-up delay-1" novalidate>
+        <div>
+          <label for="moskee-naam" class="form-label">Moskee naam *</label>
+          <input type="text" id="moskee-naam" name="moskee-naam" required class="input" placeholder="Bijv. Moskee Al-Ihsan" />
+        </div>
+
+        <div>
+          <label for="stad" class="form-label">Stad *</label>
+          <input type="text" id="stad" name="stad" required class="input" placeholder="Bijv. Gent" />
+        </div>
+
+        <div>
+          <label for="contactpersoon" class="form-label">Contactpersoon naam *</label>
+          <input type="text" id="contactpersoon" name="contactpersoon" required class="input" placeholder="Uw volledige naam" />
+        </div>
+
+        <div>
+          <label for="email" class="form-label">E-mail *</label>
+          <input type="email" id="email" name="email" required class="input" placeholder="uw@email.be" />
+        </div>
+
+        <div>
+          <label for="telefoon" class="form-label">Telefoon</label>
+          <input type="tel" id="telefoon" name="telefoon" class="input" placeholder="+32 ..." />
+        </div>
+
+        <div>
+          <label for="bericht" class="form-label">Bericht</label>
+          <textarea id="bericht" name="bericht" rows="4" class="input" placeholder="Vertel ons over uw moskee en wat u zoekt"></textarea>
+        </div>
+
+        <div class="flex items-start gap-3">
+          <input type="checkbox" id="privacy" name="privacy" required class="checkbox-touch" />
+          <label for="privacy" class="text-sm" style="color: var(--color-text-light);">
+            Ik ga akkoord met het <a href="/privacy" class="underline" style="color: var(--color-capital);">privacybeleid</a> en geef toestemming om gecontacteerd te worden.
+          </label>
+        </div>
+
+        <div id="form-message" class="text-sm font-medium" aria-live="polite"></div>
+
+        <button type="submit" class="btn btn-capital w-full">Aanvraag versturen</button>
+      </form>
+    </div>
+  </section>
+
+  <script>
+    const form = document.getElementById('moskee-aanvraag-form') as HTMLFormElement;
+    const message = document.getElementById('form-message')!;
+
+    form?.addEventListener('submit', (e) => {
+      e.preventDefault();
+      message.textContent = '';
+      message.className = 'text-sm font-medium';
+
+      // Validate required fields
+      const naam = (form.querySelector('#moskee-naam') as HTMLInputElement).value.trim();
+      const stad = (form.querySelector('#stad') as HTMLInputElement).value.trim();
+      const contact = (form.querySelector('#contactpersoon') as HTMLInputElement).value.trim();
+      const email = (form.querySelector('#email') as HTMLInputElement).value.trim();
+      const privacy = (form.querySelector('#privacy') as HTMLInputElement).checked;
+
+      if (!naam || !stad || !contact || !email) {
+        message.textContent = 'Vul alle verplichte velden in.';
+        message.style.color = 'var(--color-error, #e74c3c)';
+        return;
+      }
+
+      if (!email.includes('@') || !email.includes('.')) {
+        message.textContent = 'Vul een geldig e-mailadres in.';
+        message.style.color = 'var(--color-error, #e74c3c)';
+        return;
+      }
+
+      if (!privacy) {
+        message.textContent = 'U moet akkoord gaan met het privacybeleid.';
+        message.style.color = 'var(--color-error, #e74c3c)';
+        return;
+      }
+
+      // Simulate submission
+      const btn = form.querySelector('button[type="submit"]') as HTMLButtonElement;
+      btn.disabled = true;
+      btn.textContent = 'Verzenden...';
+
+      setTimeout(() => {
+        form.reset();
+        btn.disabled = false;
+        btn.textContent = 'Aanvraag versturen';
+        message.textContent = 'Bedankt! Uw aanvraag is ontvangen. Wij nemen binnen 48 uur contact op.';
+        message.style.color = 'var(--color-capital)';
+      }, 1500);
+    });
+  </script>
 
 </Layout>
