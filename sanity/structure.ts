@@ -117,6 +117,15 @@ export const structure: StructureResolver = (S) =>
                     .filter('_type == "mosque"')
                     .defaultOrdering([{ field: 'volgorde', direction: 'asc' }])
                 ),
+              S.divider(),
+              S.listItem()
+                .title('📬 Koran Aanvragen')
+                .child(
+                  S.documentList()
+                    .title('Koran Aanvragen')
+                    .filter('_type == "koranAanvraag"')
+                    .defaultOrdering([{ field: 'datum', direction: 'desc' }])
+                ),
             ])
         ),
 

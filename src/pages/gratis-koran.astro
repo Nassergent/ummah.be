@@ -181,6 +181,12 @@ import Layout from '../layouts/Layout.astro';
           </label>
         </div>
 
+        <!-- Honeypot -->
+        <div style="position: absolute; left: -9999px;" aria-hidden="true">
+          <label for="website">Website</label>
+          <input type="text" id="website" name="website" tabindex="-1" autocomplete="off" />
+        </div>
+
         <!-- Submit -->
         <button type="submit" class="btn btn-capital w-full text-center">Koran aanvragen</button>
 
@@ -237,6 +243,9 @@ import Layout from '../layouts/Layout.astro';
       const straat = (form.querySelector('#straat') as HTMLInputElement).value.trim();
       const postcode = (form.querySelector('#postcode') as HTMLInputElement).value.trim();
       const stad = (form.querySelector('#stad') as HTMLInputElement).value.trim();
+      const reden = (form.querySelector('#reden') as HTMLSelectElement).value;
+      const opmerkingen = (form.querySelector('#opmerkingen') as HTMLTextAreaElement).value.trim();
+      const honeypot = (form.querySelector('#website') as HTMLInputElement).value;
       const privacy = (form.querySelector('#privacy') as HTMLInputElement).checked;
 
       if (!naam || !email || !straat || !postcode || !stad) {
@@ -264,20 +273,39 @@ import Layout from '../layouts/Layout.astro';
       submitBtn.classList.add('loading');
       submitBtn.textContent = 'Verzenden...';
 
-      // Simulate form submission (replace with actual API endpoint)
-      try {
-        await new Promise(resolve => setTimeout(resolve, 1200));
+      const data = {
+        naam,
+        email,
+        adres: straat,
+        postcode,
+        stad,
+        reden,
+        opmerkingen,
+        website: honeypot,
+      };
 
-        // Success
-        messageEl.textContent = 'Uw aanvraag is ontvangen! Wij verzenden uw Koran zo snel mogelijk. Moge het u zegenen.';
-        messageEl.className = 'form-message visible success';
-        form.reset();
-      } catch {
-        messageEl.textContent = 'Er ging iets mis. Probeer het later opnieuw of neem contact met ons op.';
-        messageEl.className = 'form-message visible error';
-      } finally {
+      try {
+        const res = await fetch('/api/koran-aanvraag', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(data)
+        });
+        const result = await res.json();
+
+        if (res.ok) {
+          submitBtn.classList.remove('loading');
+          submitBtn.textContent = 'Koran aanvragen';
+          messageEl.className = 'form-message visible success';
+          messageEl.innerHTML = '<strong>Uw aanvraag is ontvangen!</strong><br><span style="font-size: 0.85em; display: block; margin-top: 6px;">Wij verzenden uw Koran zo snel mogelijk. Moge het u zegenen.</span>';
+          form.reset();
+        } else {
+          throw new Error(result.error || 'Onbekende fout');
+        }
+      } catch (err: any) {
         submitBtn.classList.remove('loading');
         submitBtn.textContent = 'Koran aanvragen';
+        messageEl.className = 'form-message visible error';
+        messageEl.textContent = err.message || 'Er is een fout opgetreden. Probeer het later opnieuw.';
       }
     });
   })();

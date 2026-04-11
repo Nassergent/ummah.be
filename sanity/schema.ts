@@ -11,6 +11,7 @@ import { impactStory } from './schemas/impactStory';
 import { nieuwsPost } from './schemas/nieuwsPost';
 import { ebook } from './schemas/ebook';
 import { mosque } from './schemas/mosque';
+import { koranAanvraag } from './schemas/koranAanvraag';
 
 export const schemaTypes = [
   // Singletons
@@ -28,4 +29,5 @@ export const schemaTypes = [
   nieuwsPost,
   ebook,
   mosque,
+  koranAanvraag,
 ];
