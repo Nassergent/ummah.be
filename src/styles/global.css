@@ -725,7 +725,7 @@
 
 @keyframes countUp {
   from { --counter-value: 0; }
-  to { --counter-value: 1400; }
+  to { --counter-value: 1440; }
 }
 
 /* Editorial Typography — Display quotes for visual rhythm breaks */
@@ -733,9 +733,9 @@
   font-family: var(--font-heading);
   font-size: clamp(28px, 4.5vw, 48px);
   line-height: 1.2;
-  color: var(--color-capital);
   font-style: italic;
   letter-spacing: -0.02em;
+  /* Color inherited from context — set via utility class (text-white, text-capital, etc.) */
 }
 
 /* Paper Texture — Subtle grain overlay for physical feel */
@@ -762,6 +762,6 @@ body::before {
     transform: none !important;
   }
   .counter-animate {
-    --counter-value: 1400;
+    --counter-value: 1440;
   }
 }
