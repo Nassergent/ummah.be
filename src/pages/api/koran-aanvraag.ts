@@ -6,6 +6,12 @@ const requestLog = new Map<string, number[]>();
 
 export const POST: APIRoute = async ({ request }) => {
   try {
+    // CSRF: Origin check
+    const origin = request.headers.get('origin') || '';
+    if (origin && !origin.includes('ummah') && !origin.includes('localhost') && !origin.includes('vercel')) {
+      return new Response(JSON.stringify({ error: 'Niet toegestaan.' }), { status: 403 });
+    }
+
     const body = await request.json();
     const { naam, email, adres, postcode, stad, reden, opmerkingen, website } = body;
 

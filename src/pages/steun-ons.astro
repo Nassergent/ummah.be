@@ -227,7 +227,7 @@ import Layout from '../layouts/Layout.astro';
 
   // Form feedback handlers
   document.querySelectorAll<HTMLFormElement>('.tab-content form').forEach(form => {
-    form.addEventListener('submit', (e) => {
+    form.addEventListener('submit', async (e) => {
       e.preventDefault();
       const tabPanel = form.closest('.tab-content');
       if (!tabPanel) return;
@@ -238,12 +238,38 @@ import Layout from '../layouts/Layout.astro';
 
       const origText = btn.textContent;
       btn.classList.add('loading');
+      btn.disabled = true;
       btn.textContent = 'Verzenden...';
       msg.className = 'form-message';
 
-      setTimeout(() => {
-        btn.classList.remove('loading');
-        btn.textContent = origText;
+      try {
+        // Gather fields based on tab
+        const nameInput = form.querySelector<HTMLInputElement>('input[type="text"]');
+        const emailInput = form.querySelector<HTMLInputElement>('input[type="email"]');
+        const amountInput = form.querySelector<HTMLInputElement>('input[type="number"]');
+        const noteInput = form.querySelector<HTMLTextAreaElement>('textarea');
+
+        const payload: Record<string, string> = {
+          naam: nameInput?.value || '',
+          email: emailInput?.value || '',
+          bedrag: amountInput?.value || '',
+          type: id === 'waqf' ? 'waqf' : 'programma',
+          opmerkingen: noteInput?.value || '',
+          website: '', // honeypot
+        };
+
+        const res = await fetch('/api/steun-intentie', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(payload),
+        });
+
+        const result = await res.json();
+
+        if (!res.ok) {
+          throw new Error(result.error || 'Verzenden mislukt.');
+        }
+
         msg.className = 'form-message visible success';
         msg.innerHTML = '<strong>Bedankt voor uw bijdrage-intentie, jazakAllahu khayran!</strong>' +
           '<span style="font-size: 0.85em; display: block; margin-top: 8px; line-height: 1.7;">' +
@@ -258,7 +284,14 @@ import Layout from '../layouts/Layout.astro';
           'Wij bevestigen uw bijdrage per e-mail binnen 48 uur. Vragen? <a href="mailto:salam@ummah.be" style="color: var(--color-clarity); text-decoration: underline;">salam@ummah.be</a>' +
           '</span>';
         form.reset();
-      }, 1500);
+      } catch (err: any) {
+        msg.className = 'form-message visible error';
+        msg.textContent = err.message || 'Er ging iets mis. Probeer later opnieuw.';
+      } finally {
+        btn.classList.remove('loading');
+        btn.disabled = false;
+        btn.textContent = origText;
+      }
     });
   });
 </script>

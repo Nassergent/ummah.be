@@ -21,8 +21,13 @@ export const POST: APIRoute = async ({ request }) => {
 
     const data = await request.json();
 
+    // Honeypot check
+    if (data.website) {
+      return new Response(JSON.stringify({ ok: true }), { status: 200 });
+    }
+
     // Validation
-    if (!data.naam || !data.email) {
+    if (!data.moskeeNaam || !data.stad || !data.contactpersoon || !data.email || !data.telefoon) {
       return new Response(JSON.stringify({ error: 'Vul alle verplichte velden in.' }), { status: 400 });
     }
 
@@ -30,17 +35,21 @@ export const POST: APIRoute = async ({ request }) => {
     const clean = (s: string) => s.replace(/[<>]/g, '').slice(0, 500);
 
     await writeClient.create({
-      _type: 'bouwerAanmelding',
-      naam: clean(data.naam),
+      _type: 'moskeeAanvraag',
+      moskeeNaam: clean(data.moskeeNaam),
+      stad: clean(data.stad),
+      contactpersoon: clean(data.contactpersoon),
       email: clean(data.email),
-      bedrag: clean(data.bedrag || '20'),
+      telefoon: clean(data.telefoon),
+      gevonden: clean(data.gevonden || ''),
+      bericht: clean(data.bericht || ''),
       datum: new Date().toISOString(),
-      status: 'wachtlijst',
+      status: 'nieuw',
     });
 
     return new Response(JSON.stringify({ ok: true }), { status: 200 });
   } catch (err) {
-    console.error('[api/bouwer-waitlist] Error:', (err as Error).message);
+    console.error('[api/moskee-aanvraag] Error:', (err as Error).message);
     return new Response(JSON.stringify({ error: 'Er ging iets mis. Probeer later opnieuw.' }), { status: 500 });
   }
 };

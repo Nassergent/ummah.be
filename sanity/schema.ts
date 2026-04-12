@@ -15,6 +15,8 @@ import { koranAanvraag } from './schemas/koranAanvraag';
 import { contactBericht } from './schemas/contactBericht';
 import { bouwerAanmelding } from './schemas/bouwerAanmelding';
 import { vendingAanvraag } from './schemas/vendingAanvraag';
+import { steunIntentie } from './schemas/steunIntentie';
+import { moskeeAanvraag } from './schemas/moskeeAanvraag';
 
 export const schemaTypes = [
   // Singletons
@@ -37,4 +39,6 @@ export const schemaTypes = [
   contactBericht,
   bouwerAanmelding,
   vendingAanvraag,
+  steunIntentie,
+  moskeeAanvraag,
 ];

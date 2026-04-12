@@ -149,7 +149,7 @@ const mosques = sanityMosques.length > 0 ? sanityMosques : fallbackMosques;
     const form = document.getElementById('moskee-aanvraag-form') as HTMLFormElement;
     const message = document.getElementById('form-message')!;
 
-    form?.addEventListener('submit', (e) => {
+    form?.addEventListener('submit', async (e) => {
       e.preventDefault();
       message.textContent = '';
       message.className = 'text-sm font-medium';
@@ -159,9 +159,10 @@ const mosques = sanityMosques.length > 0 ? sanityMosques : fallbackMosques;
       const stad = (form.querySelector('#stad') as HTMLInputElement).value.trim();
       const contact = (form.querySelector('#contactpersoon') as HTMLInputElement).value.trim();
       const email = (form.querySelector('#email') as HTMLInputElement).value.trim();
+      const telefoon = (form.querySelector('#telefoon') as HTMLInputElement).value.trim();
       const privacy = (form.querySelector('#privacy') as HTMLInputElement).checked;
 
-      if (!naam || !stad || !contact || !email) {
+      if (!naam || !stad || !contact || !email || !telefoon) {
         message.textContent = 'Vul alle verplichte velden in.';
         message.style.color = 'var(--color-error, #e74c3c)';
         return;
@@ -179,18 +180,45 @@ const mosques = sanityMosques.length > 0 ? sanityMosques : fallbackMosques;
         return;
       }
 
-      // Simulate submission
       const btn = form.querySelector('button[type="submit"]') as HTMLButtonElement;
       btn.disabled = true;
       btn.textContent = 'Verzenden...';
 
-      setTimeout(() => {
+      try {
+        const gevonden = (form.querySelector('#gevonden') as HTMLSelectElement).value;
+        const bericht = (form.querySelector('#bericht') as HTMLTextAreaElement).value.trim();
+
+        const res = await fetch('/api/moskee-aanvraag', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            moskeeNaam: naam,
+            stad,
+            contactpersoon: contact,
+            email,
+            telefoon,
+            gevonden: gevonden || '',
+            bericht: bericht || '',
+            website: '', // honeypot
+          }),
+        });
+
+        const result = await res.json();
+
+        if (!res.ok) {
+          throw new Error(result.error || 'Verzenden mislukt.');
+        }
+
         form.reset();
-        btn.disabled = false;
-        btn.textContent = 'Aanvraag versturen';
         message.textContent = 'Bedankt! Uw aanvraag is ontvangen. Wij nemen binnen 48 uur contact op.';
         message.style.color = 'var(--color-capital)';
-      }, 1500);
+      } catch (err: any) {
+        message.textContent = err.message || 'Er ging iets mis. Probeer later opnieuw.';
+        message.style.color = 'var(--color-error, #e74c3c)';
+      } finally {
+        btn.disabled = false;
+        btn.textContent = 'Aanvraag versturen';
+      }
     });
   </script>
 

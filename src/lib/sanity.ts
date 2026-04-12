@@ -42,17 +42,37 @@ export async function fetchNalatenschapPagina() {
 // ── Collecties ──
 
 export async function fetchTeamMembers(rol?: string) {
-  const filter = rol ? `&& rol == "${rol}"` : '';
-  return await safe(sanityClient.fetch(`*[_type == "teamMember" && actief == true ${filter}] | order(volgorde asc){
-    naam, rol, foto, titel, specialisatie, bio, quote, email, linkedin, volgorde
-  }`), 'fetchTeamMembers') ?? [];
+  if (rol) {
+    return await safe(sanityClient.fetch(
+      `*[_type == "teamMember" && actief == true && rol == $rol] | order(volgorde asc){
+        naam, rol, foto, titel, specialisatie, bio, quote, email, linkedin, volgorde
+      }`,
+      { rol }
+    ), 'fetchTeamMembers') ?? [];
+  } else {
+    return await safe(sanityClient.fetch(
+      `*[_type == "teamMember" && actief == true] | order(volgorde asc){
+        naam, rol, foto, titel, specialisatie, bio, quote, email, linkedin, volgorde
+      }`
+    ), 'fetchTeamMembers') ?? [];
+  }
 }
 
 export async function fetchDonatieProjecten(type?: string) {
-  const filter = type ? `&& type == "${type}"` : '';
-  return await safe(sanityClient.fetch(`*[_type == "donatieProject" && actief == true ${filter}] | order(volgorde asc){
-    titel, slug, beschrijving, type, doelBedrag, huidigBedrag, afbeelding, volgorde
-  }`), 'fetchDonatieProjecten') ?? [];
+  if (type) {
+    return await safe(sanityClient.fetch(
+      `*[_type == "donatieProject" && actief == true && type == $type] | order(volgorde asc){
+        titel, slug, beschrijving, type, doelBedrag, huidigBedrag, afbeelding, volgorde
+      }`,
+      { type }
+    ), 'fetchDonatieProjecten') ?? [];
+  } else {
+    return await safe(sanityClient.fetch(
+      `*[_type == "donatieProject" && actief == true] | order(volgorde asc){
+        titel, slug, beschrijving, type, doelBedrag, huidigBedrag, afbeelding, volgorde
+      }`
+    ), 'fetchDonatieProjecten') ?? [];
+  }
 }
 
 export async function fetchHisabRapporten() {
@@ -66,10 +86,20 @@ export async function fetchHisabRapporten() {
 }
 
 export async function fetchFaqItems(categorie?: string) {
-  const filter = categorie ? `&& categorie == "${categorie}"` : '';
-  return await safe(sanityClient.fetch(`*[_type == "faqItem" && gepubliceerd == true ${filter}] | order(volgorde asc){
-    vraag, antwoord, categorie, volgorde
-  }`), 'fetchFaqItems') ?? [];
+  if (categorie) {
+    return await safe(sanityClient.fetch(
+      `*[_type == "faqItem" && gepubliceerd == true && categorie == $categorie] | order(volgorde asc){
+        vraag, antwoord, categorie, volgorde
+      }`,
+      { categorie }
+    ), 'fetchFaqItems') ?? [];
+  } else {
+    return await safe(sanityClient.fetch(
+      `*[_type == "faqItem" && gepubliceerd == true] | order(volgorde asc){
+        vraag, antwoord, categorie, volgorde
+      }`
+    ), 'fetchFaqItems') ?? [];
+  }
 }
 
 export async function fetchImpactStories() {
@@ -87,11 +117,22 @@ export async function fetchNieuwsPosts() {
 // ── E-books ──
 
 export async function fetchEbooks(categorie?: string) {
-  const filter = categorie ? `&& categorie == "${categorie}"` : '';
-  return await safe(sanityClient.fetch(`*[_type == "ebook" && gepubliceerd == true ${filter}] | order(volgorde asc){
-    titel, categorie, beschrijving, aantalPaginas, omslagKleur, downloadCount,
-    "pdfUrl": pdfBestand.asset->url
-  }`), 'fetchEbooks') ?? [];
+  if (categorie) {
+    return await safe(sanityClient.fetch(
+      `*[_type == "ebook" && gepubliceerd == true && categorie == $categorie] | order(volgorde asc){
+        titel, categorie, beschrijving, aantalPaginas, omslagKleur, downloadCount,
+        "pdfUrl": pdfBestand.asset->url
+      }`,
+      { categorie }
+    ), 'fetchEbooks') ?? [];
+  } else {
+    return await safe(sanityClient.fetch(
+      `*[_type == "ebook" && gepubliceerd == true] | order(volgorde asc){
+        titel, categorie, beschrijving, aantalPaginas, omslagKleur, downloadCount,
+        "pdfUrl": pdfBestand.asset->url
+      }`
+    ), 'fetchEbooks') ?? [];
+  }
 }
 
 // ── Moskeeën ──

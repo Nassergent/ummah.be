@@ -162,6 +162,22 @@ export const structure: StructureResolver = (S) =>
                     .filter('_type == "vendingAanvraag"')
                     .defaultOrdering([{ field: 'datum', direction: 'desc' }])
                 ),
+              S.listItem()
+                .title('💰 Steun Intenties')
+                .child(
+                  S.documentList()
+                    .title('Steun Intenties')
+                    .filter('_type == "steunIntentie"')
+                    .defaultOrdering([{ field: 'datum', direction: 'desc' }])
+                ),
+              S.listItem()
+                .title('🕌 Moskee Aanvragen')
+                .child(
+                  S.documentList()
+                    .title('Moskee Aanvragen')
+                    .filter('_type == "moskeeAanvraag"')
+                    .defaultOrdering([{ field: 'datum', direction: 'desc' }])
+                ),
             ])
         ),
 

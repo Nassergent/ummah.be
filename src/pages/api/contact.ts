@@ -13,6 +13,12 @@ export const POST: APIRoute = async ({ request }) => {
     }
     rateLimit.set(ip, now);
 
+    // CSRF: Origin check
+    const origin = request.headers.get('origin') || '';
+    if (origin && !origin.includes('ummah') && !origin.includes('localhost') && !origin.includes('vercel')) {
+      return new Response(JSON.stringify({ error: 'Niet toegestaan.' }), { status: 403 });
+    }
+
     const data = await request.json();
 
     // Honeypot check

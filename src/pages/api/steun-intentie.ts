@@ -21,26 +21,37 @@ export const POST: APIRoute = async ({ request }) => {
 
     const data = await request.json();
 
+    // Honeypot check
+    if (data.website) {
+      return new Response(JSON.stringify({ ok: true }), { status: 200 });
+    }
+
     // Validation
-    if (!data.naam || !data.email) {
+    if (!data.naam || !data.email || !data.bedrag || !data.type) {
       return new Response(JSON.stringify({ error: 'Vul alle verplichte velden in.' }), { status: 400 });
+    }
+
+    if (!['waqf', 'programma'].includes(data.type)) {
+      return new Response(JSON.stringify({ error: 'Ongeldig type.' }), { status: 400 });
     }
 
     // Sanitize
     const clean = (s: string) => s.replace(/[<>]/g, '').slice(0, 500);
 
     await writeClient.create({
-      _type: 'bouwerAanmelding',
+      _type: 'steunIntentie',
       naam: clean(data.naam),
       email: clean(data.email),
-      bedrag: clean(data.bedrag || '20'),
+      bedrag: clean(String(data.bedrag)),
+      type: data.type,
+      opmerkingen: clean(data.opmerkingen || ''),
       datum: new Date().toISOString(),
-      status: 'wachtlijst',
+      status: 'nieuw',
     });
 
     return new Response(JSON.stringify({ ok: true }), { status: 200 });
   } catch (err) {
-    console.error('[api/bouwer-waitlist] Error:', (err as Error).message);
+    console.error('[api/steun-intentie] Error:', (err as Error).message);
     return new Response(JSON.stringify({ error: 'Er ging iets mis. Probeer later opnieuw.' }), { status: 500 });
   }
 };
