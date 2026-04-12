@@ -141,13 +141,27 @@ import Breadcrumbs from '../components/layout/Breadcrumbs.astro';
       <p class="text-center text-lg mb-10 max-w-[600px] mx-auto fade-up delay-1 text-text-light">
         Wat kunt u verwachten?
       </p>
-      <div class="card card-gold fade-up delay-2">
-        <div class="callout callout-gold mb-6">
-          <p class="font-heading font-bold text-lg mb-2 text-capital-dark">Geschatte commissie</p>
-          <p class="font-heading font-bold text-capital" style="font-size: clamp(28px, 4vw, 40px);">€0 – €250<span class="text-text-light text-base font-sans font-normal">/maand afhankelijk van locatie en bezoekersaantal</span></p>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-6">
+        <div class="card card-static text-center fade-up delay-1">
+          <p class="text-xs font-semibold uppercase tracking-wider mb-2 text-text-light">Klein</p>
+          <p class="text-sm mb-2 text-text-light">Wachtruimte, kleine winkel</p>
+          <p class="font-heading font-bold text-2xl text-capital">€25 – €75</p>
+          <p class="text-xs text-text-light mt-1">per maand</p>
         </div>
-        <p class="text-xs text-text-light text-center">Werkelijke resultaten variëren per locatie. Sommige locaties genereren minder dan €50/maand.</p>
+        <div class="card card-capital text-center fade-up delay-2">
+          <p class="text-xs font-semibold uppercase tracking-wider mb-2 text-gold">Gemiddeld</p>
+          <p class="text-sm mb-2 text-text-light">Garage, sportclub</p>
+          <p class="font-heading font-bold text-2xl text-capital">€75 – €150</p>
+          <p class="text-xs text-text-light mt-1">per maand</p>
+        </div>
+        <div class="card card-static text-center fade-up delay-3">
+          <p class="text-xs font-semibold uppercase tracking-wider mb-2 text-text-light">Groot</p>
+          <p class="text-sm mb-2 text-text-light">Moskee, drukke winkel</p>
+          <p class="font-heading font-bold text-2xl text-capital">€150 – €250</p>
+          <p class="text-xs text-text-light mt-1">per maand</p>
+        </div>
       </div>
+      <p class="text-xs text-text-light text-center fade-up delay-4">Geschatte commissie (25% van de omzet). Werkelijke resultaten variëren per locatie.</p>
     </div>
   </section>
 
@@ -231,15 +245,15 @@ import Breadcrumbs from '../components/layout/Breadcrumbs.astro';
       <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
         <div class="card card-static fade-up delay-2">
           <h3 class="text-lg mb-3">Ethisch gescreend</h3>
-          <p class="text-sm text-text-light">Ons assortiment wordt zorgvuldig samengesteld. Alleen producten van merken die voldoen aan onze ethische standaarden: geen alcohol, geen gokgerelateerde merken, halal-conform en eerlijk geproduceerd.</p>
+          <p class="text-sm text-text-light">Ons assortiment wordt ethisch gescreend. Producten met alcohol of niet-halal ingrediënten worden niet opgenomen. Geen gokgerelateerde merken.</p>
         </div>
         <div class="card card-static fade-up delay-3">
           <h3 class="text-lg mb-3">Kwaliteit gegarandeerd</h3>
-          <p class="text-sm text-text-light">100% halal gecertificeerd (certificering op aanvraag beschikbaar). Populaire snacks, dranken en gezonde opties. Regelmatig ververst en aangevuld.</p>
+          <p class="text-sm text-text-light">Populaire snacks, dranken en gezonde opties — zorgvuldig geselecteerd. Regelmatig ververst en aangevuld.</p>
         </div>
       </div>
       <div class="callout callout-green fade-up delay-4">
-        <p class="text-sm font-semibold text-capital">100% halal gecertificeerd (certificering op aanvraag beschikbaar) &middot; Ethisch gescreend assortiment &middot; Bewust samengesteld</p>
+        <p class="text-sm font-semibold text-capital">Halal assortiment &middot; Ethisch gescreend &middot; Bewust samengesteld &middot; Geen alcohol</p>
       </div>
     </div>
   </section>
@@ -251,7 +265,7 @@ import Breadcrumbs from '../components/layout/Breadcrumbs.astro';
         <h3 class="font-heading font-bold text-lg mb-4 text-capital-dark">Belangrijke informatie</h3>
         <ul class="text-sm text-text-light space-y-3 list-disc pl-5">
           <li>De genoemde bedragen zijn schattingen en niet gegarandeerd. Sommige locaties genereren minder dan €50/maand.</li>
-          <li>Elektriciteitskosten voor de vending machine zijn voor rekening van de locatie-eigenaar (geschat €15-30/maand).</li>
+          <li>Elektriciteitskosten voor de vending machine zijn voor rekening van de locatie-eigenaar.</li>
           <li>De samenwerking wordt geregeld via een plaatsingsovereenkomst. Vraag naar de voorwaarden.</li>
           <li>De ontvangen commissie kan belastbaar zijn. Raadpleeg uw boekhouder.</li>
           <li>Ummah.be is eigenaar van de machine. Bij beëindiging wordt de machine kosteloos verwijderd.</li>
@@ -268,6 +282,10 @@ import Breadcrumbs from '../components/layout/Breadcrumbs.astro';
         <h2 class="mb-4 fade-up">Vraag een machine aan</h2>
         <p class="text-text-light fade-up delay-1">
           Vul het formulier in — wij nemen binnen 48 uur contact op.
+        </p>
+        <p class="text-sm mt-4 fade-up delay-2">
+          <span class="text-text-light">Liever direct contact?</span>
+          <a href="mailto:salam@ummah.be" class="text-capital font-semibold no-underline hover:underline ml-1">salam@ummah.be</a>
         </p>
       </div>
 
