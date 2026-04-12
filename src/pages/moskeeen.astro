@@ -110,13 +110,25 @@ const mosques = sanityMosques.length > 0 ? sanityMosques : fallbackMosques;
         </div>
 
         <div>
-          <label for="telefoon" class="form-label">Telefoon</label>
-          <input type="tel" id="telefoon" name="telefoon" class="input" placeholder="+32 ..." />
+          <label for="telefoon" class="form-label">Telefoonnummer *</label>
+          <input type="tel" id="telefoon" name="telefoon" required class="input" placeholder="+32 ..." />
         </div>
 
         <div>
-          <label for="bericht" class="form-label">Bericht</label>
-          <textarea id="bericht" name="bericht" rows="4" class="input" placeholder="Vertel ons over uw moskee en wat u zoekt"></textarea>
+          <label for="gevonden" class="form-label">Hoe heeft u ons gevonden? <span class="font-normal normal-case text-text-light">(optioneel)</span></label>
+          <select id="gevonden" name="gevonden" class="input">
+            <option value="">Selecteer...</option>
+            <option value="andere-moskee">Via een andere moskee</option>
+            <option value="social-media">Social media</option>
+            <option value="google">Google</option>
+            <option value="mond-tot-mond">Mond-tot-mond</option>
+            <option value="anders">Anders</option>
+          </select>
+        </div>
+
+        <div>
+          <label for="bericht" class="form-label">Bericht <span class="font-normal normal-case text-text-light">(optioneel)</span></label>
+          <textarea id="bericht" name="bericht" rows="3" class="input" placeholder="Vertel ons over uw moskee en wat u zoekt"></textarea>
         </div>
 
         <div class="flex items-start gap-3">
