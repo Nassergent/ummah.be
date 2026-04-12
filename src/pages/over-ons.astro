@@ -1,10 +1,5 @@
 ---
 import Layout from '../layouts/Layout.astro';
-import { fetchSettings, fetchTeamMembers } from '../lib/sanity';
-
-const settings = await fetchSettings();
-const directors = await fetchTeamMembers('director');
-const nasser = directors[0];
 ---
 
 <Layout title="Over Ons — Ummah.be Waqf" description="Wie zijn wij? Waarom bestaat dit waqf? Een eerlijk verhaal over de mensen achter Ummah.be Waqf.">
@@ -40,94 +35,11 @@ const nasser = directors[0];
     </div>
   </section>
 
-  <!-- ONZE MISSIE -->
-  <section class="section" style="background: white;">
-    <div class="container max-w-[900px]">
-      <h2 class="text-center mb-10 fade-up">Waarvoor staan wij?</h2>
-      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-        <div class="card card-capital fade-up delay-1">
-          <div class="w-14 h-14 rounded-full mb-4 flex items-center justify-center" style="background: linear-gradient(135deg, rgba(27,94,63,0.15), rgba(201,169,97,0.1));">
-            <svg class="w-7 h-7 text-capital" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" d="M3 3v1.5M3 21v-6m0 0 2.77-.693a9 9 0 0 1 6.208.682l.108.054a9 9 0 0 0 6.086.71l3.114-.732a48.524 48.524 0 0 1-.005-10.499l-3.11.732a9 9 0 0 1-6.085-.711l-.108-.054a9 9 0 0 0-6.208-.682L3 4.5M3 15V4.5" />
-            </svg>
-          </div>
-          <h3 class="text-lg mb-3">Onze missie</h3>
-          <p class="text-sm text-text-light">
-            Een Belgische waqf bouwen waar moslims hun kapitaal kunnen schenken — wetende dat het voor altijd de gemeenschap zal dienen.
-          </p>
-        </div>
-        <div class="card card-capital fade-up delay-2">
-          <div class="w-14 h-14 rounded-full mb-4 flex items-center justify-center" style="background: linear-gradient(135deg, rgba(27,94,63,0.15), rgba(46,92,138,0.1));">
-            <svg class="w-7 h-7 text-capital" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" d="M2.036 12.322a1.012 1.012 0 0 1 0-.639C3.423 7.51 7.36 4.5 12 4.5c4.638 0 8.573 3.007 9.963 7.178.07.207.07.431 0 .639C20.577 16.49 16.64 19.5 12 19.5c-4.638 0-8.573-3.007-9.963-7.178z" />
-              <path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 1 1-6 0 3 3 0 0 1 6 0z" />
-            </svg>
-          </div>
-          <h3 class="text-lg mb-3">Onze visie</h3>
-          <p class="text-sm text-text-light">
-            Een Belgische moslimgemeenschap waar elke generatie kan leren, groeien en anderen helpen — gedragen door een eeuwig en eerlijk waqf-fonds.
-          </p>
-        </div>
-        <div class="card card-capital fade-up delay-3">
-          <div class="w-14 h-14 rounded-full mb-4 flex items-center justify-center" style="background: linear-gradient(135deg, rgba(74,124,89,0.15), rgba(27,94,63,0.1));">
-            <svg class="w-7 h-7 text-growth" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" d="M12 21a9.004 9.004 0 0 0 8.716-6.747M12 21a9.004 9.004 0 0 1-8.716-6.747M12 21c2.485 0 4.5-4.03 4.5-9S14.485 3 12 3m0 18c-2.485 0-4.5-4.03-4.5-9S9.515 3 12 3m0 0a8.997 8.997 0 0 1 7.843 4.582M12 3a8.997 8.997 0 0 0-7.843 4.582m15.686 0A11.953 11.953 0 0 1 12 10.5c-2.998 0-5.74-1.1-7.843-2.918m15.686 0A8.959 8.959 0 0 1 21 12c0 .778-.099 1.533-.284 2.253m0 0A17.919 17.919 0 0 1 12 16.5a17.92 17.92 0 0 1-8.716-2.247m0 0A8.966 8.966 0 0 1 3 12c0-1.264.26-2.466.732-3.558" />
-            </svg>
-          </div>
-          <h3 class="text-lg mb-3">Onze waarden</h3>
-          <p class="text-sm text-text-light">
-            Eerlijkheid voor alles. Transparantie in alles. Bescheidenheid in hoe we ons presenteren. Dienstbaarheid als enig doel.
-          </p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- DE OPRICHTER -->
-  <section class="section">
-    <div class="container max-w-[900px]">
-      <h2 class="text-center mb-10 fade-up">De oprichter</h2>
-
-      <div class="card fade-up delay-1">
-        <div class="flex flex-col md:flex-row gap-8 items-start">
-          <div class="w-32 h-32 shrink-0 rounded-full overflow-hidden flex items-center justify-center" style="background: linear-gradient(135deg, rgba(27,94,63,0.15), rgba(46,92,138,0.15));">
-            {nasser?.foto ? (
-              <img src={nasser.foto} alt={nasser?.naam || 'Oprichter'} class="w-full h-full object-cover" />
-            ) : (
-              <svg class="w-16 h-16 text-capital" fill="none" stroke="currentColor" stroke-width="1" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 6a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0zM4.501 20.118a7.5 7.5 0 0114.998 0A17.933 17.933 0 0112 21.75c-2.676 0-5.216-.584-7.499-1.632z" />
-              </svg>
-            )}
-          </div>
-          <div class="flex-1">
-            <h3 class="text-2xl mb-1">{nasser?.naam || 'Nasser'}</h3>
-            <p class="text-sm mb-4 text-clarity">{nasser?.titel || 'Oprichter &amp; Uitvoerend Coördinator'}</p>
-
-            {nasser?.bio ? (
-              <p class="text-base leading-relaxed mb-4 text-text">{nasser.bio}</p>
-            ) : (
-              <>
-                <p class="text-base leading-relaxed mb-4 text-text">
-                  Belgisch-Marokkaanse ondernemer, technoloog en moslim. Na jaren van werken aan digitale platformen voor moskeeën en de gemeenschap, groeide de overtuiging dat we iets blijvends moesten bouwen — iets dat verder zou reiken dan een website of app.
-                </p>
-                <p class="text-base leading-relaxed mb-4 text-text">
-                  Ummah.be Waqf is dat project. Niet als eigenaar, maar als dienaar. De waqf zelf is geen eigendom — het is een <em>amanah</em> (vertrouwen) dat gedragen wordt voor Allah en voor de gemeenschap die nog moet komen.
-                </p>
-              </>
-            )}
-
-            {nasser?.quote ? (
-              <blockquote class="mt-6 pl-4 italic text-base" style="border-left: 3px solid var(--color-gold); color: var(--color-capital);">
-                "{nasser.quote}"
-              </blockquote>
-            ) : (
-              <blockquote class="mt-6 pl-4 italic text-base" style="border-left: 3px solid var(--color-gold); color: var(--color-capital);">
-                "Ik ben geen eigenaar van dit waqf. Ik ben één van de eerste bouwers — samen met iedereen die meedoet. De waqf zelf hoort niemand toe behalve Allah, en ze dient alleen de Ummah."
-              </blockquote>
-            )}
-          </div>
-        </div>
-      </div>
+  <!-- ONZE VISIE CROSS-LINK -->
+  <section class="section-sm" style="background: white;">
+    <div class="container text-center max-w-[700px] fade-up">
+      <p class="text-text-light mb-4">Benieuwd naar ons plan? Hoe we stap voor stap bouwen aan een zelfvoorzienend waqf?</p>
+      <a href="/onze-visie" class="btn btn-outline">Lees onze visie</a>
     </div>
   </section>
 
